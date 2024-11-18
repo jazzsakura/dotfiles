@@ -1,0 +1,29 @@
+# Monokai Pro
+colors: 
+
+  primary:
+    background: '#000000'
+    foreground: '#fcfcfa'
+
+# Normal colors
+  normal:
+    black:   '#2c2525'
+    red:     '#ff6188'
+    green:   '#a9dc76'
+    yellow:  '#f9cc6c'
+    blue:    '#bd93f9'
+    magenta: '#ff46b0'
+    cyan:    '#59dffc'
+    white:   '#fcfcfa'
+
+# Bright colors
+  bright:
+    black:   '#72696a'
+    red:     '#fd6883'
+    green:   '#a9dc76'
+    yellow:  '#f9cc6c'
+    blue:    '#caa9fa'
+    magenta: '#ff46b0'
+    cyan:    '#59dffc'
+    white:   '#fcfcfa'
+
