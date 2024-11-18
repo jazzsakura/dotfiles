@@ -1,0 +1,73 @@
+font={{font.family}}:size={{font.size}}
+dpi-aware=no
+pad=40x40
+notify=notify-send -a ${app-id} -i ${app-id} ${title} ${body}
+word-delimiters=,│`|:"'()[]{}<>
+
+[url]
+launch=brave ${url}
+osc8-underline=url-mode
+uri-characters=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+="'()[]
+
+[cursor]
+style=underline
+underline-thickness=3px
+color=282a36 f8f8f2
+
+[mouse]
+hide-when-typing=no
+
+[colors]
+# oxocarbon dark
+
+foreground={{colors16.base06}}
+background={{colors16.base00}}
+
+regular0={{colors16.base01}}
+regular1={{colors16.base0E}}
+regular2={{colors16.base0D}}
+regular3={{colors16.base0C}}
+regular4={{colors16.base0B}}
+regular5={{colors16.base0A}}
+regular6={{colors16.base08}}
+regular7={{colors16.base04}}
+bright0={{colors16.base02}}
+bright1={{colors16.base0C}}
+bright2={{colors16.base0D}}
+bright3={{colors16.base0C}}
+bright4={{colors16.base0B}}
+bright5={{colors16.base0A}}
+bright6={{colors16.base08}}
+bright7={{colors16.base06}}
+
+[key-bindings]
+clipboard-copy=Control+Shift+c XF86Copy
+clipboard-paste=Control+Shift+v XF86Paste
+search-start=Control+Shift+r
+font-increase=Control+plus Control+equal Control+KP_Add
+font-decrease=Control+minus Control+KP_Subtract
+font-reset=Control+0 Control+KP_0
+show-urls-launch=Control+Shift+u
+
+[search-bindings]
+cancel=Control+g Control+c Escape
+commit=Return
+find-prev=Control+r
+find-next=Control+s
+clipboard-paste=Control+v Control+Shift+v Control+y XF86Paste
+
+[url-bindings]
+cancel=Control+g Control+c Control+d Escape
+toggle-url-visible=t
+
+[mouse-bindings]
+primary-paste=BTN_MIDDLE
+select-begin=BTN_LEFT
+select-begin-block=Control+BTN_LEFT
+select-extend=BTN_RIGHT
+select-extend-character-wise=Control+BTN_RIGHT
+select-word=BTN_LEFT-2
+select-word-whitespace=Control+BTN_LEFT-2
+select-row=BTN_LEFT-3
+
+# vim: ft=dosini
