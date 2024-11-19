@@ -1,0 +1,11 @@
+# config.toml
+[umu]
+prefix = "~/.local/share/wineprefixes/default"
+proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-20"
+game_id = "0"
+exe = "~/Games/Ultros/Ultros.exe"
+launch_args = [ "-SkipBuildPatchPrereq" ]
+store = "steam"
+
+#launch_args = ["-opengl", "-SkipBuildPatchPrereq"]
+#WINEPREFIX="$HOME/.local/share/wineprefixes/default" GAMEID=0 PROTONPATH=GE-Proton umu-run "/home/zerohack/Games/Ultros/Ultros.exe"

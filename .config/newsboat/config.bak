@@ -1,0 +1,46 @@
+# color232 color232 color6 255 light
+color listfocus color232 color4 bold
+color listfocus_unread color232 color4 bold
+color info color232 color4 bold
+
+# include /usr/share/doc/newsboat/contrib/colorschemes/nord
+
+highlight article "https?://[^ ]+" color4 default bold
+highlight article "^(Feed|Title|Author|Link|Date):" magenta default bold
+highlight article "\\(image\\)|\\(link\\)" magenta default 
+highlight article "^Links:" magenta default 
+highlight article "\\[[0-9]*\\]" color11 default 
+highlight article "^Title:.*" red default bold
+
+feed-sort-order unreadarticlecount-asc 
+#articlelist-format "%4i %D %t"
+
+browser "'qutebrowser' -l critical"
+prepopulate-query-feeds yes
+show-read-feeds no
+confirm-mark-feed-read no
+
+max-browser-tabs 40
+max-items 750
+
+bookmark-cmd "~/.newsboat/bookmark"
+
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key o open-in-browser-and-mark-read
+bind-key O open-all-unread-in-browser-and-mark-read  
+bind-key h quit
+bind-key l open
+bind-key x toggle-show-read-feeds
+bind-key ^D pagedown
+bind-key ^U pageup
+
+macro m set browser "nohup mpv --x11-name=mpvnofocus --profile=1080p --no-terminal %u > /dev/null 2>&1 &" ; open-in-browser ; toggle-article-read ; set browser "'qutebrowser' -l critical %u"
+macro n set browser "nohup mpv --x11-name=mpvnofocus --profile=720p --no-terminal %u > /dev/null 2>&1 &" ; open-in-browser ; toggle-article-read ; set browser "'qutebrowser' -l critical %u"
+macro b set browser "nohup mpv --x11-name=mpvnofocus --profile=360p --no-terminal %u > /dev/null 2>&1 &" ; open-in-browser ; toggle-article-read ; set browser "'qutebrowser' -l critical %u"
+macro d set browser "nohup dmytdown %u > /dev/null 2>&1 &" ; open-in-browser ; toggle-article-read ; set browser "'qutebrowser' -l critical %u" 
+macro s set browser "nohup dmytinfo %u > /dev/null 2>&1 &" ; open-in-browser ; toggle-article-read ; set browser "'qutebrowser' -l critical %u" 

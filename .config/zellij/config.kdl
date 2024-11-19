@@ -1,0 +1,37 @@
+layout_dir "~/.config/zellij/layouts"
+
+theme "oxocarbon"
+
+themes {
+    oxocarbon {
+        fg "#f2f4f8"
+        bg "#161616"
+        black "#161616"
+        red "#ee5396"
+        green "#be95ff"
+        yellow "#78a9ff"
+        blue "#81A1C1"
+        magenta "#be95ff"
+        cyan "#82cfff"
+        white "#ffffff"
+        orange "#82cfff"
+    }
+}
+
+keybinds {
+    normal {
+        unbind "Ctrl h"
+        unbind "Ctrl s"
+    }
+}
+
+plugins {
+    tab-bar { path "tab-bar"; }
+    status-bar { path "status-bar"; }
+    strider { path "strider"; }
+    compact-bar { path "compact-bar"; }
+}
+
+simplified_ui true
+default_layout "compact"
+on_force_close "quit"

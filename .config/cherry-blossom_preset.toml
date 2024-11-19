@@ -1,0 +1,27 @@
+add_newline = false
+# Use custom format:
+format="$directory$git_branch$character"
+
+# Prompt symbols 
+[character]
+success_symbol = "[](#a6e3a1 bold)"
+error_symbol = "[󰅙](#f38ba8)"
+vicmd_symbol = "[](#f9e2af)"
+
+[directory]
+format = "[]($style)[(bg:#f5c2e7 fg:#eba0ac)$path](bg:#f5c2e7 fg:#a84c8d)[ ]($style)"
+style = "bg:#1a1b26 fg:#f5c2e7"
+home_symbol = "  "
+read_only = "  "
+
+[directory.substitutions]
+"Desktop" = "  "
+"Documents" = "  "
+"Downloads" = "  "
+"Music" = " 󰎈 "
+"Pictures" = "  "
+"Videos" = "  "
+
+[git_branch]
+format = "[]($style)[[ ](bg:#f5c2e7 fg:#a84c8d bold)$branch](bg:#f5c2e7 fg:#4c4f69)[ ]($style)"
+style = "bg:#1a1b26 fg:#f5c2e7"
