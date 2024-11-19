@@ -105,7 +105,6 @@ dotfiles_autoupdate() {
 HISTSIZE=10000000
 #HISTFILE=$HOME/.zsh_history
 SAVEHIST=$HISTSIZE
-HISTTIMEFORMAT=""
 HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
