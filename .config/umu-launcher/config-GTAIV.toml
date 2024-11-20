@@ -5,7 +5,7 @@ proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-20"
 game_id = "umu-12210"
 exe = "~/Games/Grand Theft Auto IV - The Complete Edition/GTAIV.exe"
 launch_args = [ "-SkipBuildPatchPrereq" ]
-store = "steam"
+store = "none"
 
 #WINEPREFIX=/home/zerohack/Lutris-Prefixes/GTA-IV GAMEID=0 PROTONPATH=GE-Proton umu-run "/home/zerohack/Games/Grand Theft Auto IV - The Complete Edition/GTAIV.exe"
 #launch_args = ["-opengl", "-SkipBuildPatchPrereq"]
