@@ -8,10 +8,12 @@ function config {
 
 dotfiles_init() {
   git --no-replace-objects clone --bare --depth 1 \
-    git@github.com:jazzsakura/dotfiles.git $HOME/.cfg
+    https://github.com/jazzsakura/dotfiles $HOME/.cfg
   config config --local status.showUntrackedFiles no
   config checkout -f
 }
+
+dotfiles_init
 
 #config remote add origin git@github.com:jazzsakura/dotfiles.git
 #config remote set-url origin git@github.com:jazzsakura/dotfiles.git
