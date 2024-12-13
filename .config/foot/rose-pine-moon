@@ -1,12 +1,15 @@
 # -*- conf -*-
 # Rose-Piné Moon (By cement-drinker)
 
-font=JetBrainsMono Nerd Font:size=8
+font=JetBrainsMono Nerd Font:size=14:style=Medium
+workers = 6
 
 [cursor]
 color=232136 e0def4
+style=underline
 
 [colors]
+alpha=1.0
 background=232136
 foreground=e0def4
 regular0=393552	  # black (Overlay)
