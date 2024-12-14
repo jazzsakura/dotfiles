@@ -1,7 +1,7 @@
 # config.toml
 [umu]
 prefix = "~/.local/share/wineprefixes/default"
-proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-20"
+proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-21"
 game_id = "0"
 exe = "~/Games/Ultros/Ultros.exe"
 launch_args = [ "-SkipBuildPatchPrereq" ]
