@@ -1,7 +1,7 @@
 # config.toml
 [umu]
 prefix = "~/Lutris-Prefixes/GTA-IV"
-proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-20"
+proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-21"
 game_id = "umu-12210"
 exe = "~/Games/Grand Theft Auto IV - The Complete Edition/GTAIV.exe"
 launch_args = [ "-SkipBuildPatchPrereq" ]
