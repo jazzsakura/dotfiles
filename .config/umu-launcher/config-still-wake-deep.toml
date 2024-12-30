@@ -1,7 +1,7 @@
 # config.toml
 [umu]
 prefix = "~/Lutris-Prefixes/still-wakes-the-deep"
-proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-20"
+proton = "~/.local/share/Steam/compatibilitytools.d/GE-Proton9-22"
 game_id = "umu-1622910"
 exe = "~/Games/Still Wakes the Deep/Habitat/Binaries/Win64/StillWakesTheDeep.exe"
 launch_args = [ "-SkipBuildPatchPrereq" ]

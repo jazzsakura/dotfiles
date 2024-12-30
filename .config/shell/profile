@@ -8,8 +8,7 @@
 # Adds `~/.local/bin` to $PATH
 #export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
-export PATH="$PATH:$HOME/.local/bin"
-#export PATH="$PATH:$HOME/bin:$HOME/.local/share/go/bin:$HOME/etc/scripts"
+#export PATH="$PATH:$HOME/.local/bin"
 
 unsetopt PROMPT_SP
 
