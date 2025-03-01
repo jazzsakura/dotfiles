@@ -6,7 +6,7 @@ WinPinned=$(hyprctl -j clients | jq '.[] | select(.focusHistoryID == 0) | .pinne
 
 if [ "${WinFloat}" == "false" ] && [ "${WinPinned}" == "false" ]; then
   hyprctl dispatch togglefloating active
-  hyprctl dispatch resizeactive exact 1445 853
+  hyprctl dispatch resizeactive exact 1450 860
   hyprctl dispatch centerwindow
 else
   # disable float
