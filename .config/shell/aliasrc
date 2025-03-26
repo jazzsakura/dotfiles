@@ -62,7 +62,7 @@ alias pwd="ptpwd"
 # Helpful aliases
 alias c='clear' # clear terminal
 alias l='eza -a --icons=auto --group-directories-first --no-permissions'
-alias ls='eza -1   --icons=auto'                                            # short list
+#alias ls='eza -1   --icons=auto'                                            # short list
 alias ll='eza -lha --icons=auto --group-directories-first --no-permissions' # long list all
 #alias ld='eza -lhD --icons=auto' # long list dirs
 #alias lt='eza --icons=auto --tree' # list folder as tree
