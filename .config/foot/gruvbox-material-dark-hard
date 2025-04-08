@@ -1,13 +1,14 @@
 # -*- conf -*-
 
 #font=JetBrainsMono Nerd Font:size=14:style=Medium
-font=CaskaydiaCove Nerd Font:size=14:style=Medium
+font=CaskaydiaCove Nerd Font:size=14:style=Regular
 #font=VictorMono Nerd Font:size=14:style=Medium
-#workers = 6
+workers = 12
 
 [cursor]
 color=232136 e0def4
 style=underline
+blink=true
 
 # ===================== Gruvbox Material Dark Hard =================== #
 [colors]

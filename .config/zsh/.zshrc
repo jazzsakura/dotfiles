@@ -30,7 +30,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+#zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -136,4 +136,4 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 #eval "$(fzf --zsh)"
 
 # Initialize starship prompt
-#eval "$(starship init zsh)"
+eval "$(starship init zsh)"

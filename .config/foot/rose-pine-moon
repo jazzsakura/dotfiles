@@ -1,13 +1,15 @@
 # -*- conf -*-
-# Rose-Piné Moon (By cement-drinker)
 
-font=JetBrainsMono Nerd Font:size=14:style=Medium
-workers = 6
+#font=JetBrainsMono Nerd Font:size=14:style=Medium
+font=CaskaydiaCove Nerd Font:size=14:style=Regular
+#font=VictorMono Nerd Font:size=14:style=Regular
+workers = 12
 
 [cursor]
 color=232136 e0def4
 style=underline
 
+## =========== Rose-Piné Moon (By cement-drinker) ================= ##
 [colors]
 alpha=1.0
 background=232136
