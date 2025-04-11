@@ -69,7 +69,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export PATH="$PATH:$HOME/bin:$GOPATH/bin:$HOME/etc/scripts"
 
 # Set bat default theme
-export BAT_THEME="gruvbox-dark"
+export BAT_THEME="base16"
 export BAT_PAGER=""
 
 # Set the silver searcher as default FZF
