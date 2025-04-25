@@ -1,41 +1,8 @@
-set adjust-open "best-fit"
-set selection-clipboard clipboard
-set guioptions ""
-
-set recolor true
+set recolor-lightcolor "rgba(0, 0, 0, 0)"
+set recolor-darkcolor "rgba(255, 255, 255, 1)"
 map i recolor
-map [fullscreen] i recolor
-
-set render-loading "false"
-unmap f
-map f toggle_fullscreen
-map [fullscreen] f toggle_fullscreen
-
-set font "{{font.family}} {{font.size}}"
-
-# Oxocarbon theme
-set completion-bg "#{{colors16.base02}}"
-set completion-fg "#{{colors16.base0C}}"
-set completion-highlight-bg "#{{colors16.base0C}}"
-set completion-highlight-fg "#{{colors16.base02}}"
-set highlight-active-color "#{{colors16.base0D}}"
-set highlight-color "#{{colors16.base0A}}"
-set index-active-bg "#{{colors16.base0D}}"
-set inputbar-bg "#{{colors16.base00}}"
-set inputbar-fg "#{{colors16.base05}}"
-set notification-bg "#{{colors16.base09}}"
-set notification-error-bg "#{{colors16.base08}}"
-set notification-error-fg "#{{colors16.base00}}"
-set notification-fg "#{{colors16.base00}}"
-set notification-warning-bg "#{{colors16.base08}}"
-set notification-warning-fg "#{{colors16.base00}}"
-set recolor "true"
-set recolor-darkcolor "#{{colors16.base06}}"
-set recolor-keephue "true"
-set selection-clipboard "clipboard"
-set statusbar-bg "#{{colors16.base01}}"
-
-set default-bg "#{{colors16.base00}}"
-set recolor-lightcolor "#{{colors16.base00}}"
-# set default-bg rgba(0,0,0,0.7)
-# set recolor-lightcolor rgba(255,255,255,0)
+set recolor true
+set adjust-open "best"
+set guioptions none
+map j feedkeys "<C-Down>"
+map k feedkeys "<C-Up>"
