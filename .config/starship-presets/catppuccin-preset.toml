@@ -92,7 +92,7 @@ palette = "catppuccin_mocha"
 
 [username]
 disabled = false
-format = "[](fg:overlay)[ [󰧱](green) $user ]($style)[](fg:overlay) "
+format = "[](fg:overlay)[ [󰧱](bg:overlay fg:green)  ]($style)[](fg:overlay) "
 show_always = true
 style_root = "bg:overlay fg:iris"
 style_user = "bg:overlay fg:iris"
@@ -114,7 +114,7 @@ style = "bg:overlay fg:foam"
 symbol = ""
 
 [directory]
-home_symbol = " "
+home_symbol = "󰟐 "
 read_only = ""
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
 style = "bg:overlay fg:subtext1"
@@ -258,7 +258,8 @@ iris = "#c4a7e7"
 disabled = false
 format = " [](fg:overlay)[ $time 󰴈 ]($style)[](fg:overlay)"
 style = "bg:overlay fg:rose"
-time_format = "%I:%M%P"
+time_format = "%R"
+#time_format = "%I:%M%P"
 utc_time_offset = "local"
 use_12hr = false
 
