@@ -2,11 +2,11 @@
 size = 14.0
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "CaskaydiaCove Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrainsMono Nerd Font"
+family = "CaskaydiaCove Nerd Font"
 style = "Bold Italic"
 
 [font.glyph_offset]
@@ -14,12 +14,12 @@ x = 0
 y = 0
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "CaskaydiaCove Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Medium"
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
 
 [font.offset]
 x = 0
