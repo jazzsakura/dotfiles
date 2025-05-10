@@ -2,11 +2,11 @@
 size = 14.0
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font"
+family = "Maple Mono NF"
 style = "Bold"
 
 [font.bold_italic]
-family = "CaskaydiaCove Nerd Font"
+family = "Maple Mono NF"
 style = "Bold Italic"
 
 [font.glyph_offset]
@@ -14,11 +14,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "CaskaydiaCove Nerd Font"
+family = "Maple Mono NF"
 style = "Italic"
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
+family = "Maple Mono NF"
 style = "Regular"
 
 [font.offset]

@@ -2,8 +2,8 @@ general.import = [
   # uncomment the flavour you want below:
   # "~/.config/alacritty/colorschemes/catppuccin-frappe.toml",
   #"~/.config/alacritty/colorschemes/catppuccin-macchiato.toml",
-  #"~/.config/alacritty/colorschemes/catppuccin-mocha.toml",
-  "~/.config/alacritty/colorschemes/rose-pine-moon.toml",
+  "~/.config/alacritty/colorschemes/catppuccin-mocha.toml",
+  #"~/.config/alacritty/colorschemes/rose-pine-moon.toml",
   #"~/.config/alacritty/colorschemes/everforest_dark.toml",
    "/home/zerohack/.config/alacritty/fonts.toml"
 ]
