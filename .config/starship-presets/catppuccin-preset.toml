@@ -103,7 +103,7 @@ style_user = "bg:overlay fg:iris"
 format = "[](fg:overlay)[ $symbol ](bg:overlay)[](fg:overlay) "
 success_symbol = "[❯](fg:peach bg:overlay)"
 #error_symbol = "[󰅙](bold fg:red bg:overlay)"
-error_symbol = "[○](fg:bold italic purple bg:overlay)"
+error_symbol = "[○](fg:bold purple bg:overlay)"
 vimcmd_symbol = "[❮](fg:subtext1 bg:overlay)" # For use with zsh-vi-mode
 
 #[git_branch]
