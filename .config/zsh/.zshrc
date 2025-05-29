@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,10 +7,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+bindkey -v
+export KEYTIMEOUT=1
+
+# compile zsh file, and source them - first run is slower
+zsource() {
+  local file=$1
+  local zwc="${file}.zwc"
+  if [[ -f "$file" && (! -f "$zwc" || "$file" -nt "$file") ]]; then
+    zcompile "$file"
+  fi
+  source "$file"
+}
+
 # Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && zsource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && zsource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && zsource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -27,25 +42,36 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 # Source/Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
+#source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
 #zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-zinit light softmoth/zsh-vim-mode
+#zinit light zsh-users/zsh-syntax-highlighting
+#zinit light zsh-users/zsh-completions
+#zinit light zsh-users/zsh-autosuggestions
+#zinit light Aloxaf/fzf-tab
+#zinit light softmoth/zsh-vim-mode
 
 # Add in snippets
-zinit snippet OMZP::git
+#zinit snippet OMZP::git
+
+# Plugins
+zsource $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+zsource $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+zsource $ZDOTDIR/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+zsource $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
+#source $ZDOTDIR/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Load completions
-autoload -U compinit && compinit
+#autoload -U compinit && compinit
+autoload -Uz compinit
+ZSH_COMPDUMP="${ZDOTDIR}/.zcompdump"
+compinit -C -d "$ZSH_COMPDUMP"
+zsource $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
 
-zinit cdreplay -q
+#zinit cdreplay -q
 
 # Detect the AUR wrapper
 if pacman -Qi yay &>/dev/null ; then
@@ -124,7 +150,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 #source ~/.config/fzf/key-bindings-rg.zsh 2>/dev/null
 #source ~/.config/fzf/key-bindings-ag.zsh 2>/dev/null
 #source ~/Downloads/colt.sh 2>/dev/null
-source ~/.config/fzf/colt-tmux.sh 2>/dev/null
+zsource ~/.config/fzf/colt-tmux.sh 2>/dev/null
 #source /usr/share/fzf/key-bindings.zsh 2>/dev/null
 
 unset ZSH_AUTOSUGGEST_USE_ASYNC
@@ -137,3 +163,5 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 
 # Initialize starship prompt
 eval "$(starship init zsh)"
+
+#zprof > /tmp/foobar
