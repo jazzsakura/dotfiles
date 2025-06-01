@@ -337,7 +337,7 @@ sed -i 's#rootflags=subvol=${rootsubvol}##g' /mnt/etc/grub.d/10_linux
 sed -i 's#rootflags=subvol=${rootsubvol}##g' /mnt/etc/grub.d/20_linux_xen
 
 # Enabling NTS
-curl https://raw.githubusercontent.com/GrapheneOS/infrastructure/main/chrony.conf >>/mnt/etc/chrony.conf
+curl https://raw.githubusercontent.com/GrapheneOS/infrastructure/refs/heads/main/etc/chrony.conf >>/mnt/etc/chrony.conf
 
 # Setting GRUB configuration file permissions
 chmod 755 /mnt/etc/grub.d/*
@@ -368,8 +368,8 @@ EOF
 # ZRAM configuration
 bash -c 'cat > /mnt/etc/systemd/zram-generator.conf' <<-'EOF'
 [zram0]
-zram-fraction = 1
-max-zram-size = 8192
+zram-size = ram
+compression-algorithm = zstd
 EOF
 
 # Configuring the system.
