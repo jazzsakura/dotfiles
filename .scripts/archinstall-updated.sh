@@ -487,7 +487,7 @@ arch-chroot /mnt /bin/bash -e <<EOF
 
     # Delete Subvolumes Created by systemd for VMs and Containers 
     btrfs subvolume delete /.snapshots/1/snapshot/var/lib/portables
-    # btrfs subvolume delete /.snapshots/1/snapshot/var/lib/machines
+    btrfs subvolume delete /.snapshots/1/snapshot/var/lib/machines
 EOF
 
 # Finishing up
