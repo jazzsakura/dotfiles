@@ -377,7 +377,7 @@ arch-chroot /mnt /bin/bash -e <<EOF
     # Snapper configuration
     umount /.snapshots
     rm -r /.snapshots
-    snapper --no-dbus -c root create-config 
+    snapper --no-dbus -c root create-config /
     btrfs subvolume delete /.snapshots
     mkdir /.snapshots
     mount -a
