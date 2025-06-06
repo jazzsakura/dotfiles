@@ -99,7 +99,6 @@ tooltip {
 #backlight,
 #battery,
 #bluetooth,
-#custom-cliphist,
 #clock,
 #custom-cpuinfo,
 #cpu,
@@ -108,18 +107,18 @@ tooltip {
 #custom-keybindhint,
 #language,
 #memory,
-#mpris,
+#custom-wallchange,
+#custom-theme,
+#custom-wbar,
+#custom-cliphist,
+#custom-power,
 #network,
 #custom-notifications,
-#custom-power,
 #pulseaudio,
 #custom-spotify,
 #taskbar,
-#custom-theme,
 #tray,
 #custom-updates,
-#custom-wallchange,
-#custom-wbar,
 #window,
 #workspaces,
 #custom-l_end,
@@ -129,7 +128,7 @@ tooltip {
 #custom-rl_end,
 #custom-rr_end {
     color: @main-fg;
-    background: @main-bg;
+    background: rgba(0, 0, 0, 0.01);
     opacity: 1;
     margin: 4px 0px 4px 0px;
     padding-left: 4px;
@@ -138,74 +137,66 @@ tooltip {
 
 #workspaces {
   padding: 0px;
+  padding-left: 4px;
+  padding-right: 2px;
 }
 
 #taskbar {
     padding: 0px;
-    border-radius: 21px 21px 21px 21px;
-    margin-right: 9px;
-    margin-left: 9px;
-    padding-right: 3px;
-    padding-left: 3px;
+    padding-right: 9px;
+    padding-left: 9px;
     opacity: 0.90;
 }
 
 #idle_inhibitor{
     padding: 0px;
-    color: @wb-act-fg;
-    background: #a2798f;
-    border-radius: 5px 0px 0px 5px;
+    color: @main-fg;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 6px;
     padding-left: 6px;
-    opacity: 0.90;
+    opacity: 1;
 }
 
 #clock {
     padding: 0px;
-    color: @wb-act-fg;
-    background: #a2798f;
-    border-radius: 0px 5px 5px 0px;
+    color: @main-fg;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 6px;
     padding-left: 6px;
-    opacity: 0.90;
+    opacity: 1;
 }
 
 #custom-cpuinfo,
 #memory {
     padding: 0px;
-    color: @wb-act-fg;
-    background: #9ccfd8;
+    color: #9ccfd8;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 6px;
     padding-left: 6px;
-    opacity: 0.90;
+    opacity: 1;
 }
 
 #cpu {
     padding: 0px;
-    color: @wb-act-fg;
-    background: #9ccfd8;
-    border-radius: 5px 0px 0px 5px;
+    color: #9ccfd8;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 6px;
     padding-left: 6px;
-    opacity: 0.90;
+    opacity: 1;
 }
 
 #custom-gpuinfo {
     padding: 0px;
-    color: @wb-act-fg;
-    background: #9ccfd8;
-    border-radius: 0px 5px 5px 0px;
+    color: #9ccfd8;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 6px;
     padding-left: 6px;
-    opacity: 0.90;
+    opacity: 1;
 }
 
 #tray {
     padding: 0px;
-    background: #feffa3;
-    border-radius: 5px 5px 5px 5px;
-    margin-right: 9px;
-    margin-left: 9px;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 3px;
     padding-left: 3px;
     opacity: 0.90;
@@ -214,31 +205,38 @@ tooltip {
 #custom-updates,
 #pulseaudio {
     padding: 0px;
-    color: @wb-act-fg;
-    background: #eb6f92;
+    color: #eb6f92;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 9px;
     padding-left: 9px;
-    opacity: 0.90;
+    opacity: 1;
 }
 
 #network {
     padding: 0px;
-    color: @wb-act-fg;
-    background: #eb6f92;
-    border-radius: 5px 0px 0px 5px;
+    color: #eb6f92;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 9px;
     padding-left: 9px;
-    opacity: 0.90;
+    opacity: 1;
 }
 
 #custom-keybindhint {
     padding: 0px;
-    color: @wb-act-fg;
-    background: #eb6f92;
-    border-radius: 0px 5px 5px 0px;
+    color: #eb6f92;
+    background: rgba(0, 0, 0, 0.01);
     padding-right: 9px;
     padding-left: 9px;
-    opacity: 0.90;
+    opacity: 1;
+}
+
+#mpris {
+    color: #33C668;
+    background: rgba(0, 0, 0, 0.01);
+    opacity: 1;
+    margin: 4px 0px 4px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 #custom-r_end {
