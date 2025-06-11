@@ -116,9 +116,10 @@ symbol = ""
 
 [directory]
 home_symbol = "󰟐 "
-read_only = ""
-format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
+read_only = "󰌾 "
+format = "[](fg:overlay)[ $path ]($style)[$read_only]($read_only_style)[](fg:overlay) "
 style = "bg:overlay fg:subtext1"
+read_only_style = "bg:overlay fg:red"
 truncation_length = 3
 truncation_symbol = "…/"
 
