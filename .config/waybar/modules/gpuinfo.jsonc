@@ -6,7 +6,7 @@
         "interval": 5, // once every 5 seconds
         "tooltip": true,
         "max-length": 1000,
-        "on-click": "gpuinfo.sh --toggle",
+        "on-click": "gpuinfo.sh --toggle"
     },
 
     "custom/gpuinfo#nvidia": {
@@ -16,7 +16,7 @@
         "rotate": ${r_deg},
         "interval": 5, // once every 5 seconds
         "tooltip": true,
-        "max-length": 1000,
+        "max-length": 1000
     },
 
     "custom/gpuinfo#amd": {
@@ -26,7 +26,7 @@
         "rotate": ${r_deg},
         "interval": 5, // once every 5 seconds
         "tooltip": true,
-        "max-length": 1000,
+        "max-length": 1000
     },
 
     "custom/gpuinfo#intel": {
@@ -36,6 +36,5 @@
         "rotate": ${r_deg},
         "interval": 5, // once every 5 seconds
         "tooltip": true,
-        "max-length": 1000,
+        "max-length": 1000
     },
-
