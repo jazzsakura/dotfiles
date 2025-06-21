@@ -7,6 +7,8 @@
     "position": "top",
     "mod": "dock",
     "height": 31,
+    "margin-top": 4,
+    "margin-bottom": -6,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
