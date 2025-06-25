@@ -31,32 +31,6 @@ zsource() {
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 COMPLETION_WAITING_DOTS="true"
 
-# Created by newuser for 5.9
-# Set the directory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
-# Download zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
-	mkdir -p "$(dirname $ZINIT_HOME)"
-	git clone https://github.com/zdharma-continum/zinit.git "$ZINIT_HOME"
-fi
-
-# Source/Load zinit
-#source "${ZINIT_HOME}/zinit.zsh"
-
-# Add in Powerlevel10k
-#zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# Add in zsh plugins
-#zinit light zsh-users/zsh-syntax-highlighting
-#zinit light zsh-users/zsh-completions
-#zinit light zsh-users/zsh-autosuggestions
-#zinit light Aloxaf/fzf-tab
-#zinit light softmoth/zsh-vim-mode
-
-# Add in snippets
-#zinit snippet OMZP::git
-
 # Plugins
 zsource $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 zsource $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
@@ -70,8 +44,6 @@ autoload -Uz compinit
 ZSH_COMPDUMP="${ZDOTDIR}/.zcompdump"
 compinit -C -d "$ZSH_COMPDUMP"
 zsource $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
-
-#zinit cdreplay -q
 
 # Detect the AUR wrapper
 if pacman -Qi yay &>/dev/null ; then
@@ -144,12 +116,14 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' popup-pad 30 10
+zstyle ':fzf-tab:complete:cd:*' popup-min-size 50 8
+zstyle ':fzf-tab:complete:*' fzf-command ftb-tmux-popup
 
 # fzf completion and keybindings
 #source ~/.config/fzf/key-bindings-rg.zsh 2>/dev/null
 #source ~/.config/fzf/key-bindings-ag.zsh 2>/dev/null
-#source ~/Downloads/colt.sh 2>/dev/null
 zsource ~/.config/fzf/colt-tmux.sh 2>/dev/null
 #source /usr/share/fzf/key-bindings.zsh 2>/dev/null
 
