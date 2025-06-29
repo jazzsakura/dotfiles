@@ -71,5 +71,11 @@ wlStyle="$(envsubst < $wlTmplt)"
 
 #// launch wlogout
 
-wlogout -b "${wlColms}" -c 0 -r 0 -m 0 --layout "${wLayout}" --css <(echo "${wlStyle}") --protocol layer-shell
+#wlogout -b "${wlColms}" -c 0 -r 0 -m 0 --layout "${wLayout}" --css <(echo "${wlStyle}") --protocol layer-shell
+#echo "${hydeTheme}"
 
+if [ -z "${hydeTheme}" ] || [ "${hydeTheme}" == "Rosé Pine" ] ; then
+    wlogout -b 5 -c 0 -r 0 --layout "${confDir}/wlogout/rose-pine/layout_1" --css "${confDir}/wlogout/rose-pine/style_1.css" --protocol layer-shell
+else
+    wlogout -b "${wlColms}" -c 0 -r 0 -m 0 --layout "${wLayout}" --css <(echo "${wlStyle}") --protocol layer-shell
+fi
