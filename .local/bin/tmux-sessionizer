@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  dirs=$(find -L ~/work/builds ~/projects ~/ ~/work ~/personal ~/personal/yt -mindepth 1 -maxdepth 1 -type d)
+  dirs=$(cat "$HOME/Downloads/bulk-tmp-dir" | sed 's/^/\//')
   selected=$(printf "%s\n%s\n%s\n%s\n%s" "$dirs" "$HOME/build" "$HOME/.dotfiles" "$HOME/obsidian-vault" "$HOME/Downloads" | fzf)
 fi
 
