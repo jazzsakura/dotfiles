@@ -92,6 +92,21 @@ browsing_packages() {
 zle -N browsing_packages
 bindkey '^X' browsing_packages
 
+run_tmux_sessionizer() { 
+	BUFFER="tmux-sessionizer" 
+	zle accept-line
+	zle reset-prompt
+}
+zle -N run_tmux_sessionizer
+bindkey '\ee' run_tmux_sessionizer
+
+run_fuzzy_sessionizer() {
+	BUFFER=" tmux switch-client -t$(tmux list-sessions | cut -d ":" -f1 | ftb-tmux-popup)"
+	zle accept-line
+}
+zle -N run_fuzzy_sessionizer
+bindkey '\ew' run_fuzzy_sessionizer
+
 # This command takes all changed files and commits them with the date and some machine information. 
 dotfiles_autoupdate() {
     config add -u && \
