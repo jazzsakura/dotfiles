@@ -49,8 +49,6 @@ export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/ripgrep/rg.conf"
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-#export FZF_DEFAULT_OPTS='--layout=reverse --height 50% --color=bg+:#302D41,gutter:-1,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD --prompt=":: " --pointer="" --border rounded'
-#export FZF_DEFAULT_OPTS='--layout=reverse --height 50% --color=bg+:#302D41,bg:#24273A,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD --prompt=":: " --pointer="" --border rounded'
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
@@ -78,8 +76,14 @@ export BAT_PAGER=""
 # Set the ripgrep as default FZF
 export FZF_DEFAULT_COMMAND="rg -u --hidden --no-config --files --glob '!.git*' --glob '!.npm*' --iglob '!history' 2>/dev/null"
 
+# Set FZF default theme
+export FZF_DEFAULT_OPTS="--color=bg:0,bg+:0 --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=rounded --prompt ' 󰊠 '"
+
 # Oxocarbon theme
-export FZF_DEFAULT_OPTS="--layout=reverse --color=fg:#ffffff,bg:0,hl:#be95ff --color=fg+:#ffffff,bg+:0,hl+:#be95ff --color=info:#ee5396,prompt:#ff7eb6,pointer:#42be65 --color=marker:#42be65,spinner:#be95ff,header:#82cfff --reverse --border=rounded --prompt ' λ '"
+#export FZF_DEFAULT_OPTS="--layout=reverse --color=fg:#ffffff,bg:0,hl:#be95ff --color=fg+:#ffffff,bg+:0,hl+:#be95ff --color=info:#ee5396,prompt:#ff7eb6,pointer:#42be65 --color=marker:#42be65,spinner:#be95ff,header:#82cfff --reverse --border=rounded --prompt ' λ '"
+# Catppuccin mocha theme
+#export FZF_DEFAULT_OPTS='--layout=reverse --height 50% --color=bg+:#302D41,gutter:-1,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD --prompt=":: " --pointer="" --border rounded'
+#export FZF_DEFAULT_OPTS='--layout=reverse --height 50% --color=bg+:#302D41,bg:#24273A,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD --prompt=":: " --pointer="" --border rounded'
 
 # Install npm packages globally without sudo
 NPM_PACKAGES="${HOME}/.npm-packages"
