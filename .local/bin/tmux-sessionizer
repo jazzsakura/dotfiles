@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+FZF_DEFAULT_OPTS="--color=bg:0,bg+:0 --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=rounded --prompt ' λ ' --pointer=''"
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
