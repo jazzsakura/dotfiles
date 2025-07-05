@@ -132,12 +132,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:*' popup-pad 30 10
-#zstyle ':fzf-tab:complete:cd:*' popup-pad 30 10
+zstyle ':fzf-tab:*' popup-pad 30 10
 zstyle ':fzf-tab:*' popup-min-size 50 10
-#zstyle ':fzf-tab:complete:cd:*' popup-min-size 50 8
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-#zstyle ':fzf-tab:complete:*' fzf-command ftb-tmux-popup
 
 # fzf completion and keybindings
 #source ~/.config/fzf/key-bindings-rg.zsh 2>/dev/null
