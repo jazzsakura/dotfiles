@@ -101,7 +101,7 @@ zle -N run_tmux_sessionizer
 bindkey '\ee' run_tmux_sessionizer
 
 run_fuzzy_sessionizer() {
-	BUFFER=" tmux switch-client -t$(tmux list-sessions | cut -d ":" -f1 | ftb-tmux-popup --header 'Switch session: ')"
+	BUFFER=" tmux switch-client -t$(tmux list-sessions | cut -d ":" -f1 | ftb-tmux-popup --header 'Jump to session: ')"
 	zle accept-line
 }
 zle -N run_fuzzy_sessionizer
