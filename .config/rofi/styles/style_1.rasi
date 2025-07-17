@@ -26,7 +26,7 @@ window {
     spacing:                     0em;
     padding:                     0em;
     border-color:                @main-br;
-    background-color:            #433a5b;
+    background-color:            rgba(0, 0, 0, 0.05);
 }
 mainbox {
     enabled:                     true;
