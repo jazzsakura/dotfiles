@@ -1,0 +1,271 @@
+https://www.reddit.com/r/linuxquestions/comments/x2gag1/grub_says_sparse_file_not_allowed/
+
+Paper Mario: The Thousand-Year Door [0100ECD018EBE000] v1.0.0 - 60FPS
+60FPS
+The mod contains a cheat to help with some parts where 60FPS messes with the game's logic:
+-Press ZL + D-pad Up to force the game to run at 60FPS.
+-Press ZL + D-pad Down to force the game to run at 30FPS.
+
+Adjustment
+ZR + Dpad Up Instant Text Speed
+Adjustment
+ZR + Dpad Down Fast Text Speed
+
+#lutris dependencies
+https://github.com/lutris/docs/blob/master/WineDependencies.md
+
+Using iwd as the Wi-Fi backend
+Note:
+
+    Do not enable iwd.service or manually configure iwd. NetworkManager will start and manage it itself.
+    Consider existing issues before switching to iwd.
+
+To enable the experimental iwd backend, first install iwd and then create the following configuration file:
+
+/etc/NetworkManager/conf.d/wifi_backend.conf
+
+[device]
+wifi.backend=iwd
+
+Alternatively, you can install networkmanager-iwdAUR, a modified package configured to build NetworkManager working exclusively with iwd, with the main difference being that iwd is required and wpa_supplicant can be uninstalled after building.
+Note: You may need to convert existing NetworkManager network profiles after switching to iwd.
+
+https://www.youtube.com/watch?v=gVuabEckMMA&t=30s | quacked games
+https://www.youtube.com/watch?v=rxQs2gm7SoI&list=PL7hhhG5qUoXnUj22_PdAK-hRjrrFGKSjC&index=4 | w3m Browser - Reader view, strip junk from webpages and show only the article
+https://forums.lutris.net/t/solved-winetricks-cannot-load-on-lutris-wine-versions/11665 | [SOLVED] Winetricks cannot load on lutris wine versions
+https://www.youtube.com/watch?v=yCgieVu13VQ |  My Neovim & Tmux Terminal Dev Workflow As A Principal Engineer 
+
+https://1337x.to/user/FitGirl/
+https://fitgirl-repacks.site/grand-theft-auto-iv-complete-edition/
+
+https://github.com/deep5050/radio-active?tab=readme-ov-file | Terminal radio-cli player
+https://gbatemp.net/threads/60-fps-patches-cheat-codes-releases-and-discussion.550527/
+
+https://www.google.com/search?client=firefox-b-d&q=fzf+transparent+background
+https://www.reddit.com/r/vim/comments/rqhurx/comment/hqav4ek/?utm_source=share&utm_medium=web2x&context=3
+
+https://wiki.archlinux.org/title/CPU_frequency_scaling
+https://github.com/vagnum08/cpupower-gui
+
+https://github.com/justchokingaround/lobster
+https://github.com/mov-cli/mov-cli
+https://github.com/metafates/mangal
+https://github.com/pystardust/ani-cli
+https://github.com/justchokingaround/dotfiles
+https://github.com/justchokingaround/scraping-tutorial
+https://github.com/apognu/tuigreet | Graphical console greeter for greetd.
+
+tmux select-pane -t0
+tmux copy-mode -d
+clear
+tmux copy-mode -u
+tmux select-pane -t2
+
+https://github.com/makidoll/melonPrimeDS
+
+https://github.com/justchokingaround/jerry
+https://github.com/SuperCuber/dotter
+
+https://www.reddit.com/r/hyprland/comments/1du4znl/what_is_the_best_dotfiles_you_have_tried_so_far/
+https://github.com/Nitestack/dotfiles | Cross-Platform & Cross-Shell Dotfiles Powered by chezmoi 
+https://github.com/jooapa/jammer | Jammer — light-weight TUI music player
+
+https://www.color-hex.com/color-palette/5361
+https://www.color-hex.com/color-palette/1223
+https://pcsx2.net/blog/2024/pcsx2-2-release/
+https://github.com/arimatakao/mdx | mdx is a simple CLI application for downloading manga from the MangaDex website. The program uses MangaDex API to fetch manga content.
+https://romsfun.com/roms/playstation-3/folklore.html
+
+https://rosepinetheme.com/palette/
+https://nxbrew.com/monster-hunter-stories-collection-switch-xci/
+https://gog-games.to/
+https://sw.kovidgoyal.net/kitty/conf/
+https://github.com/darrenburns/posting | A powerful HTTP client that lives in your terminal.
+https://firefoxcss-store.github.io/ | FirefoxCSS Store
+https://github.com/FirefoxCSS-Store/FirefoxCSS-Store.github.io/blob/main/README.md#generic-installation
+https://i.redd.it/uhgp58kso4fd1.jpeg | ps2 games
+https://fitgirl-repacks.site/blade-runner-enhanced-edition/
+https://stackoverflow.com/questions/8560295/extracting-directory-name-from-an-absolute-path-using-sed-or-awk
+https://blog.asleson.org/2024/07/24/bcachefs-an-introduction/exploration/
+https://rasmuskirk.com/articles/2024-07-24_dont-use-nixos/
+https://www.reddit.com/r/hyprland/comments/19b5203/questions_about_vrr_and_tearing_from_a_gaming/
+https://github.com/Vita3K/Vita3K
+https://archive.org/download/sony-playstation-vita-usa-full-set-nonpdrm-format
+
+https://github.com/hyprwm/xdg-desktop-portal-hyprland/issues/47
+https://wiki.archlinux.org/title/XDG_Desktop_Portal#List_of_backends_and_interfaces
+https://nxbrew.com/claire-extended-cut-switch-nsp-eshop/
+
+https://www.reddit.com/r/neovim/comments/1eizorl/any_way_to_make_writing_documentation_less/
+https://www.reddit.com/r/swaywm/comments/sb4un4/how_to_setup_alacritty_multiwindow/
+https://vimm.net/vault
+https://myrient.erista.me/
+
+https://www.reddit.com/r/LinuxCrackSupport/comments/16z2922/is_there_a_guide_for_running_preinstalled_quacks/
+https://fitgirl-repacks.site/blazblue-entropy-effect/
+https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#configuration
+
+ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' | fzf-tmux -h90% -w80% --preview 'bat --color=always --style=plain --line-range=:500 {}' --layout=reverse --bind 'enter:execute(bat --color=always --style=plain --line-range=:500 {} | less)'
+ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' | fzf-tmux -h60% -w70% --preview 'bat --color=always --style=plain --line-range=:500 {}' --layout=reverse --bind 'enter:execute(bat --color=always --style=plain --line-range=:500 {} | less)' --bind 'ctrl-o:execute-silent(wl-copy {})+deselect-all'
+
+https://forum.endeavouros.com/t/reinstalling-bootloader-without-destroying-system/58536/6
+https://discovery.endeavouros.com/system-rescue/arch-chroot/2022/12/
+
+# Print specific lines
+sed -n '2,5p; 8p; 12,15p; 17p; 19p; 21,27p' infile
+
+# how to restore grub with btrfs root partition
+https://wiki.manjaro.org/index.php/GRUB/Restore_the_GRUB_Bootloader
+https://logan.tw/posts/2015/05/17/grub-install-and-btrfs-root-file-system/
+http://www.panticz.de/index.php/Fix-grub-on-btrfs-partition
+
+# Fix grub on btrfs partition
+# mount the btrfs root subvolume
+mount /dev/sda1 /mnt -o subvol=/
+ 
+# (optional) set the default subvolume
+btrfs sub set @ /mnt
+ 
+mount /proc /mnt/proc --bind
+mount /dev /mnt/dev --bind
+mount /sys /mnt/sys --bind
+ 
+arch-chroot /mnt
+ 
+grub-install /dev/sda
+update-grub /dev/sda
+ 
+# activate first partition
+fdisk -l /dev/sda
+
+https://www.moddb.com/mods/half-life-alyx-novr/news/quakecon-update-summer-2024
+https://fitgirl-repacks.site/half-life-alyx/
+https://es.wikipedia.org/wiki/Mario_%26_Luigi
+hyprctl -j clients | jq '.[] | select(.focusHistoryID == 0) | .workspace.name'
+https://github.com/savedra1/clipse | is a configurable, TUI-based clipboard manager application written in Go with minimal dependency.
+https://www.reddit.com/r/hyprland/comments/1erv86n/special_workspaces_in_hyprland/
+https://github.com/romkatv/powerlevel10k/issues/515?ref=dnsmichi.at | Change OS_ICON
+https://www.youtube.com/watch?v=KuKdeez8I5I |  Duckstation | Make PlayStation PS1 Games Look EXACTLY How YOU Want | Full In Depth Graphics Guide 
+https://docs.flathub.org/docs/for-users/uninstallation/ | uninstall steam flatpak
+
+l | fzf-tmux -h60% -w70% --preview 'eza --color=always --tree --level=2 {}' --layout=reverse --bind 'enter:execute(bat --color=always --style=plain --line-range=:500 {} | less)' --bind 'ctrl-o:execute-silent(wl-copy {})+deselect-all'
+eza -a --icons=auto --group-directories-first --no-permissions | fzf-tmux -h60% -w70% --preview 'eza --color=always --tree --level=2 {}' --layout=reverse --bind 'enter:execute(bat --color=always --style=plain --line-range=:500 {} | less)' --bind 'ctrl-o:execute-silent(wl-copy {})+deselect-all'
+https://dev.to/heraldofsolace/replace-your-existing-unix-utilities-with-these-modern-alternatives-2bfo
+eza -a --icons=auto --group-directories-first --no-permissions | fzf-tmux -h60% -w70% --preview 'eza --color=always --tree --level=2 {}' --layout=reverse --bind "enter:execute[eza -a --icons=auto --group-directories-first --no-permissions {} | fzf]" --bind 'ctrl-o:execute-silent(wl-copy {})+deselect-all'
+https://github.com/Reshiban/60FPS-AR-CHEATS-3DS
+https://romsfun.com/roms/playstation-3/siren-blood-curse.html
+https://www.fffuel.co/cccolor/
+https://hyprland-community.github.io/pyprland/
+https://www.youtube.com/@typecraft_dev/videos
+https://raw.githubusercontent.com/xlenore/psx-covers/main/covers/default/${serial}.jpg
+https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default/${serial}.jpg
+https://github.com/CodesOfRishi/navita
+https://github.com/Anshul-007/HyprLock_installer
+https://www.reddit.com/r/hyprland/comments/1fly571/why_people_are_migrating_to_nixos/
+https://www.youtube.com/watch?v=vm-Sj1V529I | LinuxFest 2024: Deploying NixOS anywhere
+https://www.reddit.com/r/unixporn/comments/1fmvnpb/hyprland_my_first_rice_in_hyprland_with_wallust/
+https://github.com/quickemu-project/quickemu | Quickly create and run optimised Windows, macOS and Linux virtual machines:
+
+https://www.youtube.com/@WhyDoesNothingWork/videos | nixos related contents
+https://www.youtube.com/watch?v=Nts-z1oqo6M | Impermanent NixOS: on a VM + tmpfs root + flakes + LUKS 
+https://www.willbush.dev/blog/impermanent-nixos/
+https://www.youtube.com/watch?v=QtBouFMyrWg | NixCon2023 Impermanence 
+https://zaney.org/zaneyos-2.0/ | ZaneyOS 2.0 Documentation 
+https://github.com/nix-community/home-manager | Home Manager using Nix
+
+https://nixos.org/manual/nixos/stable/#sec-firewall
+https://www.youtube.com/watch?v=9l-U2NwbKOc | Nerding out about Nix and NixOS with Jon Seager, Canonical 
+https://thiscute.world/en/posts/my-experience-of-nixos/ | OS as Code - My Experience of NixOS
+https://nixos-and-flakes.thiscute.world/ | NixOS & Flakes Book An unofficial book for beginners
+
+https://home.codevoid.de/posts/2019-04-27_Manage_dotfiles_with_git.html | Manage Dotfiles with Git
+https://shaky.sh/simple-dotfiles/
+https://www.youtube.com/watch?v=5oXy6ktYs7I | Dotfiles! Here's how I organize them. 
+https://dev.to/ehsan2003/using-another-nixos-system-as-a-binary-cache-for-flake-configurations-on-your-home-network-487i
+https://nixos-and-flakes.thiscute.world/the-nix-language/
+
+https://archive.org/details/karous-eng | SEGA - Dreamcast 1G1R CHD [Perfect Collection] 
+https://dreamcast.fandom.com/wiki/Full_List_of_Dreamcast_Games
+
+https://nixos-and-flakes.thiscute.world/nixos-with-flakes/modularize-the-configuration
+https://gbatemp.net/forums/pcsx2-hd-texture-pack-group.549/
+https://github.com/GreemDev/Ryujinx
+personal090:duFXXNpM2n
+https://nixos.asia/en/nixos-install-disko
+https://tech.aufomm.com/my-nixos-journey-home-manager/ | Setting zsh as our default NixOS shell
+https://nixos-and-flakes.thiscute.world/best-practices/debugging
+
+https://github.com/mickours/nixos-config | powerlevel10k instant prompt
+https://github.com/librephoenix/nixos-config | Nix noob trying to build his system 
+sudo nixos-rebuild boot --install-bootloader --flake .
+nix-shell -p git --command "nix run --experimental-features 'nix-command flakes' gitlab:librephoenix/nixos-config"
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disk-config.nix
+https://github.com/StevensND/switch-port-mods
+WINEPREFIX=/home/zerohack/.local/share/wineprefixes/default GAMEID=0 PROTONPATH=GE-Proton umu-run "/home/zerohack/Games/KILL KNIGHT/Build.exe"
+WINEPREFIX=/home/zerohack/.local/share/wineprefixes/default GAMEID=0 PROTONPATH=GE-Proton umu-run "/home/zerohack/Lutris-Prefixes/plucky/drive_c/Games/The Plucky Squire/Storybook.exe"
+https://www.reddit.com/r/linux/comments/1gqilzy/efficient_dotfile_management_with_myd_track/
+
+https://github.com/Jacksaur/Gorgeous-GRUB
+https://github.com/Genivia/ugrep
+https://github.com/ndom91/rose-pine-hyprcursor
+https://archive.org/details/fcroms
+https://www.romspedia.com/roms/sega-naomi
+https://forums.libretro.com/t/how-to-add-naomi-playlist-flycast/38629
+https://www.emurom.net/us/emulation/naomi-roms.html
+https://archive.org/details/naomiromset_mame0.218 | Complete set for Sega Naomi arcade, Mame 0.218. Tested based on Retroarch Flycast core. 
+https://www.reddit.com/r/commandline/comments/1gx0q6c/devlog_02_gmailtui_replicating_gmailwebs/
+https://github.com/Benexl/yt-x
+https://neilzone.co.uk/2024/11/using-only-a-linux-terminal-for-my-personal-computing-in-2024/
+https://www.video-games-museum.com/en/sys/94-naomi/1/all
+https://github.com/trzy/Supermodel | Supermodel: A Sega Model 3 Arcade Emulator
+https://github.com/WIttyJudge/adless | Adless is an easy-to-use CLI tool that blocks domains by using your system's hosts file.
+https://nxbrew.net/okami-hd-switch-nsp-eshop/
+https://www.reddit.com/r/linux/comments/1hfs0cj/youtube_battery_life_firefox_and_linux/
+https://github.com/xnl-h4ck3r/waymore
+cd "$PWD/$( l | fzf --preview 'eza --color=always --tree --level=2 {}')"
+https://github.com/ddxv/mobile-network-traffic | 2024: How to Sniff Mobile HTTPs from Apps
+https://github.com/projectdiscovery/proxify
+https://github.com/ariary/HTTPCustomHouse
+https://github.com/projectdiscovery/interactsh
+https://github.com/BishopFox/jsluice |  Extract URLs, paths, secrets, and other interesting bits from JavaScript 
+https://securitycipher.com/bounty-writeups/
+
+https://www.jonashietala.se/blog/2024/06/02/migrating_to_rocksnvim/
+https://blog.assetnote.io/2021/01/13/blind-ssrf-chains/
+https://yeswehack.com/programs/withings-public-program
+https://medium.com/@qaafqasim/40-google-dorks-to-find-bug-bounty-programs-unveiling-the-hidden-site-98e134762886
+https://gist.github.com/ThoNohT/30020c93fe6a8acea27f867b860047ee | Cleaning up haskell packages on Arch Linux
+https://lock.cmpxchg8b.com/rebinder.html | testing for dns rebinding 
+
+ffuf -c -w ~/etc/scripts/FuzzLists/traversal.txt -rate 1 -request ~/projects/withings-DoS.txt
+https://hackerone.com/verily_life_sciences
+https://retrogametalk.com/repository/ | cdromance site
+https://medium.com/@nebty/the-ultimate-guide-to-hacking-aws-s3-find-vulnerable-buckets-and-earn-big-5b089d921814
+https://aszx87410.github.io/beyond-xss/en/
+https://github.com/coffinxp/payloads | this payload list contains all payloads used in bug hunting
+https://www.youtube.com/@lostsecc
+https://lostsec.xyz/
+https://github.com/reddelexc/hackerone-reports/blob/master/tops_by_bug_type/TOPIDOR.md
+https://github.com/shreyaschavhan/10000-h1-disclosed-reports
+https://bugcrowd.com/engagements/dell-com
+https://sacsecurity.tech/lbfinder.html | Lucky Bug Bounty Program Finder
+https://pastebin.com/6FRQfKgm | dell domains
+https://0ut3r.space/2024/11/21/basic-access-authentication-bruteforce/ | Basic access authentication bruteforce 
+
+https://www.reddit.com/r/hyprland/comments/1itbdel/most_recent_hyprland_update_destroyed_simplest/
+https://www.reddit.com/r/hyprland/comments/1j93p5s/small_tip_for_those_who_use_kitty_terminal_and/
+https://myrient.erista.me | Myrient - Reenvisioning Video Game Preservation
+https://github.com/johnfactotum/foliate | Read e-books in style 
+
+vm.swappiness=150
+vm.watermark_boost_factor=15000
+vm.watermark_scale_factor=10
+vm.page-cluster=3
+
+https://github.com/Montana1176/ZFS-on-Arch-Install-Guide/
+
+https://www.ordinatechnic.com/distribution-specific-guides/Arch/an-arch-linux-installation-on-a-btrfs-filesystem-with-snapper-for-system-snapshots-and-rollbacks
+https://gist.github.com/silverhadch/98dfef35dd55f87c3557ef80fe52a59b | ✅ Arch Linux ZFS Root Install with systemd-boot + UKI (using LTS ISO)
+https://github.com/Gabominated/PCSX2 | Compilation of 50/60 FPS, widescreen and improvement patches for PCSX2 emulator
+https://www.planetroast.com/migrating-linux-pass-to-new-machine
+https://ericeastwood.com/blog/paper-backup-and-recovery-guide-for-pass-password-store/

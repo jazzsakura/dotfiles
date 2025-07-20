@@ -53,7 +53,7 @@ __fsel() {
 
 __fzfcmd() {
   [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
 }
 
 fzf-file-widget() {
@@ -70,8 +70,7 @@ bindkey -M viins '\el' fzf-file-widget
 
 # ALT-D - Paste the selected file path(s) into the command line
 __fsel1() {
-  cd "$HOME"
-  local cmd="${FZF_ALT_D_COMMAND:-"command ag --hidden --ignore '\\.gitignore' --ignore-dir '\\.*git*' -g '\\./' 2>/dev/null"}"
+  local cmd="${FZF_ALT_D_COMMAND:-"command cat $HOME/Downloads/bulk-tmp 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
   eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#A6E3A1 $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
@@ -84,11 +83,11 @@ __fsel1() {
 
 __fzfcmd() {
   [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
 }
 
 fzf-file1-widget() {
-LBUFFER="v $HOME/${LBUFFER}$(__fsel1)"
+LBUFFER="e /${LBUFFER}$(__fsel1)"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -114,11 +113,11 @@ __fsel2() {
 
 __fzfcmd() {
   [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
 }
 
 fzf-file2-widget() {
-LBUFFER="cat ${LBUFFER}$(__fsel2)"
+LBUFFER="bat ${LBUFFER}$(__fsel2)"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -144,11 +143,11 @@ __fsel3() {
 
 __fzfcmd() {
   [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf"
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
 }
 
 fzf-file3-widget() {
-LBUFFER="v ${LBUFFER}$(__fsel3)"
+LBUFFER="e ${LBUFFER}$(__fsel3)"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -160,49 +159,151 @@ bindkey -M vicmd '\es' fzf-file3-widget
 bindkey -M viins '\es' fzf-file3-widget
 
 # ALT-O - cd into the selected directory
-fzf-cd-widget() {
-cd "$HOME"
-local cmd="${FZF_ALT_O_COMMAND:-"command ag --hidden --ignore '\\.gitignore' --ignore-dir '\\.*git*' --null -g '\\.' 2>/dev/null | xargs -0 dirname | LC_ALL=C sort -u | sed '1d'"}"
+__fsel_cd() {
+  local cmd="${FZF_ALT_O_COMMAND:-"command cat $HOME/Downloads/bulk-tmp-dir 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" $FZF_ALT_O_OPTS" $(__fzfcmd) +m)"
-  if [[ -z "$dir" ]]; then
-    zle redisplay
-    return 0
-  fi
-  zle push-line # Clear buffer. Auto-restored on next prompt.
-  BUFFER="cd ${(q)dir} && l"
+  local item
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#96CDFB $FZF_ALT_O_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+    echo -n "${(q)item}"
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+__fzfcmd() {
+  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
+}
+
+fzf-cd-widget() {
+LBUFFER="cd ${LBUFFER}/$(__fsel_cd) && l"
   zle accept-line
   local ret=$?
-  unset dir # ensure this doesn't end up appearing in prompt expansion
   zle reset-prompt
   return $ret
 }
-zle     -N             fzf-cd-widget
+zle     -N            fzf-cd-widget
 bindkey -M emacs '\eo' fzf-cd-widget
 bindkey -M vicmd '\eo' fzf-cd-widget
 bindkey -M viins '\eo' fzf-cd-widget
 
 # ALT-P - cd into the selected directory
-fzf-cdh-widget() {
-  local cmd="${FZF_ALT_P_COMMAND:-"command ag --hidden --ignore '\\.gitignore' --ignore-dir '\\.*git*' --null -g '\\.' 2>/dev/null | xargs -0 dirname | LC_ALL=C sort -u"}"
+# dirname "$(grep -ia "$(printf $PWD)" bulk-tmp | fzf)"
+__fsel_cdh() {
+  local current_dir="$(echo $PWD | sed 's/^.//')"
+  local cmd="${FZF_ALT_O_COMMAND:-"command grep -ia "^$(printf $current_dir)" $HOME/Downloads/bulk-tmp-dir 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" $FZF_ALT_P_OPTS" $(__fzfcmd) +m)"
-  if [[ -z "$dir" ]]; then
-    zle redisplay
-    return 0
-  fi
-  zle push-line # Clear buffer. Auto-restored on next prompt.
-  BUFFER="cd ${(q)dir} && l"
+  local item
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#96CDFB $FZF_ALT_O_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+    echo -n "${(q)item}"
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+__fzfcmd() {
+  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
+}
+
+fzf-cdh-widget() {
+LBUFFER="cd ${LBUFFER}/$(__fsel_cdh) && l"
   zle accept-line
   local ret=$?
-  unset dir # ensure this doesn't end up appearing in prompt expansion
   zle reset-prompt
   return $ret
 }
-zle     -N             fzf-cdh-widget
+zle     -N            fzf-cdh-widget
 bindkey -M emacs '\ep' fzf-cdh-widget
 bindkey -M vicmd '\ep' fzf-cdh-widget
 bindkey -M viins '\ep' fzf-cdh-widget
+
+# ALT-U - List the entire filesystem and pipe the result into a file
+__fsel4() {
+  cd "/"
+  local cmd="${FZF_ALT_U_COMMAND:-"command ag -i --hidden --ignore '\\.gitignore' --ignore-dir '\\.*git*' -g '\\./' > $HOME/Downloads/bulk-tmp 2>/dev/null"}"
+  local cmd1="${FZF_ALT_U_COMMAND:-"command cat $HOME/Downloads/bulk-tmp 2>/dev/null | sed 's#/[^/]*\$##' | LC_ALL=c sort -u > $HOME/Downloads/bulk-tmp-dir"}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  eval "$cmd"
+  eval "$cmd1"
+}
+
+__fzfcmd() {
+  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
+}
+
+fzf-updb-widget() {
+LBUFFER="${LBUFFER}$(__fsel4)"
+  zle accept-line
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-updb-widget
+bindkey -M emacs '\eu' fzf-updb-widget
+bindkey -M vicmd '\eu' fzf-updb-widget
+bindkey -M viins '\eu' fzf-updb-widget
+
+# ALT-SHIFT-O - Paste the selected file path(s) into the command line
+__fsel5() {
+  local cmd="${FZF_ALT_D_COMMAND:-"command cat $HOME/Downloads/bulk-tmp-dir 2>/dev/null"}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local item
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#96CDFB $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+    echo -n "${(q)item}"
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+__fzfcmd() {
+  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
+}
+
+fzf-file5-widget() {
+LBUFFER="${LBUFFER}/$(__fsel5)"
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-file5-widget
+bindkey -M emacs '^[O' fzf-file5-widget
+bindkey -M vicmd '^[O' fzf-file5-widget
+bindkey -M viins '^[O' fzf-file5-widget
+
+# ALT-SHIFT-D - Paste the selected file path(s) into the command line
+__fsel6() {
+  local cmd="${FZF_ALT_D_COMMAND:-"command cat $HOME/Downloads/bulk-tmp 2>/dev/null"}"
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local item
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#A6E3A1 $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+    echo -n "${(q)item}"
+  done
+  local ret=$?
+  echo
+  return $ret
+}
+
+__fzfcmd() {
+  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
+    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --height=~20"
+}
+
+fzf-file6-widget() {
+LBUFFER="${LBUFFER}/$(__fsel6)"
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-file6-widget
+bindkey -M emacs '^[D' fzf-file6-widget
+bindkey -M vicmd '^[D' fzf-file6-widget
+bindkey -M viins '^[D' fzf-file6-widget
 
 # CTRL-R - Paste the selected command from history into the command line
 fzf-history-widget() {

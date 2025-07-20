@@ -1,0 +1,5 @@
+# Print only timestamps and dedup
+ffprobe -loglevel 'error' -show_entries 'stream_tags : format_tags' '/home/zerohack/Music/The Messenger (Original Soundtrack) Disc 2： The Future [16-bit] [i56wbutAhGA].mp3' | grep "[[:digit:]]:[[:digit:]]:*" | awk '! seen[$0]++' | awk 'NF>1{print $NF}'
+
+# Remove the timestamp at last
+ffprobe -loglevel 'error' -show_entries 'stream_tags : format_tags' '/home/zerohack/Music/The Messenger (Original Soundtrack) Disc 2： The Future [16-bit] [i56wbutAhGA].mp3' | grep "[[:digit:]]:[[:digit:]]:*" | awk '! seen[$0]++' | awk '{$NF=""}1'
