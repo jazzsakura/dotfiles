@@ -527,6 +527,8 @@ launcher_with_preview() {
       --preview-window=left,35%,wrap --bind=right:accept \
       --expect=shift-left,shift-right --tabstop=1 \
       --cycle --exact \
+      --no-separator --no-info \
+      --border=none \
       --ansi --preview="$2"
     ;;
   esac
