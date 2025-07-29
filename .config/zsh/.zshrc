@@ -100,13 +100,6 @@ run_tmux_sessionizer() {
 zle -N run_tmux_sessionizer
 bindkey '\ee' run_tmux_sessionizer
 
-run_fuzzy_sessionizer() {
-	BUFFER=" tmux switch-client -t$(tmux list-sessions | cut -d ":" -f1 | ftb-tmux-popup --header 'Jump to session: ')"
-	zle accept-line
-}
-zle -N run_fuzzy_sessionizer
-bindkey '\ew' run_fuzzy_sessionizer
-
 # This command takes all changed files and commits them with the date and some machine information. 
 dotfiles_autoupdate() {
     config add -u && \
