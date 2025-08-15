@@ -4,7 +4,7 @@ if [[ $# -eq 1 ]]; then
   selected=$1
 else
   dirs=$(cat $HOME/Downloads/bulk-tmp-dir | sed 's/^/\//' | grep -ia "^${HOME}")
-  selected=$(printf "%s\n%s\n%s\n%s\n%s" "$dirs" "$HOME/build" "$HOME/.dotfiles" "/tmp" | fzf-tmux -p 60%,70% --pointer='' --header 'Create new session: ')
+  selected=$(printf "%s\n%s\n%s\n%s\n%s" "$dirs" "$HOME/build" "$HOME/.dotfiles" "/tmp" | fzf --tmux 70% --pointer='' --header 'Create new session: ')
 fi
 
 if [[ -z $selected ]]; then
