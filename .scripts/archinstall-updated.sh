@@ -156,7 +156,7 @@ read -r -p "Please insert the keyboard layout you use (la-latin1): " kblayout
 v pacman -S --noconfirm archlinux-keyring
 v pacman-key --init
 v pacman-key --populate archlinux
-v reflector --verbose -l 50 -n 20 -p http --sort score --save /etc/pacman.d/mirrorlist
+v reflector --verbose -l 50 -n 20 -p https --sort score --save /etc/pacman.d/mirrorlist
 v pacman -Sy
 
 # Installing curl

@@ -29,18 +29,18 @@ construct_panes() {
     fi
 
     case "$command" in
-      sudo*|*bash*)
+      sudo*|*bash*|*zsh*)
         command="echo $command";;
       vim*|top|tail*)
         command="$command";;
       *)
-        command="echo $command";;
+        command=" $command";;
     esac
 
     [ "$session" = "$last_session" ] && initial_window=false
     [ "$window_index" = "$last_window" ] && initial_pane=false
 
-    if [ "$initial_window" == "true" ] && [ "$initial_pane" = "true" ]; then
+    if [ "$initial_window" == "true" ] && [ "$initial_pane" = "true" ] || [ "$session" != "$last_session" ]; then
       echo "tmux new-session -d -n $window_name -s $session -c "$2""
       initial_session=false
     elif [ "$initial_window" == "true" ] || [ "$initial_pane" = "true" ]; then
