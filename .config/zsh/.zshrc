@@ -86,7 +86,7 @@ bindkey -s '^o' "code-search.sh\n"
 
 # Custom Commands and Keybindings
 browsing_packages() {
-  BUFFER="pacman -Qq | fzf-tmux -h60% -w70% --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+  BUFFER="pacman -Qq | fzf --tmux 65% --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
   zle accept-line
 }
 zle -N browsing_packages
