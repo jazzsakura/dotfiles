@@ -5,11 +5,12 @@
 
 -- theme & transparency
 vim.pack.add({
-		{ src = "https://github.com/vague2k/vague.nvim"},
+		{ src = "https://github.com/vague2k/vague.nvim" },
+        { src = "https://github.com/sainnhe/gruvbox-material" },
 	})
 
 require("vague").setup({ transparent = true })
-vim.cmd("colorscheme vague")
+vim.cmd("colorscheme gruvbox-material")
 vim.cmd(":hi statusline guibg=NONE")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
