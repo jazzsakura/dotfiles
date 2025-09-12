@@ -92,6 +92,9 @@ vim.opt.foldlevel = 99                             -- Start with all folds open
 vim.opt.splitbelow = true                          -- Horizontal splits go below
 vim.opt.splitright = true                          -- Vertical splits go right
 
+-- Get rid of ~ symbols
+vim.opt.fillchars:append({ eob = " " })
+
 -- remove netrw banner for cleaner looking
 vim.g.netrw_banner = 0
 
