@@ -1,18 +1,45 @@
 #!/usr/bin/env bash
 
+set -u
+
+output(){
+    printf "\e[1;34m%-6s\e[m\n" "${@}"
+}
+
+session_prompt (){
+  output 'Enter a session name (press ENTER to skip): '
+    read -r sessionname
+
+    if [ -z "${sessionname}" ]; then
+      break
+        #output 'You need to enter a session name.'
+        #session_prompt
+    fi
+}
+
+clear
+session_prompt
+clear
+
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
   dirs=$(cat $HOME/Downloads/bulk-tmp-dir | sed 's/^/\//' | grep -ia "^${HOME}")
-  selected=$(printf "%s\n%s\n%s\n%s\n%s" "$dirs" "$HOME/build" "$HOME/.dotfiles" "/tmp" | fzf --tmux 70% --pointer='' --header 'Create new session: ')
+  selected=$(printf "%s\n%s\n%s\n%s\n%s" "$dirs" "$HOME/build" "$HOME/.dotfiles" "/tmp" | fzf --tmux 70% --header 'Select a working directory: ')
 fi
 
 if [[ -z $selected ]]; then
   exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+#selected_name=$(basename "$selected" | tr . _)
+if [ -z "${sessionname}" ]; then
+  selected_name=$(basename "$selected" | tr . _)
+else
+  selected_name=$sessionname
+fi
 tmux_running=$(pgrep tmux)
+#TMUX=$tmux_running
 
 # OK - tmux is not running
 if [[ -z $tmux_running ]]; then
@@ -44,4 +71,10 @@ fi
 if [[ ! -z $TMUX ]] && tmux has-session -t=$selected_name 2>/dev/null; then
   tmux switch-client -t $selected_name
   exit 0
+fi
+
+if [[ -z $TMUX ]]; then
+  tmux attach-session -t $selected
+else
+  tmux switch-client -t $selected_name
 fi
