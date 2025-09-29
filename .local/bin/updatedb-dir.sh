@@ -15,6 +15,7 @@ if [ -e "file1" ] && [ ! -s "file1" ]; then
   output "News entries found"
   cat file2 >> $HOME/Downloads/bulk-tmp-dir
   LC_ALL=c sort -o $HOME/Downloads/bulk-tmp-dir $HOME/Downloads/bulk-tmp-dir
+  rm -vf file* &>/dev/null
   exit 0
 fi
 
