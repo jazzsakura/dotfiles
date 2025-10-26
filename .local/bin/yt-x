@@ -171,8 +171,8 @@ load_config() {
   PLAYLIST_END="$NO_OF_SEARCH_RESULTS"
 
   FZF_DEFAULT_OPTS=${YT_X_FZF_OPTS:-'
-    --color=bg:-1,bg+:-1,gutter:-1
-    --cycle --no-info --no-separator --no-scrollbar --reverse
+    --color=bg:-1,bg+:-1
+    --cycle --gutter " " --no-info --no-separator --no-scrollbar --reverse
     --border="none" --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=none --prompt=" 󰊠 "
   '}
   init_pretty_print
