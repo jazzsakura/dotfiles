@@ -75,7 +75,7 @@ export BAT_PAGER=""
 export FZF_DEFAULT_COMMAND="rg -u --hidden --no-config --files --glob '!.git*' --glob '!.npm*' --iglob '!history' 2>/dev/null"
 
 # Set FZF default theme
-export FZF_DEFAULT_OPTS="--color='bg:-1,bg+:-1,gutter:-1' --cycle --no-info --no-separator --no-scrollbar --reverse --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=none --prompt ' 󰊠 '"
+export FZF_DEFAULT_OPTS="--color='bg:-1,bg+:-1' --gutter ' ' --cycle --no-info --no-separator --no-scrollbar --reverse --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=none --prompt ' 󰊠 '"
 
 # Oxocarbon theme
 #export FZF_DEFAULT_OPTS="--layout=reverse --color=fg:#ffffff,bg:0,hl:#be95ff --color=fg+:#ffffff,bg+:0,hl+:#be95ff --color=info:#ee5396,prompt:#ff7eb6,pointer:#42be65 --color=marker:#42be65,spinner:#be95ff,header:#82cfff --reverse --border=rounded --prompt ' λ '"
