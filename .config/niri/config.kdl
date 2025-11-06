@@ -337,7 +337,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 environment {
-    DISPLAY null
+    DISPLAY ":0"
     GDK_BACKEND "wayland"
     GTK_THEME "Gruvbox-Retro"
 
