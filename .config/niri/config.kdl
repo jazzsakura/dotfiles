@@ -58,7 +58,7 @@ input {
     workspace-auto-back-and-forth
 }
 
-spawn-sh-at-startup "kitty --class HeadlessKitty --single-instance --listen-on unix:/tmp/kitty-socket tail -f /dev/null"
+//spawn-sh-at-startup "kitty --class HeadlessKitty --single-instance --listen-on unix:/tmp/kitty-socket tail -f /dev/null"
 spawn-sh-at-startup "swww img ~/.config/niri/wall.jpg --transition-type random --transition-step 5 --transition-fps 165 --transition-duration 2"
 spawn-sh-at-startup "foot --server"
 spawn-at-startup "mpd"
@@ -273,6 +273,7 @@ window-rule {
     match app-id="^(nm-connection-editor)$"
     match app-id="^(waypaper)$"
     match app-id="^(Emulator)$"
+    match app-id="^(Pinentry-gtk)$"
 
     open-floating true
     tiled-state false
@@ -403,8 +404,8 @@ binds {
     Mod+Ctrl+Print hotkey-overlay-title="<b>Screenshot With Annotation: </b> Screen" { spawn "fish" "-c" "grim -g \"$(slurp -o -r -c '#bb9af7')\" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png"; }
 
     // Primary Applications
-    Mod+Return  {spawn "kitty" "--single-instance"; }
-    //Mod+Z  {spawn "zeditor"; }
+    //Mod+V  {spawn "kitty" "--single-instance"; }
+    Mod+Return  {spawn "footclient"; }
     Mod+B { spawn "zen-browser"; }
     Mod+Alt+B { spawn "brave"; }
     Mod+Semicolon { spawn "fuzzel"; }
@@ -541,8 +542,8 @@ binds {
     // If the window is already in a column, they will expel it out.
     //Mod+BracketLeft  { consume-or-expel-window-left; }
     //Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+z  { consume-or-expel-window-left; }
-    Mod+x  { consume-or-expel-window-right; }
+    Mod+Z  { consume-or-expel-window-left; }
+    Mod+X  { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
