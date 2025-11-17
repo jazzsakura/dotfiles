@@ -62,7 +62,6 @@ input {
 
 //spawn-sh-at-startup "kitty --class HeadlessKitty --single-instance --listen-on unix:/tmp/kitty-socket tail -f /dev/null"
 //spawn-sh-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
-//spawn-sh-at-startup "ghostty --quit-after-last-window-closed=false --initial-window=false"
 spawn-sh-at-startup "swww img ~/.config/niri/wall.jpg --transition-type any --transition-step 5 --transition-fps 165 --transition-duration 2"
 spawn-sh-at-startup "foot --server"
 spawn-at-startup "mpd"
@@ -110,7 +109,7 @@ animations {
       }
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    slowdown 0.75
+    slowdown 0.60
 }
 
 layout {
@@ -409,8 +408,8 @@ binds {
 
     // Primary Applications
     Mod+V  {spawn "kitty" "--single-instance"; }
-    //Mod+Return  {spawn "ghostty" "+new-window"; }
-    Mod+Return  {spawn "footclient"; }
+    Mod+Return  {spawn "ghostty" "+new-window"; }
+    //Mod+Return  {spawn "footclient"; }
     Mod+B { spawn "zen-browser"; }
     Mod+Alt+B { spawn "brave"; }
     Mod+Semicolon { spawn "fuzzel"; }

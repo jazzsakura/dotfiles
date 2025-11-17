@@ -1,0 +1,86 @@
+theme = Gruvbox Material Dark
+
+#config-file = ./themes/Custom-01
+
+custom-shader = shaders/cursor_smear_fade.glsl
+#custom-shader = shaders/glitchy.glsl
+#custom-shader = shaders/static.gsls
+#custom-shader = shaders/retro-terminal.glsl
+#custom-shader = shaders/in-game-crt.glsl
+
+auto-update = off
+auto-update-channel = stable
+resize-overlay = never
+
+#gtk-single-instance = false
+#command = /run/current-system/sw/bin/fish --login --interactive
+# command = /usr/local/bin/bash --noprofile --rcfile ~/.bashrc -i
+
+font-family = Maple Mono NF
+font-style = Bold
+font-style-bold = Bold
+font-style-italic = Medium Italic
+font-style-bold-italic = Bold Italic
+font-size = 14
+font-thicken = true
+font-thicken-strength = 255
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-feature = zero
+cursor-text = cell-foreground
+
+# alernate w
+font-feature = cv07
+# alternate 1
+font-feature = cv11
+# alternate *
+# font-feature = cv12
+# alternate 0
+font-feature = cv16
+
+adjust-cell-height = 11%
+
+keybind = super+ctrl+h=goto_split:left
+keybind = super+ctrl+l=goto_split:right
+keybind = super+ctrl+k=goto_split:top
+keybind = super+ctrl+j=goto_split:bottom
+keybind = super+-=increase_font_size:1
+keybind = super+.=decrease_font_size:1
+
+window-inherit-font-size = true
+window-inherit-working-directory = true
+window-save-state = always
+window-theme = system
+#window-padding-color = extend-always
+
+shell-integration = zsh
+shell-integration-features = no-cursor, no-sudo, no-title
+cursor-style = block
+cursor-style-blink = true
+cursor-invert-fg-bg = true
+macos-titlebar-style = tabs
+title = " "
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+background-opacity = 0.65
+# background-blur = true
+
+quick-terminal-position = bottom
+
+window-padding-x = 4
+window-padding-y = 4
+
+mouse-hide-while-typing = true
+
+unfocused-split-opacity = 1
+
+async-backend = epoll
+
+macos-icon = chalkboard
+# macos-icon = custom-style
+# macos-icon-frame = plastic
+# macos-icon-ghost-color = white
+# macos-icon-screen-color = dark sea green,dark slate grey
+
+quit-after-last-window-closed = false
