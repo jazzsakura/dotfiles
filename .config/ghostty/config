@@ -63,7 +63,7 @@ macos-titlebar-style = tabs
 title = " "
 keybind = alt+left=esc:b
 keybind = alt+right=esc:f
-background-opacity = 0.85
+background-opacity = 0.65
 # background-blur = true
 
 quick-terminal-position = bottom
@@ -75,7 +75,7 @@ mouse-hide-while-typing = true
 
 unfocused-split-opacity = 1
 
-async-backend = epoll
+async-backend = auto
 
 macos-icon = chalkboard
 # macos-icon = custom-style
