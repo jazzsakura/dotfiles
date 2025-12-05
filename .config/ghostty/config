@@ -2,6 +2,8 @@ theme = Gruvbox Material Dark
 
 #config-file = ./themes/Custom-01
 
+custom-shader-animation = always
+
 custom-shader = shaders/cursor_smear_fade.glsl
 #custom-shader = shaders/glitchy.glsl
 #custom-shader = shaders/static.gsls
