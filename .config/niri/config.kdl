@@ -71,7 +71,7 @@ animations {
     // Uncomment to turn off all animations.
     // off
     window-close {
-        duration-ms 250
+        duration-ms 150
         curve "ease-out-quad"
     }
 
@@ -101,7 +101,8 @@ animations {
     }
 
     window-open {
-        spring damping-ratio=0.7 stiffness=200 epsilon=0.0001
+        //spring damping-ratio=0.7 stiffness=200 epsilon=0.0001
+        curve "cubic-bezier" 0.05 0.7 0.1 1
     }
 
     window-movement {
@@ -229,12 +230,6 @@ window-rule {
     open-maximized true
 }
 
-window-rule {
-    match app-id="^gimp"
-
-    open-maximized true
-}
-
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     match title="^Picture-in-Picture$"
@@ -307,6 +302,14 @@ window-rule {
 window-rule {
     geometry-corner-radius 5
     clip-to-geometry true
+}
+
+window-rule {
+    match is-floating=true
+    match app-id="^(com.mitchellh.ghostty)$"
+
+    // Properties that apply continuosly.
+    default-floating-position x=500 y=100
 }
 
 layer-rule {
