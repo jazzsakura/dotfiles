@@ -19,16 +19,16 @@ resize-overlay = never
 # command = /usr/local/bin/bash --noprofile --rcfile ~/.bashrc -i
 
 font-family = Maple Mono NF
-font-style = Bold
+font-style = Medium
 font-style-bold = Bold
 font-style-italic = Medium Italic
 font-style-bold-italic = Bold Italic
 font-size = 14
 font-thicken = true
 font-thicken-strength = 255
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+font-feature = +calt
+font-feature = +liga
+font-feature = +dlig
 font-feature = zero
 cursor-text = cell-foreground
 
