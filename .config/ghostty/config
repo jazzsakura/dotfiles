@@ -18,8 +18,9 @@ resize-overlay = never
 #command = /run/current-system/sw/bin/fish --login --interactive
 # command = /usr/local/bin/bash --noprofile --rcfile ~/.bashrc -i
 
-font-family = Maple Mono NF
-font-style = Medium
+font-family = Annotation Mono
+#font-family = Maple Mono NF
+font-style = DemiBold
 font-style-bold = Bold
 font-style-italic = Medium Italic
 font-style-bold-italic = Bold Italic
@@ -36,12 +37,10 @@ cursor-text = cell-foreground
 font-feature = cv07
 # alternate 1
 font-feature = cv11
-# alternate *
-# font-feature = cv12
 # alternate 0
 font-feature = cv16
 
-adjust-cell-height = 11%
+adjust-cell-height = 8%
 
 keybind = super+ctrl+h=goto_split:left
 keybind = super+ctrl+l=goto_split:right

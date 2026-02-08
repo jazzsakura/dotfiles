@@ -9,7 +9,7 @@
     // "margin-right":25,
     "margin-bottom":-13,
     "margin-top":-5,
-    "modules-left": ["hyprland/workspaces","custom/cycle_wall"],
+    "modules-left": ["niri/workspaces","custom/cycle_wall"],
     "modules-right": ["cpu","memory","network","pulseaudio" ,"backlight", "battery","tray"],
     "modules-center": [ "clock"],
     // Modules configuration
@@ -47,7 +47,7 @@
     },
 
     // End of custom modules //
-"hyprland/workspaces": {
+"niri/workspaces": {
   "format": "{icon}",
   "on-click": "activate",
   "all-outputs": true,
