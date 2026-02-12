@@ -31,10 +31,10 @@ construct_panes() {
     case "$command" in
       sudo*|*bash*|*zsh*)
         command=" echo $command; clear";;
-      vim*|top|tail*)
-        command="$command";;
+      *vim*|*top|tail*)
+        command=" $command";;
       *)
-        command=" echo $command; clear";;
+        command=" $command; clear";;
     esac
 
     [ "$session" = "$last_session" ] && initial_window=false

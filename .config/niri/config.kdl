@@ -66,6 +66,7 @@ spawn-sh-at-startup "swww img ~/.config/niri/wall.jpg --transition-type any --tr
 spawn-sh-at-startup "foot --server"
 spawn-at-startup "mpd"
 spawn-at-startup "mpDris2"
+spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
 
 animations {
     // Uncomment to turn off all animations.
@@ -125,8 +126,7 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
-
-        // fixed 1920
+        fixed 1920
     }
     // default-column-display "tabbed"
     tab-indicator {
@@ -141,6 +141,7 @@ layout {
     // preset-window-heights { }
 
     default-column-width { proportion 0.5; }
+    //default-column-width { proportion 0.787777; }
 
     // `draw-border-with-background`.
 
@@ -308,10 +309,8 @@ window-rule {
 
 window-rule {
     match is-floating=true
-    match app-id="^(com.mitchellh.ghostty)$"
-
-    // Properties that apply continuosly.
-    default-floating-position x=500 y=100
+    min-width 100
+    min-height 100
 }
 
 layer-rule {
@@ -466,14 +465,6 @@ binds {
     Mod+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Ctrl+Right { move-column-to-monitor-right; }
 
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    // ...
-
-    // And you can also move a whole workspace to another monitor:
-    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
-    // ...
-
     Mod+U              { focus-workspace-up; }
     Mod+D              { focus-workspace-down; }
     Mod+Shift+U        { move-window-to-workspace-up; }
@@ -581,7 +572,8 @@ binds {
 
     // Move the focused window between the floating and the tiling layout.
     Mod+F       { toggle-window-floating; }
-    Mod+Shift+F { switch-focus-between-floating-and-tiling; }
+    Mod+A { switch-focus-between-floating-and-tiling; }
+    //Mod+Shift+F { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
@@ -591,6 +583,19 @@ binds {
     // Actions to switch layouts.
     //Mod+N { switch-layout "next"; }
     //Mod+P { switch-layout "prev"; }
+
+    // Niri sidebar
+    // Toggle the focused window into/out of the sidebar
+    Mod+S { spawn-sh "~/.local/bin/niri-sidebar toggle-window"; }
+
+    // Toggle sidebar visibility (hide/show)
+    Mod+Shift+S { spawn-sh "~/.local/bin/niri-sidebar toggle-visibility"; }
+
+    // Flip the order of the sidebar
+    Mod+Ctrl+S { spawn-sh "~/.local/bin/niri-sidebar flip"; }
+
+    // Force reorder (useful if something gets misaligned manually)
+    Mod+Alt+R { spawn-sh "~/.local/bin/niri-sidebar reorder"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
