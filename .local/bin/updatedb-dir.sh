@@ -1,7 +1,24 @@
 #!/usr/bin/env bash
 
-output(){
-    printf "\e[1;34m%-6s\e[m\n" "${@}"
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# Print colored output
+print_info() {
+    echo -e "${GREEN}[INFO]${NC} $1"
+}
+
+print_updated() {
+    echo -e "${CYAN}→${NC} $1"
+}
+
+print_success() {
+    echo -e "${GREEN}✓${NC} $1"
 }
 
 current_dir="$(echo $PWD | sed 's/^.//')"
@@ -12,7 +29,7 @@ command grep -ia "^$(printf $current_dir)" $HOME/Downloads/bulk-tmp-dir 2>/dev/n
 command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed "s@^@${PWD}/@" | sed 's/^\///' | sed 's#/[^/]*$##' | LC_ALL=c sort -u > file2
 
 if [ -e "file1" ] && [ ! -s "file1" ]; then
-  output "News entries found"
+  print_success "News entries found"
   cat file2 >> $HOME/Downloads/bulk-tmp-dir
   LC_ALL=c sort -o $HOME/Downloads/bulk-tmp-dir $HOME/Downloads/bulk-tmp-dir
   rm -vf file* &>/dev/null
@@ -31,9 +48,9 @@ NR==FNR {
 
 if cmp -s "file1" "file2"
 then
-  output "No new entries found"
+  print_info "No new entries found..."
 else
-  output "Up to date"
+  print_updated "Up to date"
   awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' file1 $HOME/Downloads/bulk-tmp-dir
   cat file2 >> $HOME/Downloads/bulk-tmp-dir
   LC_ALL=c sort -o $HOME/Downloads/bulk-tmp-dir $HOME/Downloads/bulk-tmp-dir

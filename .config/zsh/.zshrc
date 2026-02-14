@@ -82,6 +82,7 @@ function in {
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^o' "code-search.sh\n"
+bindkey -s '\eu' "updatedb-dir.sh\n"
 #bindkey -s '^o' "pacman -Qq | fzf-tmux -h60% -w70% --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'\n"
 
 # Custom Commands and Keybindings
@@ -133,7 +134,6 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 #source ~/.config/fzf/key-bindings-rg.zsh 2>/dev/null
 #source ~/.config/fzf/key-bindings-ag.zsh 2>/dev/null
 zsource ~/.config/fzf/colt-tmux.sh 2>/dev/null
-#source /usr/share/fzf/key-bindings.zsh 2>/dev/null
 
 unset ZSH_AUTOSUGGEST_USE_ASYNC
 

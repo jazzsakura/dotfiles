@@ -220,33 +220,6 @@ bindkey -M emacs '\ep' fzf-cdh-widget
 bindkey -M vicmd '\ep' fzf-cdh-widget
 bindkey -M viins '\ep' fzf-cdh-widget
 
-# ALT-U - List the entire filesystem and pipe the result into a file
-__fsel4() {
-  cd "/"
-  local cmd="${FZF_ALT_U_COMMAND:-"command ag -i --hidden --ignore '\\.gitignore' --ignore-dir '\\.*git*' -g '\\./' > $HOME/Downloads/bulk-tmp 2>/dev/null"}"
-  local cmd1="${FZF_ALT_U_COMMAND:-"command cat $HOME/Downloads/bulk-tmp 2>/dev/null | sed 's#/[^/]*\$##' | LC_ALL=c sort -u > $HOME/Downloads/bulk-tmp-dir"}"
-  setopt localoptions pipefail no_aliases 2> /dev/null
-  eval "$cmd"
-  eval "$cmd1"
-}
-
-__fzfcmd() {
-  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --tmux 65%"
-}
-
-fzf-updb-widget() {
-LBUFFER="${LBUFFER}$(__fsel4)"
-  zle accept-line
-  local ret=$?
-  zle reset-prompt
-  return $ret
-}
-zle     -N            fzf-updb-widget
-bindkey -M emacs '\eu' fzf-updb-widget
-bindkey -M vicmd '\eu' fzf-updb-widget
-bindkey -M viins '\eu' fzf-updb-widget
-
 # ALT-SHIFT-O - Paste the selected file path(s) into the command line
 __fsel5() {
   local cmd="${FZF_ALT_D_COMMAND:-"command cat $HOME/Downloads/bulk-tmp-dir 2>/dev/null"}"
