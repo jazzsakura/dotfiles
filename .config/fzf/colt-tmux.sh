@@ -57,7 +57,7 @@ __fzfcmd() {
 }
 
 fzf-file-widget() {
-LBUFFER="l /${LBUFFER}$(__fsel)"
+LBUFFER="${LBUFFER} echo $(__fsel) | xargs -I{} eza -a --icons=auto --group-directories-first --no-permissions /{}"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -87,7 +87,9 @@ __fzfcmd() {
 }
 
 fzf-file1-widget() {
-LBUFFER="e /${LBUFFER}$(__fsel1)"
+#LBUFFER="e /${LBUFFER}$(__fsel1)"
+LBUFFER="${LBUFFER} echo \"$(__fsel1)\" | xargs -I{} nvim /{}"
+#LBUFFER="${LBUFFER} echo $(__fsel3) | xargs -I{} nvim {}"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -117,7 +119,7 @@ __fzfcmd() {
 }
 
 fzf-file2-widget() {
-LBUFFER="bat ${LBUFFER}$(__fsel2)"
+LBUFFER="${LBUFFER} echo $(__fsel2) | xargs -I{} bat {}"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -147,7 +149,8 @@ __fzfcmd() {
 }
 
 fzf-file3-widget() {
-LBUFFER="e ${LBUFFER}$(__fsel3)"
+#LBUFFER="e ${LBUFFER}$(__fsel3)"
+LBUFFER="${LBUFFER} echo $(__fsel3) | xargs -I{} nvim {}"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -177,7 +180,7 @@ __fzfcmd() {
 }
 
 fzf-cd-widget() {
-LBUFFER="cd ${LBUFFER}/$(__fsel_cd) && l"
+LBUFFER="${LBUFFER} cd $(echo /$(__fsel_cd)) && l"
   zle accept-line
   local ret=$?
   zle reset-prompt
