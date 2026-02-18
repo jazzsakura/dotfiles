@@ -67,6 +67,8 @@ spawn-sh-at-startup "foot --server"
 spawn-at-startup "mpd"
 spawn-at-startup "mpDris2"
 spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store # clipboard store text data"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store # clipboard store image data"
 
 animations {
     // Uncomment to turn off all animations.
