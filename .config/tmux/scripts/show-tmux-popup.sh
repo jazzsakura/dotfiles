@@ -8,6 +8,7 @@ if ! tmux has -t "$session" 2> /dev/null; then
   tmux set-option -s -t "$session_id" key-table popup
   tmux set-option -s -t "$session_id" status off
   tmux set-option -s -t "$session_id" prefix None
+  tmux set-option -s -t "$session_id" escape-time 0
   session="$session_id"
 fi
 
