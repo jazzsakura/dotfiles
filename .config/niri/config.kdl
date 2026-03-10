@@ -105,6 +105,7 @@ animations {
     }
 
     window-open {
+        off
         //duration-ms 150
         //curve "ease-out-expo"
         spring damping-ratio=1.0 stiffness=200 epsilon=0.0001
