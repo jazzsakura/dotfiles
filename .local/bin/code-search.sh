@@ -10,7 +10,7 @@ rfv() (
           fi'
   fzf </dev/null \
     --height 100% \
-    --disabled --ansi --multi \
+    --disabled --ansi \
     --bind "start:$RELOAD" --bind "change:$RELOAD" \
     --bind "enter:become:$OPENER" \
     --bind "ctrl-o:execute:$OPENER" \
