@@ -60,7 +60,7 @@ input {
     workspace-auto-back-and-forth
 }
 
-//spawn-sh-at-startup "kitty --class HeadlessKitty --single-instance --listen-on unix:/tmp/kitty-socket tail -f /dev/null"
+spawn-sh-at-startup "kitty --class HeadlessKitty --single-instance --listen-on unix:/tmp/kitty-socket tail -f /dev/null"
 //spawn-sh-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
 spawn-sh-at-startup "swww img ~/.config/niri/wall.jpg --transition-type any --transition-step 5 --transition-fps 165 --transition-duration 2"
 spawn-sh-at-startup "foot --server"
@@ -108,7 +108,7 @@ animations {
         off
         //duration-ms 150
         //curve "ease-out-expo"
-        spring damping-ratio=1.0 stiffness=200 epsilon=0.0001
+        spring damping-ratio=0.7 stiffness=200 epsilon=0.0001
         //curve "cubic-bezier" 1 1 1 1
         //curve "cubic-bezier" 0.05 0.7 0.1 1
     }
@@ -417,9 +417,9 @@ binds {
     Mod+Ctrl+Print hotkey-overlay-title="<b>Screenshot With Annotation: </b> Screen" { spawn "fish" "-c" "grim -g \"$(slurp -o -r -c '#bb9af7')\" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png"; }
 
     // Primary Applications
-    //Mod+V  {spawn "kitty" "--single-instance"; }
-    Mod+Return  {spawn "ghostty" "+new-window"; }
-    //Mod+Return  {spawn "footclient"; }
+    Mod+Return  {spawn "kitty" "--single-instance"; }
+    //Mod+Return  {spawn "ghostty" "+new-window"; }
+    Mod+V  {spawn "footclient"; }
     Mod+B { spawn "zen-browser"; }
     Mod+Alt+B { spawn "brave"; }
     Mod+Semicolon { spawn "fuzzel"; }
