@@ -1147,7 +1147,7 @@ ${RED}󰈆${RESET}  Exit" | launcher "Select Media Action" | sed 's/.  //g')"
         ;;
       "Download (Audio Only)")
         video_url=$(echo "$video" | jq '.url' -r)
-        yt-dlp "$video_url" --embed-metadata --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --output "$DOWNLOAD_DIRECTORY/audio/individual/%(channel)s/%(title)s.%(ext)s" $PREFERRED_BROWSER
+        yt-dlp "$video_url" --embed-metadata --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --write-thumbnail --convert-thumbnails png --output "$DOWNLOAD_DIRECTORY/audio/individual/%(channel)s/%(title)s.%(ext)s" $PREFERRED_BROWSER
         send_notification "Completed downloading $title"
         ;;
       Back|"")

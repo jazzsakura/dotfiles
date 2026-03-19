@@ -69,6 +69,7 @@ spawn-at-startup "mpDris2"
 spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store # clipboard store text data"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store # clipboard store image data"
+//spawn-sh-at-startup "quickshell -p ~/.config/hypr/scripts/quickshell/Main.qml"
 
 animations {
     // Uncomment to turn off all animations.
@@ -311,6 +312,17 @@ window-rule {
 window-rule {
     geometry-corner-radius 20
     clip-to-geometry true
+}
+
+// Quickshell integration
+window-rule {
+    match title="^qs-master$"
+    match app-id="org.quickshell"
+    min-width 1300
+    min-height 716
+
+    open-floating true
+    default-floating-position x=300 y=150
 }
 
 window-rule {
@@ -577,7 +589,6 @@ binds {
     // Move the focused window between the floating and the tiling layout.
     Mod+F       { toggle-window-floating; }
     Mod+A { switch-focus-between-floating-and-tiling; }
-    //Mod+Shift+F { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
@@ -600,6 +611,12 @@ binds {
 
     // Force reorder (useful if something gets misaligned manually)
     Mod+Alt+R { spawn-sh "~/.local/bin/niri-sidebar reorder"; }
+
+    // Quickshell launcher
+    //Mod+W { spawn-sh "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"; }
+
+    // Toggle floating window
+    Mod+W { spawn-sh "~/.local/bin/niri-floating"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
