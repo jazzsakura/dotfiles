@@ -24,17 +24,9 @@ print_success() {
 current_dir="$(echo $PWD | sed 's/^.//')"
 #command grep -ia "^$(printf $current_dir)" $HOME/Downloads/bulk-tmp-dir 2>/dev/null > testfile
 #current="$(command grep -ia "^$(printf $current_dir)" $HOME/Downloads/bulk-tmp-dir 2>/dev/null)"
-command grep -ia "^$(printf $current_dir)" $HOME/Downloads/bulk-tmp-dir 2>/dev/null > file1
+command grep -ia "^$(echo $current_dir)" $HOME/Downloads/bulk-tmp-dir 2>/dev/null > file1
 #new="$(command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed "s@^@${PWD}/@" | sed 's/^\///' | sed 's#/[^/]*$##' | LC_ALL=c sort -u)"
 command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed "s@^@${PWD}/@" | sed 's/^\///' | sed 's#/[^/]*$##' | LC_ALL=c sort -u > file2
-
-if [ -e "file1" ] && [ ! -s "file1" ]; then
-  print_success "News entries found"
-  cat file2 >> $HOME/Downloads/bulk-tmp-dir
-  LC_ALL=c sort -o $HOME/Downloads/bulk-tmp-dir $HOME/Downloads/bulk-tmp-dir
-  rm -vf file* &>/dev/null
-  exit 0
-fi
 
 awk '
 NR==FNR {
@@ -46,13 +38,22 @@ NR==FNR {
     print                    # and output it
 }' file1 file2 &>/dev/null
 
+if [ -e "file1" ] && [ ! -s "file1" ]; then
+  print_success "News entries found"
+  cat file2 >> $HOME/Downloads/bulk-tmp-dir
+  LC_ALL=c sort -o $HOME/Downloads/bulk-tmp-dir $HOME/Downloads/bulk-tmp-dir
+  rm -vf file* &>/dev/null
+  exit 0
+fi
+
 if cmp -s "file1" "file2"
 then
   print_info "No new entries found..."
 else
   print_updated "Up to date"
   awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' file1 $HOME/Downloads/bulk-tmp-dir
-  cat file2 >> $HOME/Downloads/bulk-tmp-dir
+  awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' file1 file2 > file3  
+  cat file3 >> $HOME/Downloads/bulk-tmp-dir
   LC_ALL=c sort -o $HOME/Downloads/bulk-tmp-dir $HOME/Downloads/bulk-tmp-dir
 fi
 rm -vf file* &>/dev/null
