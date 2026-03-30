@@ -69,7 +69,7 @@ spawn-at-startup "mpDris2"
 spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store # clipboard store text data"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store # clipboard store image data"
-//spawn-sh-at-startup "quickshell -p ~/.config/hypr/scripts/quickshell/Main.qml"
+spawn-sh-at-startup "quickshell -p ~/.config/hypr/scripts/quickshell/Main.qml"
 
 animations {
     // Uncomment to turn off all animations.
@@ -600,7 +600,9 @@ binds {
     Mod+Alt+R { spawn-sh "~/.local/bin/niri-sidebar reorder"; }
 
     // Quickshell launcher
-    //Mod+W { spawn-sh "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"; }
+    Mod+Shift+W { spawn-sh "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"; }
+    Alt+F4 { spawn-sh "~/.local/bin/qs-close"; }
+    Mod+Shift+O { spawn-sh "bash ~/.config/hypr/scripts/lock.sh"; }
 
     // Toggle floating window
     Mod+W { spawn-sh "~/.local/bin/niri-floating"; }
