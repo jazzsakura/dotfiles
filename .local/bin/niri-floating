@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+WIN_FLOAT=$(niri msg focused-window | grep "floating" | grep -iv "title" | cut -d":" -f2 | sed 's/^ //')
+OVERVIEW=$(niri msg --json overview-state | jq -r .is_open)
+
+if [ "$OVERVIEW" == "true" ]; then
+  niri msg action set-window-width 1379
+  niri msg action set-window-height 872
+  niri msg action toggle-window-floating
+elif [[ ! -z "$WIN_FLOAT" ]] && [ "$WIN_FLOAT" == "no" ] && [ "$OVERVIEW" == "false" ]; then
+  niri msg action set-window-width 1379
+  niri msg action set-window-height 872
+  niri msg action move-window-to-floating
+  niri msg action move-floating-window -x 341 -y 101
+else
+  niri msg action toggle-window-floating
+fi

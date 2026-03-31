@@ -62,7 +62,7 @@ input {
 
 spawn-sh-at-startup "kitty --class HeadlessKitty --single-instance --listen-on unix:/tmp/kitty-socket tail -f /dev/null"
 //spawn-sh-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
-spawn-sh-at-startup "awww img ~/.config/niri/wall.jpg --transition-type any --transition-step 5 --transition-fps 165 --transition-duration 2"
+//spawn-sh-at-startup "awww img ~/.config/niri/wall.jpg --transition-type any --transition-step 5 --transition-fps 165 --transition-duration 2"
 spawn-sh-at-startup "foot --server"
 spawn-at-startup "mpd"
 spawn-at-startup "mpDris2"
@@ -70,6 +70,7 @@ spawn-at-startup "~/.local/bin/niri-sidebar" "listen"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store # clipboard store text data"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store # clipboard store image data"
 spawn-sh-at-startup "quickshell -p ~/.config/hypr/scripts/quickshell/Main.qml"
+spawn-sh-at-startup "mpvpaper -o 'loop --no-audio --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample' '*' ~/.config/niri/wall.mp4"
 
 animations {
     // Uncomment to turn off all animations.
@@ -97,7 +98,7 @@ animations {
     }
 
     window-resize {
-        spring damping-ratio=0.7 stiffness=200 epsilon=0.0001
+        spring damping-ratio=0.45 stiffness=750 epsilon=0.0003
     }
 
     window-movement {

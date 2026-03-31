@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+#WIN_FLOAT=$(niri msg focused-window | grep "floating" | grep -iv "title" | cut -d":" -f2 | sed 's/^ //')
+WIN_ACTIVE=$(niri msg --json focused-window | jq -r .title)
+
+if [ "$WIN_ACTIVE" == "qs-master" ]; then
+  bash $HOME/.config/hypr/scripts/qs_manager.sh close
+else
+  niri msg action close-window
+fi
