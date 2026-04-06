@@ -50,9 +50,10 @@ then
   print_info "No new entries found..."
 else
   print_updated "Up to date"
-  #awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' file1 $HOME/Downloads/bulk-tmp-dir
-  awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' file1 file2 > file3  
-  cat file3 >> $HOME/Downloads/bulk-tmp-dir
+  awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' file1 $HOME/Downloads/bulk-tmp-dir
+  awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' file2 $HOME/Downloads/bulk-tmp-dir > file3  
+  cat file2 >> file3
+  cat file3 > $HOME/Downloads/bulk-tmp-dir
   LC_ALL=c sort -o $HOME/Downloads/bulk-tmp-dir $HOME/Downloads/bulk-tmp-dir
 fi
 rm -vf file* &>/dev/null
