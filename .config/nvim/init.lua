@@ -19,6 +19,15 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 
+-- Transparency for sign, fold, and vertical limit columns
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "FoldColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "none" })
+
+-- Transparency for line numbers
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
+
 -- Basic settings
 vim.opt.number = true                              -- Line numbers
 vim.opt.relativenumber = false                      -- Relative line numbers
