@@ -20,6 +20,11 @@ zsource() {
   source "$file"
 }
 
+zcompile-many() {
+  local f
+  for f; do zcompile -R -- "$f".zwc "$f"; done
+}
+
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && zsource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && zsource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
@@ -42,37 +47,11 @@ zsource $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
 #autoload -U compinit && compinit
 autoload -Uz compinit
 ZSH_COMPDUMP="${ZDOTDIR}/.zcompdump"
+ZSH_COMPDUMP_ZWC="${ZDOTDIR}/.zcompdump.zwc"
+[[ $ZSH_COMPDUMP_ZWC -nt $ZSH_COMPDUMP ]] || zcompile-many "${ZSH_COMPDUMP}"
+unfunction zcompile-many
 compinit -C -d "$ZSH_COMPDUMP"
 zsource $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
-
-# Detect the AUR wrapper
-if pacman -Qi yay &>/dev/null ; then
-   aurhelper="yay"
-elif pacman -Qi paru &>/dev/null ; then
-   aurhelper="paru"
-fi
-
-function in {
-    local -a inPkg=("$@")
-    local -a arch=()
-    local -a aur=()
-
-    for pkg in "${inPkg[@]}"; do
-        if pacman -Si "${pkg}" &>/dev/null ; then
-            arch+=("${pkg}")
-        else 
-            aur+=("${pkg}")
-        fi
-    done
-
-    if [[ ${#arch[@]} -gt 0 ]]; then
-        sudo pacman -S "${arch[@]}"
-    fi
-
-    if [[ ${#aur[@]} -gt 0 ]]; then
-        ${aurhelper} -S "${aur[@]}"
-    fi
-}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
