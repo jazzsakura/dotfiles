@@ -37,11 +37,10 @@ zcompile-many() {
 COMPLETION_WAITING_DOTS="true"
 
 # Plugins
-zsource $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+#zsource $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 zsource $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 zsource $ZDOTDIR/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 zsource $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
-#source $ZDOTDIR/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Load completions
 #autoload -U compinit && compinit
@@ -54,7 +53,7 @@ compinit -C -d "$ZSH_COMPDUMP"
 zsource $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Keybindings
 #bindkey -e
@@ -124,5 +123,8 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 
 # Initialize starship prompt
 eval "$(starship init zsh)"
+
+# Initialize syntax highlighter
+eval "$(~/.local/bin/zsh-patina activate)"
 
 #zprof > /tmp/foobar
