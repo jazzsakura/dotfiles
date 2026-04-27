@@ -1,0 +1,73 @@
+layout {
+    //background-color "#24283b"
+    background-color "transparent"
+    gaps 10
+    center-focused-column "never"
+    //always-center-single-column
+    empty-workspace-above-first
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        fixed 1920
+    }
+    // default-column-display "tabbed"
+    tab-indicator {
+        hide-when-single-tab
+        width 2
+        gap 5
+        position "right"
+        active-color "#b4f9f8"
+        inactive-color "#bb9af7"
+    }
+
+    // preset-window-heights { }
+
+    default-column-width { proportion 0.5; }
+    //default-column-width { proportion 0.787777; }
+
+    // `draw-border-with-background`.
+
+    focus-ring {
+        off
+        width 1
+        // active-color "#7fc8ff"
+        inactive-color "rgb(86, 95, 137)"
+        active-gradient from="rgb(0,238,255)" to="rgb(250,139,255)" angle=45
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    border {
+        // The settings are the same as for the focus ring.
+        // If you enable the border, you probably want to disable the focus ring.
+        off
+        width 1
+        inactive-color "rgb(86, 95, 137)"
+        active-gradient from="rgb(0,238,255)" to="rgb(250,139,255)" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // active-color "#ffc87f"
+        urgent-color "#9b0000"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    insert-hint {
+        // off
+        color "#a9b1d6"
+        gradient from="rgb(0,238,255)" to="rgb(250,139,255)" angle=45 relative-to="workspace-view"
+    }
+
+    shadow {
+        // on
+        // draw-behind-window true
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
