@@ -183,10 +183,6 @@ binds {
     // rather than stacked on top of each other.
     Mod+T { toggle-column-tabbed-display; }
 
-    // Actions to switch layouts.
-    //Mod+N { switch-layout "next"; }
-    //Mod+P { switch-layout "prev"; }
-
     // Niri sidebar
     // Toggle the focused window into/out of the sidebar
     Mod+S { spawn-sh "~/.local/bin/niri-sidebar toggle-window"; }
@@ -203,8 +199,8 @@ binds {
     // Quickshell launcher
     Mod+Shift+W { spawn-sh "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"; }
     Alt+F4 { spawn-sh "~/.local/bin/qs-close"; }
-    Mod+Shift+O { spawn-sh "bash ~/.config/hypr/scripts/lock.sh"; }
-    Mod+O hotkey-overlay-title="Skwd-wall" { spawn-sh "quickshell ipc -p ~/Downloads/skwd-wall/daemon.qml call wallpaper toggle"; }
+    Mod+O { spawn-sh "bash ~/.config/hypr/scripts/lock.sh"; }
+    Mod+Shift+O hotkey-overlay-title="Skwd-wall" { spawn-sh "quickshell ipc -p ~/Downloads/skwd-wall/daemon.qml call wallpaper toggle"; }
 
     // Toggle floating window
     Mod+W { spawn-sh "~/.local/bin/niri-floating"; }
