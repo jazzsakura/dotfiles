@@ -129,7 +129,6 @@ layer-rule {
 
 layer-rule {
   match namespace="^waybar$"
-  match namespace="^notifications$"
   match namespace="^logout_dialog$"
   match at-startup=true
   background-effect {
