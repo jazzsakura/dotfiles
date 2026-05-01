@@ -72,7 +72,7 @@ export BAT_PAGER=""
 #export FZF_DEFAULT_COMMAND='ag --hidden --ignore .gitignore --ignore-dir .git -l -g ""'
 
 # Set the ripgrep as default FZF
-export FZF_DEFAULT_COMMAND="rg -u --hidden --no-config --files --glob '!.git*' --glob '!.npm*' --iglob '!history' 2>/dev/null"
+export FZF_DEFAULT_COMMAND="rg --color 'never' -u --hidden --no-config --files --glob '!.git*' --glob '!.npm*' --iglob '!history' 2>/dev/null"
 
 # Set FZF default theme
 export FZF_DEFAULT_OPTS="--color='bg:-1,bg+:-1' --gutter ' ' --cycle --no-info --no-separator --no-scrollbar --reverse --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=none --prompt ' 󰊠 '"

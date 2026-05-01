@@ -104,7 +104,7 @@ bindkey -M viins '\ed' fzf-file1-widget
 
 # ALT-A - Concatenate files and print on the standard output
 __fsel2() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command ag --hidden --ignore '\\.gitignore' --ignore-dir '\\.*git*' -g '\\./' 2>/dev/null"}"
+  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
   eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#BAC2DE --preview 'bat --color=always --style=plain --line-range=:500 {}' $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
@@ -134,7 +134,7 @@ bindkey -M viins '\ea' fzf-file2-widget
 
 # ALT-S - Concatenate files and print on the standard output
 __fsel3() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command ag --hidden --ignore '\\.gitignore' --ignore-dir '\\.*git*' -g '\\./' 2>/dev/null"}"
+  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
   eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#A6E3A1 --preview 'bat --color=always --style=plain --line-range=:500 {}' $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
