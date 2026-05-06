@@ -12,8 +12,8 @@ vim.pack.add({
 	})
 
 require("vague").setup({ transparent = true })
---vim.cmd("colorscheme gruvbox-material")
-vim.cmd("colorscheme base2tone_field_dark")
+vim.cmd("colorscheme gruvbox-material")
+--vim.cmd("colorscheme base2tone_field_dark")
 vim.cmd(":hi statusline guibg=NONE")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
