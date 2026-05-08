@@ -49,14 +49,8 @@ layout {
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
-    insert-hint {
-        // off
-        color "#a9b1d6"
-        gradient from="rgb(0,238,255)" to="rgb(250,139,255)" angle=45 relative-to="workspace-view"
-    }
-
     shadow {
-        // on
+        off
         // draw-behind-window true
         softness 30
         spread 5
@@ -65,9 +59,9 @@ layout {
     }
 
     struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
+        left 10
+        right 10
+        top 0
+        bottom 0
     }
 }
