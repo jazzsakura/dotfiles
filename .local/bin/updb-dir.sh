@@ -24,8 +24,8 @@ print_success() {
 current_dir="$(echo $PWD | sed 's/^.//')"
 #command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null > testfile
 #current="$(command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null)"
-command grep -ia "^$(echo $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null > file1
-command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed "s@^@${PWD}/@" | sed 's/^\///' | sed 's#/[^/]*$##' | LC_ALL=c sort -u > file2
+command grep -ia "^$(echo $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null > /tmp/file1
+command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed "s@^@${PWD}/@" | sed 's/^\///' | sed 's#/[^/]*$##' | LC_ALL=c sort -u > /tmp/file2
 
 awk '
 NR==FNR {
@@ -35,25 +35,26 @@ NR==FNR {
 !($0 in seen) {              # if word is not hashed to seen
     seen[$0]                 # hash unseen a.txt words to seen to avoid duplicates 
     print                    # and output it
-}' file1 file2 &>/dev/null
+}' /tmp/file1 /tmp/file2 > /tmp/file3
 
-if [ -e "file1" ] && [ ! -s "file1" ]; then
-  print_success "News entries found"
-  cat file2 >> $HOME/Downloads/dirs-db
+if [ -e "/tmp/file1" ] && [ ! -s "/tmp/file1" ]; then
+  print_success "NEW entries found!..."
+  #awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' /tmp/file1 $HOME/Downloads/dirs-db
+  cat /tmp/file2 >> $HOME/Downloads/dirs-db
   LC_ALL=c sort -o $HOME/Downloads/dirs-db $HOME/Downloads/dirs-db
-  rm -vf file* &>/dev/null
+  rm -vf /tmp/file* &>/dev/null
   exit 0
 fi
 
-if cmp -s "file1" "file2"
+if cmp -s "/tmp/file1" "/tmp/file2"
 then
   print_info "No new entries found..."
 else
   print_updated "Up to date"
-  awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' file1 $HOME/Downloads/dirs-db
-  awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' file2 $HOME/Downloads/dirs-db > file3  
-  cat file2 >> file3
-  cat file3 > $HOME/Downloads/dirs-db
+  awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' /tmp/file1 $HOME/Downloads/dirs-db
+  awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' $HOME/Downloads/dirs-db /tmp/file3 > /tmp/file4  
+  cat /tmp/file2 >> /tmp/file4
+  cat /tmp/file4 >> $HOME/Downloads/dirs-db
   LC_ALL=c sort -o $HOME/Downloads/dirs-db $HOME/Downloads/dirs-db
 fi
-rm -vf file* &>/dev/null
+rm -vf /tmp/file* &>/dev/null

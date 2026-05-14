@@ -60,7 +60,7 @@ zsource $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^o' "code-search.sh\n"
-bindkey -s '\eu' "updatedb-dir.sh\n"
+bindkey -s '\eu' "updb-dir.sh\n"
 #bindkey -s '^o' "pacman -Qq | fzf-tmux -h60% -w70% --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'\n"
 
 # Custom Commands and Keybindings
