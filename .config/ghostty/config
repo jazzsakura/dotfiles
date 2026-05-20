@@ -5,10 +5,10 @@ theme = Gruvbox Material Dark
 custom-shader-animation = always
 
 custom-shader = shaders/cursor_smear_fade.glsl
-#custom-shader = shaders/glitchy.glsl
+custom-shader = shaders/glitchy.glsl
 #custom-shader = shaders/static.gsls
-#custom-shader = shaders/retro-terminal.glsl
-#custom-shader = shaders/in-game-crt.glsl
+custom-shader = shaders/retro-terminal.glsl
+custom-shader = shaders/in-game-crt.glsl
 
 auto-update = off
 auto-update-channel = stable
