@@ -7,6 +7,7 @@ window-rule {
   match app-id="^kitty$"
   match app-id="^footclient$"
   match app-id="^Alacritty$"
+  match app-id="^foot$"
   background-effect {
     blur true
   }
@@ -79,17 +80,18 @@ window-rule {
     // default-column-width { proportion 0.6; }
 }
 
-// Quickshell integration
+// Minimal launcher
 window-rule {
-    match title="^qs-master$"
-    match app-id="org.quickshell"
-    match is-floating=true
-    min-width 1300
-    min-height 716
-
-    //open-floating true
-    default-floating-position x=300 y=150
-}
+    match app-id="launcher"
+    open-floating true
+    open-focused true
+    default-floating-position x=20 y=20 relative-to="bottom-right"
+    default-column-width { fixed 500; }
+    default-window-height { proportion 0.30; }
+    background-effect {
+        blur true
+      }
+    }
 
 window-rule {
     match is-floating=true
