@@ -121,7 +121,7 @@ __fzfcmd() {
 }
 
 fzf-file2-widget() {
-LBUFFER="${LBUFFER} echo $(__fsel2) | xargs -I{} bat {}"
+LBUFFER="${LBUFFER} echo $(__fsel2) | xargs -I{} cat {}"
   zle accept-line
   local ret=$?
   zle reset-prompt

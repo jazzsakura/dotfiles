@@ -41,7 +41,7 @@ if [ -e "/tmp/file1" ] && [ ! -s "/tmp/file1" ]; then
   print_success "NEW entries found!..."
   #awk -i inplace 'NR==FNR{a[$1]; next} !($NF in a)' /tmp/file1 $HOME/Downloads/dirs-db
   cat /tmp/file2 >> $HOME/Downloads/dirs-db
-  LC_ALL=c sort -o $HOME/Downloads/dirs-db $HOME/Downloads/dirs-db
+  LC_ALL=c sort -u -o $HOME/Downloads/dirs-db $HOME/Downloads/dirs-db
   rm -vf /tmp/file* &>/dev/null
   exit 0
 fi
@@ -55,6 +55,6 @@ else
   awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' $HOME/Downloads/dirs-db /tmp/file3 > /tmp/file4  
   cat /tmp/file2 >> /tmp/file4
   cat /tmp/file4 >> $HOME/Downloads/dirs-db
-  LC_ALL=c sort -o $HOME/Downloads/dirs-db $HOME/Downloads/dirs-db
+  LC_ALL=c sort -u -o $HOME/Downloads/dirs-db $HOME/Downloads/dirs-db
 fi
 rm -vf /tmp/file* &>/dev/null
