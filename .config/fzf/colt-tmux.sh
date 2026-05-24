@@ -70,38 +70,6 @@ bindkey -M emacs '\el' fzf-file-widget
 bindkey -M vicmd '\el' fzf-file-widget
 bindkey -M viins '\el' fzf-file-widget
 
-# ALT-D - Paste the selected file path(s) into the command line
-__fsel1() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command cat $HOME/Downloads/bulk-tmp 2>/dev/null"}"
-  setopt localoptions pipefail no_aliases 2> /dev/null
-  local item
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#A6E3A1 $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
-    echo -n "${(q)item}"
-  done
-  local ret=$?
-  echo
-  return $ret
-}
-
-__fzfcmd() {
-  [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
-    echo "fzf-tmux ${FZF_TMUX_OPTS:--d${FZF_TMUX_HEIGHT:-40%}} -- " || echo "fzf --tmux 65%"
-}
-
-fzf-file1-widget() {
-#LBUFFER="e /${LBUFFER}$(__fsel1)"
-LBUFFER="${LBUFFER} echo \"$(__fsel1)\" | xargs -I{} nvim /{}"
-#LBUFFER="${LBUFFER} echo $(__fsel3) | xargs -I{} nvim {}"
-  zle accept-line
-  local ret=$?
-  zle reset-prompt
-  return $ret
-}
-zle     -N            fzf-file1-widget
-bindkey -M emacs '\ed' fzf-file1-widget
-bindkey -M vicmd '\ed' fzf-file1-widget
-bindkey -M viins '\ed' fzf-file1-widget
-
 # ALT-A - Concatenate files and print on the standard output
 __fsel2() {
   local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
