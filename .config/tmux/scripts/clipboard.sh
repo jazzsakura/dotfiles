@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cliphist list | fzf --tmux 85% \
+cliphist list | fzf --popup 85% \
   --prompt=" Search clipboard: " \
   --reverse \
   --preview 'echo {} | cliphist decode 2>/dev/null' \
