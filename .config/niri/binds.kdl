@@ -193,7 +193,7 @@ binds {
     Alt+F4 { spawn-sh "~/.local/bin/qs-close"; }
     Mod+D { spawn-sh "bash ~/.local/bin/launcher_toggle.sh"; }
     Mod+O { spawn-sh "bash ~/.config/hypr/scripts/lock.sh"; }
-    Mod+Shift+O hotkey-overlay-title="Skwd-wall" { spawn-sh "quickshell ipc -p ~/Downloads/skwd-wall/daemon.qml call wallpaper toggle"; }
+    //Mod+Shift+O hotkey-overlay-title="Skwd-wall" { spawn-sh "quickshell ipc -p ~/Downloads/skwd-wall/daemon.qml call wallpaper toggle"; }
 
     // Toggle floating window
     Mod+W { spawn-sh "~/.local/bin/niri-floating"; }
