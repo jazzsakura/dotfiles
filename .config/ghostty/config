@@ -1,6 +1,7 @@
-theme = Gruvbox Material Dark
+#theme = Gruvbox Material Dark
 
 #config-file = ./themes/Base2Tone Field Dark
+config-file = ./themes/Gruvbox Material Dark
 
 custom-shader-animation = always
 
@@ -33,7 +34,6 @@ font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
 font-feature = zero
-cursor-text = cell-foreground
 
 # alernate w
 font-feature = cv07
@@ -61,7 +61,6 @@ shell-integration = zsh
 shell-integration-features = no-cursor, no-sudo, no-title
 cursor-style = block
 cursor-style-blink = true
-macos-titlebar-style = tabs
 title = " "
 keybind = alt+left=esc:b
 keybind = alt+right=esc:f
@@ -77,11 +76,5 @@ mouse-hide-while-typing = true
 unfocused-split-opacity = 1
 
 async-backend = auto
-
-macos-icon = chalkboard
-# macos-icon = custom-style
-# macos-icon-frame = plastic
-# macos-icon-ghost-color = white
-# macos-icon-screen-color = dark sea green,dark slate grey
 
 quit-after-last-window-closed = false
