@@ -97,6 +97,22 @@ window-rule {
       }
     }
 
+// Minimal wallpaper picker
+window-rule {
+    match title="^(niri-wall)$"
+    match app-id="niri-wall"
+    open-floating true
+    open-focused true
+    default-floating-position x=20 y=20 relative-to="right"
+    default-column-width { fixed 500; }
+    default-window-height { proportion 0.30; }
+    geometry-corner-radius 50 
+    clip-to-geometry true
+    background-effect {
+        blur true
+      }
+    }
+
 window-rule {
     match is-floating=true
     min-width 100

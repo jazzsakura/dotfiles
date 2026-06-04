@@ -1,0 +1,3 @@
+#pkill -f niri-wall-selector.sh || kitty --single-instance --app-id=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
+pkill -f niri-wall-selector.sh || ghostty +new-window --title=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
+#pkill -f niri-wall-selector.sh || footclient --override="colors-dark.alpha=0.65" --app-id=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh

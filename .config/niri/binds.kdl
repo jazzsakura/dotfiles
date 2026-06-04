@@ -1,8 +1,4 @@
 binds {
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
-    Mod+Shift+Slash { show-hotkey-overlay; }
-
     Mod+Shift+Ctrl+Q hotkey-overlay-title="<b>Niri: </b> Quit Niri" { quit skip-confirmation=true; }
     Mod+Space hotkey-overlay-title="<b>Niri: </b> Toggle Overview" repeat=false { toggle-overview; }
     Mod+Shift+Ctrl+M hotkey-overlay-title="<b>Niri: </b> Power Off Monitors" { power-off-monitors; }
@@ -192,6 +188,7 @@ binds {
     Mod+Shift+W { spawn-sh "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"; }
     Alt+F4 { spawn-sh "~/.local/bin/qs-close"; }
     Mod+D { spawn-sh "bash ~/.local/bin/launcher_toggle.sh"; }
+    Mod+C { spawn-sh "bash ~/.local/bin/niri-wall-toggle"; }
     Mod+O { spawn-sh "bash ~/.config/hypr/scripts/lock.sh"; }
     //Mod+Shift+O hotkey-overlay-title="Skwd-wall" { spawn-sh "quickshell ipc -p ~/Downloads/skwd-wall/daemon.qml call wallpaper toggle"; }
 
