@@ -187,8 +187,8 @@ binds {
     // Quickshell launcher
     Mod+Shift+W { spawn-sh "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"; }
     Alt+F4 { spawn-sh "~/.local/bin/qs-close"; }
-    Mod+D { spawn-sh "bash ~/.local/bin/launcher_toggle.sh"; }
-    Mod+C { spawn-sh "bash ~/.local/bin/niri-wall-toggle"; }
+    Mod+Backspace { spawn-sh "bash ~/.local/bin/launcher_toggle.sh"; }
+    Mod+D { spawn-sh "bash ~/.local/bin/niri-wall-toggle"; }
     Mod+O { spawn-sh "bash ~/.config/hypr/scripts/lock.sh"; }
     //Mod+Shift+O hotkey-overlay-title="Skwd-wall" { spawn-sh "quickshell ipc -p ~/Downloads/skwd-wall/daemon.qml call wallpaper toggle"; }
 
