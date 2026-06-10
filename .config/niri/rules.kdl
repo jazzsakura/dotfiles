@@ -81,13 +81,25 @@ window-rule {
     // default-column-width { proportion 0.6; }
 }
 
+// Open mpv player top right corner
+window-rule {
+    match app-id="^(mpv)$"
+    open-floating true
+    open-focused false
+    default-floating-position x=0 y=0 relative-to="top-right"
+    default-column-width { fixed 500; }
+    default-window-height { proportion 0.30; }
+    geometry-corner-radius 50 
+    clip-to-geometry true
+    }
+
 // Minimal launcher
 window-rule {
     match title="^(launcher)$"
     match app-id="launcher"
     open-floating true
-    open-focused true
-    default-floating-position x=20 y=20 relative-to="bottom-right"
+    open-focused false
+    default-floating-position x=0 y=0 relative-to="bottom-right"
     default-column-width { fixed 500; }
     default-window-height { proportion 0.30; }
     geometry-corner-radius 50 
@@ -102,8 +114,8 @@ window-rule {
     match title="^(niri-wall)$"
     match app-id="niri-wall"
     open-floating true
-    open-focused true
-    default-floating-position x=20 y=20 relative-to="right"
+    open-focused false
+    default-floating-position x=0 y=0 relative-to="right"
     default-column-width { fixed 500; }
     default-window-height { proportion 0.30; }
     geometry-corner-radius 50 

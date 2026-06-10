@@ -25,7 +25,7 @@ alias \
 # Colorize commands when possible.
 alias \
   ls="ls -hN --color=auto --group-directories-first" \
-  grep="grep --color=auto" \
+  grep="LC_ALL=C grep --color=auto" \
   diff="diff --color=auto" \
   ccat="highlight --out-format=ansi"
 #ls="lsd" \
@@ -43,9 +43,6 @@ alias \
   e="$EDITOR" \
   v="$EDITOR" \
   p="sudo pacman" \
-  xi="sudo xbps-install" \
-  xr="sudo xbps-remove -R" \
-  xq="xbps-query" \
   z="zathura"
 
 alias \
