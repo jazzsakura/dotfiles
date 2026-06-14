@@ -1076,7 +1076,8 @@ ${RED}󰈆${RESET}  Exit" | launcher "Select Media Action" | sed 's/.  //g')"
           *)
             case "$PLAYER" in
             mpv)
-              mpv "$video_url" --profile=fast --hwdec=auto
+              nohup mpv "$video_url" --volume=50 --gpu-api=vulkan --loop --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample >/dev/null 2>&1 & disown
+              #mpv "$video_url" --profile=fast --hwdec=auto
               ;;
             vlc) vlc "$video_url" --video-title "$title" ;;
             esac
