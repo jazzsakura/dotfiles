@@ -84,6 +84,7 @@ window-rule {
 // Open mpv player top right corner
 window-rule {
     match app-id="^(mpv)$"
+    match title="^(mpv)$"
     open-floating true
     open-focused false
     default-floating-position x=0 y=0 relative-to="top-right"
@@ -98,7 +99,7 @@ window-rule {
     match title="^(launcher)$"
     match app-id="launcher"
     open-floating true
-    open-focused false
+    open-focused true
     default-floating-position x=0 y=0 relative-to="bottom-right"
     default-column-width { fixed 500; }
     default-window-height { proportion 0.30; }
@@ -114,7 +115,7 @@ window-rule {
     match title="^(niri-wall)$"
     match app-id="niri-wall"
     open-floating true
-    open-focused false
+    open-focused true
     default-floating-position x=0 y=0 relative-to="right"
     default-column-width { fixed 500; }
     default-window-height { proportion 0.30; }
