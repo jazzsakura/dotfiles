@@ -82,7 +82,11 @@ xargs basename | sed 's/\.[^.]*$//')
 
 DIR=$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' $movSet | sed -nE '/.*\.(jpg|jpeg|png|gif|bmp|mp4)$/Ip' | grep -i $IMG)
 
-#ln -fs "${IMG}" "${wallSet}"
-#systemd-run --user --no-block bash -c "nohup mpv ${DIR} --gpu-api=vulkan --loop --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample >/dev/null 2>&1" >/dev/null 2>&1
-pgrep -f mpvpaper && pkill -f mpvpaper
-systemd-run --user --no-block bash -c "mpvpaper -o 'loop --no-audio --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample' '*' $DIR"
+if [ -z "$DIR" ]; then
+  break
+else
+  #ln -fs "${IMG}" "${wallSet}"
+  #systemd-run --user --no-block bash -c "nohup mpv ${DIR} --gpu-api=vulkan --loop --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample >/dev/null 2>&1" >/dev/null 2>&1
+  pgrep -f mpvpaper && pkill -f mpvpaper
+  systemd-run --user --no-block bash -c "mpvpaper -o 'loop --no-audio --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample' '*' $DIR"
+fi
