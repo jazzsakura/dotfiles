@@ -21,6 +21,34 @@ print_success() {
     echo -e "${GREEN}✓${NC} $1"
 }
 
+update_inodes() {
+  stat -c %Z $THUMBDIR > "$THUMBDIR/last_inode"
+  stat -c %Z $VIDEODIR > "$VIDEODIR/last_inode"
+}
+
+check_bgm_db() {
+  ag -f -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' $VIDEODIR 2>/dev/null | xargs -P0 -I{} basename {} | grep -E '.mp4$' > $LIST2
+  awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' $LIST2 $LIST1 > $TEMPFILE1
+  if [[ ! -s "$TEMPFILE1" && $INODE1 -eq "$(cat $THUMBDIR/last_inode)" ]]; then
+      awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' $LIST1 $LIST2 | sed "s@^@$VIDEODIR/@" > $TEMPFILE2
+      cat $TEMPFILE2 | xargs -P0 -I{} ffmpeg -hwaccel vdpau -y -ss 00:00:05 -i {} -vframes 1 -q:v 2 {}.jpg
+      cat $TEMPFILE2 | xargs -P0 -I{} mv {}.jpg $THUMBDIR
+      update_inodes
+      cat $LIST2 > $LIST1
+  else 
+    if [[ $INODE1 -eq "$(cat $THUMBDIR/last_inode)" ]]; then 
+      rm "$THUMBDIR/$(cat $TEMPFILE1).jpg"
+      update_inodes
+      cat $LIST2 > $LIST1
+    fi
+  fi
+}
+
+clean_files() {
+  rm $TEMPFILE1
+  rm $TEMPFILE2
+}
+
 TEMPFILE1=$(mktemp)
 TEMPFILE2=$(mktemp)
 THUMBDIR="$HOME/Pictures/mp4-thumbs"
@@ -35,39 +63,23 @@ if [[ ! -f "$LIST1" ]]; then
   stat -c %Z $THUMBDIR > "$THUMBDIR/last_inode"
   if [[ ! -f "$LIST2" && ! -s "$LIST1" ]]; then
   ag -f -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' $VIDEODIR 2>/dev/null | grep -E '.mp4$' > $LIST2
-  stat -c %Z $VIDEODIR > "$VIDEODIR/last_inode"
   cat $LIST2 | xargs -P0 -I{} basename {} > $LIST1
-  cat $LIST2 | xargs -P0 -I{} ffmpegthumbnailer -i "{}" -o "{}.jpg" -s0
+  cat $LIST2 | xargs -P0 -I{} ffmpeg -hwaccel vdpau -y -ss 00:00:05 -i {} -vframes 1 -q:v 2 {}.jpg
   cat $LIST2 | xargs -P0 -I{} mv {}.jpg $THUMBDIR
+  update_inodes
 else
-  if [[ -f "$LIST2" && $INODE2 -eq "$(cat $VIDEODIR/last_inode)" ]]; then
-    cat $LIST2 | xargs -P0 -I{} basename {} > $LIST1
-  else
-    ag -f -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' $VIDEODIR 2>/dev/null | grep -E '.mp4$' > $LIST2
-    stat -c %Z $VIDEODIR > "$VIDEODIR/last_inode"
-    cat $LIST2 | xargs -P0 -I{} basename {} > $LIST1
-   fi
-  fi
-elif [[ ! $INODE2 -eq "$(cat $VIDEODIR/last_inode)" ]]; then
-  ag -f -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' $VIDEODIR 2>/dev/null | xargs -P0 -I{} basename {} | grep -E '.mp4$' > $LIST2
-  awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' $LIST2 $LIST1 > $TEMPFILE1
-  if [[ ! -s "$TEMPFILE1" && $INODE1 -eq "$(cat $THUMBDIR/last_inode)" ]]; then
-    awk 'NR==FNR {seen[$0];next} !($0 in seen) { seen[$0];print }' $LIST1 $LIST2 > $TEMPFILE2
-    FULLPATH="$VIDEODIR/$(cat $TEMPFILE2)"
-    echo $FULLPATH | xargs -P0 -I{} ffmpegthumbnailer -i "{}" -o "{}.jpg" -s0
-    echo $FULLPATH | xargs -P0 -I{} mv {}.jpg $THUMBDIR
-    stat -c %Z $VIDEODIR > "$VIDEODIR/last_inode"
-    stat -c %Z $THUMBDIR > "$THUMBDIR/last_inode"
-    cat $LIST2 > $LIST1
-  else 
-    if [[ $INODE1 -eq "$(cat $THUMBDIR/last_inode)" ]]; then 
-      rm "$THUMBDIR/$(cat $TEMPFILE1).jpg"
-      stat -c %Z $THUMBDIR > "$THUMBDIR/last_inode"
-      stat -c %Z $VIDEODIR > "$VIDEODIR/last_inode"
-      cat $LIST2 > $LIST1
-    fi
+  if [[ ! $INODE2 -eq "$(cat $VIDEODIR/last_inode)" ]]; then
+    check_bgm_db
   fi
 fi
+elif [[ ! $INODE2 -eq "$(cat $VIDEODIR/last_inode)" ]]; then
+  check_bgm_db
+elif [[ ! $INODE1 -eq "$(cat $THUMBDIR/last_inode)" ]]; then
+  ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' $THUMBDIR 2>/dev/null | xargs -P0 -I{} basename {} | grep -E '.jpg$' | sed 's/\.[^.]*$//' > $LIST1
+  update_inodes
+fi
+
+clean_files
 
 wallDir="${HOME}/Pictures/mp4-thumbs"
 #export wallSet="${HOME}/.config/niri/wall.jpg"
@@ -83,10 +95,10 @@ xargs basename | sed 's/\.[^.]*$//')
 DIR=$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' $movSet | sed -nE '/.*\.(jpg|jpeg|png|gif|bmp|mp4)$/Ip' | grep -i $IMG)
 
 if [ -z "$DIR" ]; then
-  break
+  exit 0
 else
   #ln -fs "${IMG}" "${wallSet}"
-  #systemd-run --user --no-block bash -c "nohup mpv ${DIR} --gpu-api=vulkan --loop --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample >/dev/null 2>&1" >/dev/null 2>&1
   pgrep -f mpvpaper && pkill -f mpvpaper
-  systemd-run --user --no-block bash -c "mpvpaper -o 'loop --no-audio --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample' '*' $DIR"
+  systemd-run --user --no-block bash -c "nohup mpv ${DIR} --gpu-api=vulkan --loop --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample >/dev/null 2>&1" >/dev/null 2>&1
+  #systemd-run --user --no-block bash -c "mpvpaper -o 'loop --no-audio --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample' '*' $DIR"
 fi
