@@ -24,7 +24,7 @@ layout {
     // preset-window-heights { }
 
     default-column-width { proportion 0.5; }
-    //default-column-width { proportion 0.787777; }
+    //default-column-width { proportion 0.73; }
 
     // `draw-border-with-background`.
 
