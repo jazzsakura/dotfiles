@@ -56,10 +56,27 @@ window-rule {
 
 window-rule {
   match title="^(Volume Control)$"
+  match app-id="^(Pinentry-gtk)$"
   open-floating true
   open-focused false
   default-column-width { proportion 0.43; }
   default-window-height { proportion 0.43; }
+  shadow {
+        on
+        softness 60
+        spread 5
+        offset x=0 y=10
+        draw-behind-window true
+        color "#000000"
+    }
+}
+
+window-rule {
+  match app-id="^(Pinentry-gtk)$"
+  open-floating true
+  open-focused true
+  default-column-width { proportion 0.27; }
+  default-window-height { proportion 0.23; }
   shadow {
         on
         softness 60
