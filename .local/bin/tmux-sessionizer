@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -u
+#set -u
 
 output(){
     printf "\e[1;34m%-6s\e[m\n" "${@}"
@@ -24,8 +23,14 @@ clear
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  dirs=$(cat $HOME/Downloads/dirs-db | sed 's/^/\//' | grep -ia "^${HOME}")
-  selected=$(printf "%s\n%s\n%s\n%s\n%s" "$dirs" "$HOME/build" "$HOME/.dotfiles" "/tmp" | fzf --tmux 70% --header 'Select a working directory: ')
+  dirs=$(cat $HOME/Downloads/dirs-db | sed 's/^/\//' | grep -ia "^${HOME}" | sed "s@^$HOME@@" | sed 's/^\///' | sed '/^$/d')
+  selected="$(printf "%s\n%s\n%s\n%s\n%s" "$dirs" "/tmp" | fzf --popup 70% --header 'Select a working directory: ')"
+  if [ "$selected" == "/tmp" ]; then
+    fullpath="$selected"
+    break
+  else
+    fullpath="$HOME/$selected"
+  fi
 fi
 
 if [[ -z $selected ]]; then
@@ -38,32 +43,33 @@ if [ -z "${sessionname}" ]; then
 else
   selected_name=$sessionname
 fi
-tmux_running=$(pgrep tmux)
-#TMUX=$tmux_running
+
+#tmux_running="$(pgrep -o tmux)" valido
+tmux_running="$TMUX"
 
 # OK - tmux is not running
-if [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c "$selected"
+if [ -z $TMUX ]; then
+  tmux new-session -s $selected_name -c "$fullpath"
   exit 0
 fi
 
 # OK - tmux is running but client is not attached, session with selected_name does not exist
 if [[ -z $TMUX ]] && ! tmux has-session -t=$selected_name 2>/dev/null; then
-  tmux new-session -s $selected_name -c "$selected"
+  tmux new-session -s $selected_name -c "$fullpath"
   tmux a -t $selected_name
   exit 0
 fi
 
 # OK - tmux is running but client is not attached, session with selected_name exists
-if [[ -z $TMUX ]] && tmux has-session -t=$selected_name 2>/dev/null; then
+if [ -z $TMUX ] && tmux has-session -t=$selected_name 2>/dev/null; then
   tmux a -t $selected_name
   exit 0
 fi
 
 # OK - tmux is running and client is attached, session with selected_name does not exist
 if [[ ! -z $TMUX ]] && ! tmux has-session -t=$selected_name 2>/dev/null; then
-  tmux new-session -ds $selected_name -c "$selected"
-  tmux switch-client -t $selected_name
+  tmux new-session -ds "$selected_name" -c "$fullpath"
+  tmux switch-client -t "$selected_name"
   exit 0
 fi
 
