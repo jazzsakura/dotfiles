@@ -56,7 +56,6 @@ window-rule {
 
 window-rule {
   match title="^(Volume Control)$"
-  match app-id="^(Pinentry-gtk)$"
   open-floating true
   open-focused false
   default-column-width { proportion 0.43; }
@@ -135,8 +134,8 @@ window-rule {
     //default-floating-position x=200 y=200
     default-floating-position x=0 y=0 relative-to="right"
     default-column-width { fixed 500; }
-    //default-window-height { proportion 0.30; }
-    default-window-height { fixed 405; }
+    default-window-height { proportion 0.30; }
+    //default-window-height { fixed 405; }
     geometry-corner-radius 50 
     clip-to-geometry true
     background-effect {
