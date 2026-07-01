@@ -107,6 +107,14 @@ window-rule {
     default-window-height { proportion 0.30; }
     geometry-corner-radius 50 
     clip-to-geometry true
+    shadow {
+        on
+        softness 60
+        spread 5
+        offset x=0 y=10
+        draw-behind-window true
+        color "#000000"
+      }
     }
 
 // Minimal launcher
