@@ -1,4 +1,4 @@
-#zmodload zsh/zprof
+zmodload zsh/zprof
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -49,7 +49,12 @@ ZSH_COMPDUMP="${ZDOTDIR}/.zcompdump"
 ZSH_COMPDUMP_ZWC="${ZDOTDIR}/.zcompdump.zwc"
 [[ $ZSH_COMPDUMP_ZWC -nt $ZSH_COMPDUMP ]] || zcompile-many "${ZSH_COMPDUMP}"
 unfunction zcompile-many
-compinit -C -d "$ZSH_COMPDUMP"
+if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+  compinit -C
+else
+  compinit
+fi
+#compinit -C -d "$ZSH_COMPDUMP"
 zsource $ZDOTDIR/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -127,4 +132,4 @@ eval "$(starship init zsh)"
 # Initialize syntax highlighter
 eval "$(~/.local/bin/zsh-patina activate)"
 
-#zprof > /tmp/foobar
+zprof > /tmp/foobar
