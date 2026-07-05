@@ -49,24 +49,6 @@ vec3 getStreamerLayer(vec2 uv, float time, float density, float speed, float see
     return UI_TINT * (head + trail) * mask * 0.015;
 }
 
-// Low-Poly Andross Face
-vec3 getAndrossFace(vec2 uv, float time, float jitter) {
-    vec2 p = (uv - 0.5) * 2.0;
-    p.x *= iResolution.x / iResolution.y;
-    p += (vec2(hash(vec2(time, 1.0)), hash(vec2(2.0, time))) - 0.5) * 0.08 * jitter;
-    float polyScale = 14.0;
-    vec2 p_poly = floor(p * polyScale) / polyScale;
-    float face = step(max(abs(p_poly.x) * 0.7, abs(p_poly.y)), 0.65);
-    float eyes = step(max(abs((abs(p_poly) - vec2(0.22, 0.18)).x * 0.8), abs((abs(p_poly) - vec2(0.22, 0.18)).y * 1.5)), 0.12);
-    float mouth = step(max(abs((p_poly + vec2(0.0, 0.32)).x * 0.6), abs((p_poly + vec2(0.0, 0.32)).y * 1.8)), 0.18);
-    float nose = step(max(abs(p_poly.x * 2.0), abs(p_poly.y + 0.05)), 0.08);
-    float features = max(eyes, max(mouth, nose * 0.8));
-    float faceShape = face * (1.0 - features);
-    float finalFace = (features * 1.2) + (faceShape * 0.12);
-    finalFace *= (hash(p_poly) * 0.3 + 0.7) * step(0.15, fract(p.y * 20.0 - time * 8.0));
-    return UI_TINT * finalFace * 0.8 * jitter;
-}
-
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = fragCoord / iResolution.xy;
     float time = iTime;
@@ -78,13 +60,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float isGlitch = step(gTrig, time) * step(time, gTrig + 0.3);
     float glitchJitter = isGlitch * step(0.3, hash(vec2(time * 35.0, 3.1)));
     
-    // B: Rare Face Breach (Every ~40s, 1-in-3 chance)
-    float fWin = floor(time / 40.0);
-    float fTrig = fWin * 40.0 + 10.0 + hash(vec2(fWin, 2.2)) * 20.0;
-    float fChance = step(0.66, hash(vec2(fWin, 3.3))); // ~33% chance per window
-    float isFace = step(fTrig, time) * step(time, fTrig + 0.6) * fChance;
-    float faceJitter = isFace * step(0.2, hash(vec2(time * 40.0, 4.2)));
-
     // --- 1. CRT Curvature & Borders ---
     vec2 curvedUV = curve(uv);
     if (curvedUV.x < 0.0 || curvedUV.x > 1.0 || curvedUV.y < 0.0 || curvedUV.y > 1.0) {
@@ -102,9 +77,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float hud = step(0.93, q.x) * step(0.998, q.y) + step(0.998, q.x) * step(0.93, q.y);
     bg += UI_TINT * hud * (0.4 + glitchJitter * 0.8);
     
-    // RARE Face Occurrence
-    bg += getAndrossFace(curvedUV, time, faceJitter);
-
     // --- 3. Terminal Text (CRT Sharpness & Ghosting) ---
     float dist = distance(curvedUV, vec2(0.5));
     float aberration = pow(dist, 4.0) * 0.0025 + (glitchJitter * 0.01); 
