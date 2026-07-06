@@ -3,7 +3,7 @@
 # 1. Fetch all panes across all sessions with clean formatting
 # Format: [session] [window] [pane_index] [current_command] [path]
 target=$(tmux list-panes -a -F '#{session_name}:#{window_index}.#{pane_index} | #{window_name} -> Pane #{pane_index} [#{pane_current_command}] (#{pane_current_path})' | \
-    fzf --popup 80%,60% \
+    fzf --popup 80%,70% \
         --border-label=" Switch Tmux Pane " \
         --header="Enter: Switch to selected pane" \
         --preview="tmux capture-pane -e -pt {1}")
