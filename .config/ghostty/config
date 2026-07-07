@@ -6,8 +6,10 @@ config-file = ./themes/Gruvbox Material Dark
 custom-shader-animation = always
 
 #custom-shader = shaders/cursor_smear_fade.glsl
-custom-shader = shaders/in-game-crt-cursor.glsl
+#custom-shader = shaders/perfection.glsl
+#custom-shader = shaders/cursor_slasher.glsl
 #custom-shader = shaders/smear_cursor_blocks.glsl
+custom-shader = shaders/in-game-crt-cursor.glsl
 #custom-shader = shaders/glitchy.glsl
 custom-shader = shaders/static.gsls
 #custom-shader = shaders/retro-terminal.glsl
@@ -45,13 +47,6 @@ font-feature = cv16
 
 adjust-cell-height = 8%
 
-keybind = super+ctrl+h=goto_split:left
-keybind = super+ctrl+l=goto_split:right
-keybind = super+ctrl+k=goto_split:top
-keybind = super+ctrl+j=goto_split:bottom
-keybind = super+-=increase_font_size:1
-keybind = super+.=decrease_font_size:1
-
 window-inherit-font-size = true
 window-inherit-working-directory = true
 window-save-state = always
@@ -59,16 +54,14 @@ window-theme = system
 #window-padding-color = extend-always
 
 shell-integration = zsh
-shell-integration-features = no-cursor, no-sudo, no-title
+shell-integration-features = no-cursor, no-sudo, no-title, no-path
 cursor-style = block
-cursor-style-blink = true
+cursor-style-blink = false
 title = " "
 keybind = alt+left=esc:b
 keybind = alt+right=esc:f
 background-opacity = 0.65
 # background-blur = true
-
-quick-terminal-position = bottom
 
 window-padding-balance = false
 
