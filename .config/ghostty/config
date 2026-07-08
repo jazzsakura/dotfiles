@@ -24,8 +24,9 @@ resize-overlay = never
 #command = /run/current-system/sw/bin/fish --login --interactive
 # command = /usr/local/bin/bash --noprofile --rcfile ~/.bashrc -i
 
-font-family = Annotation Mono
+#font-family = Annotation Mono
 #font-family = Maple Mono NF
+font-family = "Google Sans Code NF"
 font-style = DemiBold
 font-style-bold = Bold
 font-style-italic = Medium Italic

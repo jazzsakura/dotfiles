@@ -43,7 +43,7 @@ __fsel() {
   local current_dir="$(echo $PWD | sed 's/^.//')"
   #local cmd="${FZF_ALT_L_COMMAND:-"command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed \"s@^@${PWD}/@\" | sed 's/^\///' | sed 's#/[^/]*\$##' | LC_ALL=c sort -u"}"
   #local cmd="${FZF_ALT_L_COMMAND:-"command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null"}"
-  local cmd="${FZF_ALT_L_COMMAND:-"command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null | sed "s@^$(echo $PWD | sed 's/^\///')@@" | sed 's/^\///' | sed '/^$/d'"}"
+  local cmd="${FZF_ALT_L_COMMAND:-"command grep -ia \"^$(printf $current_dir)\" $HOME/Downloads/dirs-db 2>/dev/null | sed \"s@^$(echo $PWD | sed 's/^\///')@@\" | sed 's/^\///' | sed '/^$/d'"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
   eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS $FZF_ALT_L_OPTS" $(__fzfcmd) +m "$@" | while read item; do
