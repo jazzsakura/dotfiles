@@ -17,23 +17,13 @@ custom-shader = shaders/bettercrt.glsl
 custom-shader = shaders/blackwall.glsl
 
 auto-update = off
-auto-update-channel = stable
 resize-overlay = never
-
-#gtk-single-instance = false
-#command = /run/current-system/sw/bin/fish --login --interactive
-# command = /usr/local/bin/bash --noprofile --rcfile ~/.bashrc -i
 
 #font-family = Annotation Mono
 #font-family = Maple Mono NF
 font-family = "Google Sans Code NF"
 font-style = DemiBold
-font-style-bold = Bold
-font-style-italic = Medium Italic
-font-style-bold-italic = Bold Italic
 font-size = 14
-font-thicken = true
-font-thicken-strength = 255
 font-feature = +calt
 font-feature = +liga
 font-feature = +dlig
@@ -50,26 +40,22 @@ adjust-cell-height = 8%
 
 window-inherit-font-size = true
 window-inherit-working-directory = true
-window-save-state = always
-window-theme = system
+window-theme = ghostty
 #window-padding-color = extend-always
 
 shell-integration = zsh
 shell-integration-features = no-cursor, no-sudo, no-title, no-path
 cursor-style = block
-cursor-style-blink = false
+cursor-style-blink = true
+cursor-opacity = 1
 title = " "
-keybind = alt+left=esc:b
-keybind = alt+right=esc:f
 background-opacity = 0.65
 # background-blur = true
-
+freetype-load-flags = no-hinting,no-force-autohint,no-monochrome,autohint,light
 window-padding-balance = false
-
 mouse-hide-while-typing = true
-
 unfocused-split-opacity = 1
-
+bell-features = no-system,no-audio,attention,no-title,no-border
+app-notifications = false
 async-backend = auto
-
 quit-after-last-window-closed = false
