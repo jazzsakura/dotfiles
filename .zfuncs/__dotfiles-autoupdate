@@ -1,0 +1,3 @@
+/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME add -u && \
+/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME commit -m "Update $(date +"%Y-%m-%d %H:%M") \ 
+$(uname -s)/$(uname -m)-$HOST" && /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME push -u origin main
