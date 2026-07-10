@@ -114,9 +114,11 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 
 # Functions declaration
 fpath=(~/.zfuncs/ $fpath)
+autoload -Uz __global-dir-traversal
 autoload -Uz __current-dir-traversal
 autoload -Uz __browsing-packages
 autoload -Uz __dotfiles-autoupdate
+bindkey -s '\eo' "__global-dir-traversal\n"
 bindkey -s '\ep' "__current-dir-traversal\n"
 bindkey -s '^x' "__browsing-packages\n"
 

@@ -1,0 +1,1 @@
+cd "/$(cat /home/zerohack/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions /{}")"
