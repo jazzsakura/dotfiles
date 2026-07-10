@@ -1,1 +1,1 @@
-cd "$(grep -ia "^$(echo $PWD | sed "s/^\///")" /home/zerohack/Downloads/dirs-db | sed "s@^$(echo $PWD | sed "s/^\///")@@" | sed "s/^\///" | sed "/^$/d" | ftb-tmux-popup --layout=reverse --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}")"
+cd "$(grep -ia "^$(echo $PWD | sed "s/^\///")" /home/zerohack/Downloads/dirs-db | sed "s@^$(echo $PWD | sed "s/^\///")@@" | sed "s/^\///" | sed "/^$/d" | ftb-tmux-popup --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}")"

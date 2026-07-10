@@ -68,13 +68,6 @@ bindkey -s '^o' "code-search.sh\n"
 bindkey -s '\eu' "updb-dir.sh\n"
 
 # Custom Commands and Keybindings
-browsing_packages() {
-  BUFFER="pacman -Qq | fzf --tmux 65% --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-  zle accept-line
-}
-zle -N browsing_packages
-bindkey '^X' browsing_packages
-
 run_tmux_sessionizer() { 
 	BUFFER="tmux-sessionizer" 
 	zle accept-line
@@ -122,7 +115,10 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 # Functions declaration
 fpath=(~/.zfuncs/ $fpath)
 autoload -Uz __current-dir-traversal
+autoload -Uz __browsing-packages
+autoload -Uz __dotfiles-autoupdate
 bindkey -s '\ep' "__current-dir-traversal\n"
+bindkey -s '^x' "__browsing-packages\n"
 
 # Shell integretions
 #eval "$(fzf --zsh)"
