@@ -118,8 +118,12 @@ autoload -Uz __global-dir-traversal
 autoload -Uz __current-dir-traversal
 autoload -Uz __browsing-packages
 autoload -Uz __dotfiles-autoupdate
+autoload -Uz __concat-to-stdout
+autoload -Uz __open-file-nvim
 bindkey -s '\eo' "__global-dir-traversal\n"
 bindkey -s '\ep' "__current-dir-traversal\n"
+bindkey -s '\ea' "__concat-to-stdout\n"
+bindkey -s '\es' "__open-file-nvim\n"
 bindkey -s '^x' "__browsing-packages\n"
 
 # Shell integretions

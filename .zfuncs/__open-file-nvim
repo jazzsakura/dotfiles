@@ -1,0 +1,8 @@
+FILE="$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' 2>/dev/null | ftb-tmux-popup --preview "bat --color=always --style=plain --line-range=:500 {}")"
+BOB=$(where nvim)
+
+if [ -z "$FILE" ]; then
+  echo ":)"
+  else
+    $BOB $FILE
+    fi
