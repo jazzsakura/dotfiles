@@ -1,6 +1,6 @@
-my_buffer=$(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' | ftb-tmux-popup -n2..,.. --tiebreak=index --prompt=" " --color="prompt:#50fa7b" | cut -d' ' -f4-)
+BUFFER=$(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' | ftb-tmux-popup -n2..,.. --tiebreak=index --prompt=" " --color="prompt:#50fa7b" | sed 's/^ //' | awk '{$1=""; print $0}' | awk '{$1=$1}1')
 
-if [ ! -z "$my_buffer" ]; then
-    eval "$my_buffer"
-    print -S "$my_buffer"
+if [ ! -z "$BUFFER" ]; then
+    eval "$BUFFER"
+    print -S "$BUFFER"
     fi

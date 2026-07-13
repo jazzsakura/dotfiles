@@ -5,4 +5,5 @@ if [ -z "$FILE" ]; then
   echo ":)"
   else
     $BOB $FILE
+    print -S "$BOB $FILE"
     fi

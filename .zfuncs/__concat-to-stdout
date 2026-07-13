@@ -1,1 +1,6 @@
-cat "$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' 2>/dev/null | ftb-tmux-popup --prompt=" " --preview "bat --color=always --style=plain --line-range=:500 {}")" 2>/dev/null
+FILE="$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' 2>/dev/null | ftb-tmux-popup --prompt=" " --preview "bat --color=always --style=plain --line-range=:500 {}")"
+
+if [ ! -z "$FILE" ]; then
+  cat "$FILE" 2>/dev/null
+  print -S "cat $FILE"
+  fi
