@@ -1,3 +1,7 @@
 current_dir="$(echo $PWD | sed 's/^.//')"
 local cmd="$(command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null | sed "s@^$(echo $PWD | sed 's/^\///')@@" | sed 's/^\///' | sed '/^$/d' | ftb-tmux-popup --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}")"
-echo $cmd | xargs -I{} eza -a --icons=auto --group-directories-first --no-permissions {}
+
+if [ ! -z "$cmd" ]; then
+  echo "$cmd" 2>/dev/null | xargs -I{} eza -a --icons=auto --group-directories-first --no-permissions {}
+  print -S " l \'$cmd\'"
+  fi

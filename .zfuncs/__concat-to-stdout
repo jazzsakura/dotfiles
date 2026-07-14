@@ -2,5 +2,5 @@ FILE="$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --g
 
 if [ ! -z "$FILE" ]; then
   cat "$FILE" 2>/dev/null
-  print -S "cat $FILE"
+  print -S " cat \'$FILE\'"
   fi

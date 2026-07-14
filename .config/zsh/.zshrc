@@ -30,12 +30,6 @@ zcompile-many() {
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && zsource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && zsource "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
-
 # Plugins
 #zsource $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 zsource $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
@@ -106,8 +100,6 @@ zstyle ':fzf-tab:*' popup-min-size 50 10
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # fzf completion and keybindings
-#source ~/.config/fzf/key-bindings-rg.zsh 2>/dev/null
-#source ~/.config/fzf/key-bindings-ag.zsh 2>/dev/null
 zsource ~/.config/fzf/colt-tmux.sh 2>/dev/null
 
 unset ZSH_AUTOSUGGEST_USE_ASYNC
@@ -122,13 +114,13 @@ autoload -Uz __concat-to-stdout
 autoload -Uz __open-file-nvim
 autoload -Uz __list-files
 autoload -Uz __fetch-history
-bindkey -s '\eo' "__global-dir-traversal\n"
-bindkey -s '\ep' "__current-dir-traversal\n"
+bindkey -s '\eo' " __global-dir-traversal\n"
+bindkey -s '\ep' " __current-dir-traversal\n"
 bindkey -s '\ea' " __concat-to-stdout\n"
 bindkey -s '\es' " __open-file-nvim\n"
-bindkey -s '\el' "__list-files\n"
-bindkey -s '\e ' " __fetch-history\n"
-bindkey -s '^x' "__browsing-packages\n"
+bindkey -s '\el' " __list-files\n"
+#bindkey -s '\e ' " __fetch-history\n"
+bindkey -s '^x' " __browsing-packages\n"
 
 # Shell integretions
 #eval "$(fzf --zsh)"

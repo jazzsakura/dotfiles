@@ -46,7 +46,7 @@ __fsel() {
   local cmd="${FZF_ALT_L_COMMAND:-"command grep -ia \"^$(printf $current_dir)\" $HOME/Downloads/dirs-db 2>/dev/null | sed \"s@^$(echo $PWD | sed 's/^\///')@@\" | sed 's/^\///' | sed '/^$/d'"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS $FZF_ALT_L_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+  eval "$cmd" | ftb-tmux-popup --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}" +m "$@" | while read item; do
     echo -n "${(q)item}"
   done
   local ret=$?
@@ -73,10 +73,10 @@ bindkey -M viins '\el' fzf-file-widget
 
 # ALT-A - Concatenate files and print on the standard output
 __fsel2() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
+  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -L -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#BAC2DE --preview 'bat --color=always --style=plain --line-range=:500 {}' $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+  eval "$cmd" | ftb-tmux-popup --prompt=" " --color="prompt:#BAC2DE" --preview "bat --color=always --style=plain --line-range=:500 {}" +m "$@" | while read item; do
     echo -n "${(q)item}"
   done
   local ret=$?
@@ -257,8 +257,7 @@ bindkey -M viins '^[D' fzf-file6-widget
 fzf-history-widget() {
   local selected num
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  selected=( $(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' |
-    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#50fa7b -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  selected=( $(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' | ftb-tmux-popup -n2..,.. --tiebreak=index --prompt=" " --color="prompt:#50fa7b" --query=${LBUFFER} +m) )
   local ret=$?
   if [ -n "$selected" ]; then
     num=$selected[1]
