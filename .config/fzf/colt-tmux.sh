@@ -197,10 +197,10 @@ bindkey -M viins '\ep' fzf-cdh-widget
 
 # ALT-SHIFT-O - Paste the selected file path(s) into the command line
 __fsel5() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command cat $HOME/Downloads/dirs-db 2>/dev/null"}"
+  local cmd="${FZF_ALT_D_COMMAND:-"command cat '$HOME/Downloads/dirs-db' 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#96CDFB $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+  eval "$cmd" | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@" | while read item; do
     echo -n "${(q)item}"
   done
   local ret=$?

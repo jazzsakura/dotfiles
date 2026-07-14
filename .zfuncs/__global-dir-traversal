@@ -1,4 +1,4 @@
-local cmd="/$(cat /home/zerohack/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions /{}")"
+local cmd="/$(cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions /{}")"
 
 if [ ! -z "$cmd" ]; then
   cd "$cmd"

@@ -1,4 +1,4 @@
-local cmd="$(grep -ia "^$(echo $PWD | sed "s/^\///")" /home/zerohack/Downloads/dirs-db | sed "s@^$(echo $PWD | sed "s/^\///")@@" | sed "s/^\///" | sed "/^$/d" | ftb-tmux-popup --prompt=" " --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}")"
+local cmd="$(grep -ia "^$(echo $PWD | sed "s/^\///")" $HOME/Downloads/dirs-db | sed "s@^$(echo $PWD | sed "s/^\///")@@" | sed "s/^\///" | sed "/^$/d" | ftb-tmux-popup --prompt=" " --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}")"
 
 if [ ! -z "$cmd" ]; then
   cd "$cmd"
