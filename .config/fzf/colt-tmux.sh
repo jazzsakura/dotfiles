@@ -73,14 +73,11 @@ bindkey -M viins '\el' fzf-file-widget
 
 # ALT-A - Concatenate files and print on the standard output
 __fsel2() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -L -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
+  #local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -L -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
+  local cmd="$(command rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' 2>/dev/null | ftb-tmux-popup --prompt=" " --color='prompt:#BAC2DE' --preview 'bat --color=always --style=plain --line-range=:500 {}' +m "$@")"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local item
-  eval "$cmd" | ftb-tmux-popup --prompt=" " --color="prompt:#BAC2DE" --preview "bat --color=always --style=plain --line-range=:500 {}" +m "$@" | while read item; do
-    echo -n "${(q)item}"
-  done
   local ret=$?
-  echo
+  echo $cmd
   return $ret
 }
 
@@ -90,7 +87,8 @@ __fzfcmd() {
 }
 
 fzf-file2-widget() {
-LBUFFER="${LBUFFER} echo $(__fsel2) | xargs -I{} cat {}"
+#LBUFFER="${LBUFFER} echo $(__fsel2) | xargs -I{} cat {}"
+LBUFFER="${LBUFFER} cat $(__fsel2) 2>/dev/null"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -103,10 +101,10 @@ bindkey -M viins '\ea' fzf-file2-widget
 
 # ALT-S - Concatenate files and print on the standard output
 __fsel3() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
+  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -L -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local item
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#A6E3A1 --preview 'bat --color=always --style=plain --line-range=:500 {}' $FZF_ALT_D_OPTS" $(__fzfcmd) +m "$@" | while read item; do
+  eval "$cmd" | ftb-tmux-popup --prompt=" " --color="prompt:#A6E3A1" --preview "bat --color=always --style=plain --line-range=:500 {}" +m "$@" | while read item; do
     echo -n "${(q)item}"
   done
   local ret=$?
@@ -134,14 +132,10 @@ bindkey -M viins '\es' fzf-file3-widget
 
 # ALT-O - cd into the selected directory
 __fsel_cd() {
-  local cmd="${FZF_ALT_O_COMMAND:-"command cat $HOME/Downloads/dirs-db 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local item
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#96CDFB $FZF_ALT_O_OPTS" $(__fzfcmd) +m "$@" | while read item; do
-    echo -n "${(q)item}"
-  done
+  local cmd="$(cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --preview 'eza --color=always -1 --icons=auto --group-directories-first --no-permissions /{}' +m "$@" | sed 's/^/\//')"
   local ret=$?
-  echo
+  echo $cmd
   return $ret
 }
 
@@ -151,7 +145,7 @@ __fzfcmd() {
 }
 
 fzf-cd-widget() {
-LBUFFER="${LBUFFER} cd $(echo /$(__fsel_cd)) && l"
+LBUFFER="${LBUFFER} cd '$(__fsel_cd)'"
   zle accept-line
   local ret=$?
   zle reset-prompt
@@ -165,16 +159,11 @@ bindkey -M viins '\eo' fzf-cd-widget
 # ALT-P - cd into the selected directory
 # dirname "$(grep -ia "$(printf $PWD)" bulk-tmp | fzf)"
 __fsel_cdh() {
-  local current_dir="$(echo $PWD | sed 's/^.//')"
-  #local cmd="${FZF_ALT_O_COMMAND:-"command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null"}"
-  local cmd="${FZF_ALT_L_COMMAND:-"command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null | sed "s@^$(echo $PWD | sed 's/^\///')@@" | sed 's/^\///' | sed '/^$/d'"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local item
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --cycle --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up $FZF_DEFAULT_OPTS --pointer="" --color=pointer:#96CDFB $FZF_ALT_O_OPTS" $(__fzfcmd) +m "$@" | while read item; do
-    echo -n "${(q)item}"
-  done
+  local current_dir="$(echo $PWD | sed 's/^.//')"
+  local cmd="$(grep -ia "^$current_dir" $HOME/Downloads/dirs-db | sed "s@^$(echo $PWD | sed "s/^\///")@@" | sed "s/^\///" | sed "/^$/d" | ftb-tmux-popup --prompt=" " --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}" +m "$@")"
   local ret=$?
-  echo
+  echo $cmd
   return $ret
 }
 
@@ -184,7 +173,7 @@ __fzfcmd() {
 }
 
 fzf-cdh-widget() {
-LBUFFER="cd ${LBUFFER}$(__fsel_cdh) && l"
+LBUFFER=" cd ${LBUFFER}'$(__fsel_cdh)'"
   zle accept-line
   local ret=$?
   zle reset-prompt

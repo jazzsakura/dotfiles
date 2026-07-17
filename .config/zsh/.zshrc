@@ -114,9 +114,9 @@ autoload -Uz __concat-to-stdout
 autoload -Uz __open-file-nvim
 autoload -Uz __list-files
 autoload -Uz __fetch-history
-bindkey -s '\eo' " __global-dir-traversal\n"
-bindkey -s '\ep' " __current-dir-traversal\n"
-bindkey -s '\ea' " __concat-to-stdout\n"
+#bindkey -s '\eo' " __global-dir-traversal\n"
+#bindkey -s '\ep' " __current-dir-traversal\n"
+#bindkey -s '\ea' " __concat-to-stdout\n"
 bindkey -s '\es' " __open-file-nvim\n"
 bindkey -s '\el' " __list-files\n"
 #bindkey -s '\e ' " __fetch-history\n"
