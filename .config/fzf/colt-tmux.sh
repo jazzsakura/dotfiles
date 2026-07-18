@@ -40,17 +40,11 @@ fi
 
 # ALT-L - Paste the selected file path(s) into the command line
 __fsel() {
-  local current_dir="$(echo $PWD | sed 's/^.//')"
-  #local cmd="${FZF_ALT_L_COMMAND:-"command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed \"s@^@${PWD}/@\" | sed 's/^\///' | sed 's#/[^/]*\$##' | LC_ALL=c sort -u"}"
-  #local cmd="${FZF_ALT_L_COMMAND:-"command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null"}"
-  local cmd="${FZF_ALT_L_COMMAND:-"command grep -ia \"^$(printf $current_dir)\" $HOME/Downloads/dirs-db 2>/dev/null | sed \"s@^$(echo $PWD | sed 's/^\///')@@\" | sed 's/^\///' | sed '/^$/d'"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local item
-  eval "$cmd" | ftb-tmux-popup --preview "eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}" +m "$@" | while read item; do
-    echo -n "${(q)item}"
-  done
+  local current_dir="$(echo $PWD | sed 's/^.//')"
+  local cmd="$(command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null | sed "s@^$(echo $PWD | sed 's/^\///')@@" | sed 's/^\///' | sed '/^$/d' | ftb-tmux-popup --preview 'eza --color=always -1 --icons=auto --group-directories-first --no-permissions {}' +m "$@")"
   local ret=$?
-  echo
+  echo $cmd
   return $ret
 }
 
@@ -60,11 +54,16 @@ __fzfcmd() {
 }
 
 fzf-file-widget() {
-LBUFFER="${LBUFFER} echo $(__fsel) | xargs -I{} eza -a --icons=auto --group-directories-first --no-permissions {}"
+LBUFFER="$(__fsel)"
+if [ -z "$LBUFFER" ]; then
+  zle reset-prompt
+else
+  LBUFFER=" l '$LBUFFER'"
   zle accept-line
   local ret=$?
   zle reset-prompt
   return $ret
+fi
 }
 zle     -N            fzf-file-widget
 bindkey -M emacs '\el' fzf-file-widget
@@ -148,11 +147,16 @@ __fzfcmd() {
 }
 
 fzf-cd-widget() {
-LBUFFER="${LBUFFER} cd '$(__fsel_cd)'"
+LBUFFER="$(__fsel_cd)"
+if [ -z "$LBUFFER" ]; then
+  zle reset-prompt
+else
+  LBUFFER=" cd '$LBUFFER'"
   zle accept-line
   local ret=$?
   zle reset-prompt
   return $ret
+fi
 }
 zle     -N            fzf-cd-widget
 bindkey -M emacs '\eo' fzf-cd-widget
@@ -176,27 +180,29 @@ __fzfcmd() {
 }
 
 fzf-cdh-widget() {
-LBUFFER=" cd ${LBUFFER}'$(__fsel_cdh)'"
+LBUFFER="$(__fsel_cdh)"
+if [ -z "$LBUFFER" ]; then
+  zle reset-prompt
+else
+  LBUFFER=" cd '$LBUFFER'"
   zle accept-line
   local ret=$?
   zle reset-prompt
   return $ret
+fi
 }
 zle     -N            fzf-cdh-widget
 bindkey -M emacs '\ep' fzf-cdh-widget
 bindkey -M vicmd '\ep' fzf-cdh-widget
 bindkey -M viins '\ep' fzf-cdh-widget
 
-# ALT-SHIFT-O - Paste the selected file path(s) into the command line
+# CTRL-P Paste the selected file path(s) into the command line
 __fsel5() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command cat '$HOME/Downloads/dirs-db' 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local item
-  eval "$cmd" | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@" | while read item; do
-    echo -n "${(q)item}"
-  done
+  #local cmd="$(command cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@" | sed 's/^/\//')"
+  local cmd="$(command cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@" | sed 's/^/\//' | awk '{print "\"" $0 "\""}')"
   local ret=$?
-  echo
+  echo $cmd
   return $ret
 }
 
@@ -206,10 +212,14 @@ __fzfcmd() {
 }
 
 fzf-file5-widget() {
-LBUFFER="${LBUFFER}/$(__fsel5)"
+LBUFFER="${LBUFFER}$(__fsel5)"
+if [ -z "$LBUFFER" ]; then
+  zle reset-prompt
+else
   local ret=$?
   zle reset-prompt
   return $ret
+fi
 }
 zle     -N            fzf-file5-widget
 bindkey -M emacs '^p' fzf-file5-widget

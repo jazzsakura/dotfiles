@@ -71,11 +71,11 @@ zle -N run_tmux_sessionizer
 bindkey '\ee' run_tmux_sessionizer
 
 # This command takes all changed files and commits them with the date and some machine information. 
-dotfiles_autoupdate() {
-    config add -u && \
-    config commit -m "Update $(date +"%Y-%m-%d %H:%M") \
-        $(uname -s)/$(uname -m)-$HOST" && config push -u origin main
-}
+#dotfiles_autoupdate() {
+#    config add -u && \
+#    config commit -m "Update $(date +"%Y-%m-%d %H:%M") \
+#        $(uname -s)/$(uname -m)-$HOST" && config push -u origin main
+#}
 
 # History in cache directory:
 HISTSIZE=10000000
@@ -106,19 +106,19 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 
 # Functions declaration
 fpath=(~/.zfuncs/ $fpath)
-autoload -Uz __global-dir-traversal
-autoload -Uz __current-dir-traversal
+#autoload -Uz __global-dir-traversal
+#autoload -Uz __current-dir-traversal
 autoload -Uz __browsing-packages
 autoload -Uz __dotfiles-autoupdate
-autoload -Uz __concat-to-stdout
-autoload -Uz __open-file-nvim
-autoload -Uz __list-files
-autoload -Uz __fetch-history
+#autoload -Uz __concat-to-stdout
+#autoload -Uz __open-file-nvim
+#autoload -Uz __list-files
+#autoload -Uz __fetch-history
 #bindkey -s '\eo' " __global-dir-traversal\n"
 #bindkey -s '\ep' " __current-dir-traversal\n"
 #bindkey -s '\ea' " __concat-to-stdout\n"
 #bindkey -s '\es' " __open-file-nvim\n"
-bindkey -s '\el' " __list-files\n"
+#bindkey -s '\el' " __list-files\n"
 #bindkey -s '\e ' " __fetch-history\n"
 bindkey -s '^x' " __browsing-packages\n"
 
