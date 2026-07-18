@@ -73,7 +73,6 @@ bindkey -M viins '\el' fzf-file-widget
 
 # ALT-A - Concatenate files and print on the standard output
 __fsel2() {
-  #local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -L -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
   local cmd="$(command rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' 2>/dev/null | ftb-tmux-popup --prompt=" " --color='prompt:#BAC2DE' --preview 'bat --color=always --style=plain --line-range=:500 {}' +m "$@")"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local ret=$?
@@ -87,12 +86,16 @@ __fzfcmd() {
 }
 
 fzf-file2-widget() {
-#LBUFFER="${LBUFFER} echo $(__fsel2) | xargs -I{} cat {}"
-LBUFFER="${LBUFFER} cat $(__fsel2) 2>/dev/null"
+LBUFFER="$(__fsel2)"
+if [ -z "$LBUFFER" ]; then
+  zle reset-prompt
+else
+  LBUFFER="cat '${LBUFFER}'"
   zle accept-line
   local ret=$?
   zle reset-prompt
   return $ret
+fi
 }
 zle     -N            fzf-file2-widget
 bindkey -M emacs '\ea' fzf-file2-widget
@@ -101,14 +104,10 @@ bindkey -M viins '\ea' fzf-file2-widget
 
 # ALT-S - Concatenate files and print on the standard output
 __fsel3() {
-  local cmd="${FZF_ALT_D_COMMAND:-"command rg --color 'never' -L -u --hidden --no-config --files --glob '!\\.*git*' --glob '!\\.npm*' 2>/dev/null"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local item
-  eval "$cmd" | ftb-tmux-popup --prompt=" " --color="prompt:#A6E3A1" --preview "bat --color=always --style=plain --line-range=:500 {}" +m "$@" | while read item; do
-    echo -n "${(q)item}"
-  done
+  local cmd="$(command rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' 2>/dev/null | ftb-tmux-popup --prompt=" " --color='prompt:#A6E3A1' --preview 'bat --color=always --style=plain --line-range=:500 {}' +m "$@")"
   local ret=$?
-  echo
+  echo $cmd
   return $ret
 }
 
@@ -118,12 +117,16 @@ __fzfcmd() {
 }
 
 fzf-file3-widget() {
-#LBUFFER="e ${LBUFFER}$(__fsel3)"
-LBUFFER="${LBUFFER} echo $(__fsel3) | xargs -I{} nvim {}"
+LBUFFER="$(__fsel3)"
+if [ -z "$LBUFFER" ]; then
+  zle reset-prompt
+else
+LBUFFER=" $EDITOR '${LBUFFER}'"
   zle accept-line
   local ret=$?
   zle reset-prompt
   return $ret
+fi
 }
 zle     -N            fzf-file3-widget
 bindkey -M emacs '\es' fzf-file3-widget
