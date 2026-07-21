@@ -25,7 +25,7 @@ current_dir="$(echo $PWD | sed 's/^.//')"
 #command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null > testfile
 #current="$(command grep -ia "^$(printf $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null)"
 command grep -ia "^$(echo $current_dir)" $HOME/Downloads/dirs-db 2>/dev/null > /tmp/file1
-command ag -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed "s@^@${PWD}/@" | sed 's/^\///' | sed 's#/[^/]*$##' | LC_ALL=c sort -u > /tmp/file2
+command ag -f -i --hidden --ignore '.gitignore' --ignore-dir '.*git*' -g '' 2>/dev/null | sed "s@^@${PWD}/@" | sed 's/^\///' | sed 's#/[^/]*$##' | LC_ALL=c sort -u > /tmp/file2
 
 awk '
 NR==FNR {
