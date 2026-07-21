@@ -199,8 +199,9 @@ bindkey -M viins '\ep' fzf-cdh-widget
 # CTRL-P Paste the selected file path(s) into the command line
 __fsel5() {
   setopt localoptions pipefail no_aliases 2> /dev/null
+  local cmd="$(command cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@")"
   #local cmd="$(command cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@" | sed 's/^/\//')"
-  local cmd="$(command cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@" | sed 's/^/\//' | awk '{print "\"" $0 "\""}')"
+  #local cmd="$(command cat $HOME/Downloads/dirs-db 2>/dev/null | ftb-tmux-popup --prompt=" " --color="prompt:#96CDFB" +m "$@" | sed 's/^/\//' | awk '{print "\"" $0 "\""}')"
   local ret=$?
   echo $cmd
   return $ret
@@ -212,7 +213,7 @@ __fzfcmd() {
 }
 
 fzf-file5-widget() {
-LBUFFER="${LBUFFER}$(__fsel5)"
+LBUFFER="${LBUFFER}'/$(__fsel5)'"
 if [ -z "$LBUFFER" ]; then
   zle reset-prompt
 else
