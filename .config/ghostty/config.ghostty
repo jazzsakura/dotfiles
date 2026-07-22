@@ -6,6 +6,8 @@ config-file = ./themes/Gruvbox Material Dark
 custom-shader-animation = always
 
 #custom-shader = shaders/cursor_smear_fade.glsl
+custom-shader = shaders/focus_cursor.glsl
+custom-shader = shaders/blur_crt.glsl
 #custom-shader = shaders/perfection.glsl
 #custom-shader = shaders/cursor_slasher.glsl
 #custom-shader = shaders/smear_cursor_blocks.glsl

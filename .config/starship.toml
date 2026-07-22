@@ -45,8 +45,11 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
+show_milliseconds = false
+format = "[  $duration](fg:yellow) "
+disabled = false
+show_notifications = false
+min_time_to_notify = 45000
 
 [python]
 format = "[$virtualenv]($style) "
