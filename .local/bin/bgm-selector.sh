@@ -99,6 +99,6 @@ if [ -z "$DIR" ]; then
 else
   #ln -fs "${IMG}" "${wallSet}"
   pgrep -f mpvpaper && pkill -f mpvpaper
-  systemd-run --user --no-block bash -c "nohup mpv ${DIR} --gpu-api=vulkan --loop --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample >/dev/null 2>&1" >/dev/null 2>&1
-  #systemd-run --user --no-block bash -c "mpvpaper -o 'loop --no-audio --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample' '*' $DIR"
+  #systemd-run --user --no-block bash -c "nohup mpv ${DIR} --gpu-api=vulkan --loop --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample >/dev/null 2>&1" >/dev/null 2>&1
+  systemd-run --user --no-block bash -c "mpvpaper -o 'loop --no-audio --hwdec=auto --profile=high-quality --video-sync=display-resample --interpolation --tscale=oversample' '*' $DIR"
 fi
