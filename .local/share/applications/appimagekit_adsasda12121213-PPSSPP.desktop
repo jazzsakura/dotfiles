@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=PPSSPP-v1.20.4
+Version=1.0
+GenericName=An open-source Playstation PSP Emulator
+Comment=A fast and accurate PSP emulator.
+Exec="$HOME/Applications/PPSSPP-v1.20.4-anylinux-x86_64.AppImage" %f
+Type=Application
+Categories=Game;Emulator;
+Terminal=false
+Icon=/home/zerohack/Downloads/PPSSPP/icons/512px-PPSSPP_logo.svg
+MimeType=application/x-playstation-psp-rom;
+Keywords=emulator;Playstation;PSP;PPSSPP;Playstation Portable System;

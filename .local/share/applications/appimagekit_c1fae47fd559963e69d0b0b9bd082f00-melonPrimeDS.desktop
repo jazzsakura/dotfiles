@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=melonPrimeDS
+GenericName=Nintendo DS Emulator
+Comment=A fast and accurate Nintendo DS emulator.
+Exec="$HOME/Applications/melonPrimeDS-1.2-x86_64.AppImage" %f
+Type=Application
+Categories=Game;Emulator;
+Terminal=false
+Icon=appimagekit_c1fae47fd559963e69d0b0b9bd082f00_io.makidoll.melonPrimeDS
+MimeType=application/x-nintendo-ds-rom;
+Keywords=emulator;Nintendo;DS;NDS;Nintendo DS;
+
+TryExec="$HOME/Applications/melonPrimeDS-1.2-x86_64.AppImage"
+X-AppImage-Old-Icon=io.makidoll.melonPrimeDS
+X-AppImage-Identifier=c1fae47fd559963e69d0b0b9bd082f00
+Actions=Remove;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

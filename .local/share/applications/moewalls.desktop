@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Moewalls
+Type=Application
+Icon=niri
+Exec=bash "$HOME/.local/bin/moewalls"
+Comment=A niri BGM launcher
+Terminal=false
+Categories=Emulator;Game;
+MimeType=application/x-nx-nca;application/x-nx-nro;application/x-nx-nso;application/x-nx-nsp;application/x-nx-xci;
+Keywords=Gamecube;Nintendo Wii;Emulator;

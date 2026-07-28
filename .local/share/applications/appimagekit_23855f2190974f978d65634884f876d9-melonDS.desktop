@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=melonDS
+GenericName=Nintendo DS Emulator
+Comment=A fast and accurate Nintendo DS emulator.
+Exec="$HOME/Applications/melonDS-x86_64.AppImage" %f
+Type=Application
+Categories=Game;Emulator;
+Terminal=false
+Icon=appimagekit_23855f2190974f978d65634884f876d9_net.kuribo64.melonDS
+MimeType=application/x-nintendo-ds-rom;
+Keywords=emulator;Nintendo;DS;NDS;Nintendo DS;
+
+TryExec="$HOME/Applications/melonDS-x86_64.AppImage"
+X-AppImage-Old-Icon=net.kuribo64.melonDS
+X-AppImage-Identifier=23855f2190974f978d65634884f876d9
+Actions=Remove;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

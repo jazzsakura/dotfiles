@@ -1,0 +1,18 @@
+[Desktop Entry]
+X-AppImage-Arch=x86_64
+X-AppImage-Version=2.10.0
+X-AppImage-Name=ProtonUp-Qt
+Name=ProtonUp-Qt (2.15.1)
+Exec="$HOME/Applications/ProtonUp-Qt-2.15.1-x86_64.AppImage"
+Type=Application
+Comment=Install Wine and Proton-based Compatibility Tools
+Terminal=false
+Icon=appimagekit_acc597e25096a2c153875145e2012be1_net.davidotek.pupgui2
+Categories=Game;Utility;
+
+TryExec="$HOME/Applications/ProtonUp-Qt-2.15.1-x86_64.AppImage"
+X-AppImage-Old-Icon=net.davidotek.pupgui2
+X-AppImage-Old-Name=ProtonUp-Qt
+X-AppImage-Identifier=acc597e25096a2c153875145e2012be1
+Actions=Remove;Update;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

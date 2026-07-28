@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Lime3DS
+Version=1.0
+GenericName=An experimental open-source Nintendo 3DS Emulator
+Comment=A fast and accurate Nintendo 3DS emulator.
+Exec="$HOME/Applications/lime3ds.AppImage" %f
+Type=Application
+Categories=Game;Emulator;
+Terminal=false
+Icon="$HOME/Downloads/Lime3DS/icons/lime.svg"
+MimeType=application/x-nintendo-3ds-rom;
+Keywords=emulator;Nintendo;3DS;N3DS;Nintendo 3DS;

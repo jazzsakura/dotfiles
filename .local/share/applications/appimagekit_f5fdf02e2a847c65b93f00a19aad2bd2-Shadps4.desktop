@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Shadps4
+Exec="$HOME/Applications/Shadps4-qt.AppImage"
+Terminal=false
+Type=Application
+Icon=appimagekit_f5fdf02e2a847c65b93f00a19aad2bd2_shadps4
+Comment=shadps4 emulator
+Categories=Game;
+StartupWMClass=shadps4;
+
+TryExec="$HOME/Applications/Shadps4-qt.AppImage"
+X-AppImage-Old-Icon=shadps4
+X-AppImage-Identifier=f5fdf02e2a847c65b93f00a19aad2bd2
+Actions=Remove;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

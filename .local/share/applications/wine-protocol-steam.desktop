@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=A Wine application
+MimeType=x-scheme-handler/steam;
+Exec=env WINEPREFIX="/home/zerohack/.local/share/wineprefixes/default/dosdevices/u:/.local/share/wineprefixes/default" wine start %u
+NoDisplay=true
+StartupNotify=true

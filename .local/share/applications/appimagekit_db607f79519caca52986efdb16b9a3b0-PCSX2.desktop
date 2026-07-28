@@ -1,0 +1,20 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=PCSX2 (v2.6.1)
+StartupWMClass=PCSX2
+GenericName=PlayStation 2 Emulator
+Comment=Sony PlayStation 2 emulator
+Exec="$HOME/Applications/pcsx2-v2.6.1-linux-appimage-x64-Qt.AppImage"
+Icon=appimagekit_db607f79519caca52986efdb16b9a3b0_PCSX2
+Keywords=game;emulator;
+Categories=Game;Emulator;
+X-AppImage-Version=v2.2.0
+
+TryExec="$HOME/Applications/pcsx2-v2.6.1-linux-appimage-x64-Qt.AppImage"
+X-AppImage-Old-Icon=PCSX2
+X-AppImage-Old-Name=PCSX2
+X-AppImage-Identifier=db607f79519caca52986efdb16b9a3b0
+Actions=Remove;Update;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Vita3K
+Exec="$HOME/Applications/Vita3K-x86_64.AppImage"
+Icon=appimagekit_305944d1bff1ad6d4ad36dcf1f5b1064_vita3k
+Categories=Game;Emulator;X-None;
+
+TryExec="$HOME/Applications/Vita3K-x86_64.AppImage"
+X-AppImage-Old-Icon=vita3k
+X-AppImage-Identifier=305944d1bff1ad6d4ad36dcf1f5b1064
+Actions=Remove;Update;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

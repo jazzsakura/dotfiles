@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Flycast
+GenericName=Dreamcast Emulator
+Comment=Play your favourite Dreamcast games on your PC
+Exec="$HOME/Applications/flycast-x86_64.AppImage" %f
+Icon="$HOME/Downloads/flycast/icons/flycast.png"
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Game;Emulator;
+PrefersNonDefaultGPU=true
+
+TryExec="$HOME/Applications/flycast-x86_64.AppImage"
+X-AppImage-Old-Icon=flycast
+X-AppImage-Identifier=e4d3d91d1ad9dbc39e260b714cba97ec
+Actions=Remove;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

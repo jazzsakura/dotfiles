@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Application
+Name=RPCS3 (b4505600c)
+GenericName=PlayStation 3 Emulator
+Comment=An open-source PlayStation 3 emulator/debugger written in C++.
+Icon=appimagekit_837a6fa22bb026357d484800aaeb46d8_rpcs3
+TryExec="$HOME/Applications/rpcs3-v0.0.41-19444-62d32ab4_linux64.AppImage"
+Exec="$HOME/Applications/rpcs3-v0.0.41-19444-62d32ab4_linux64.AppImage" %f
+Terminal=false
+Categories=Game;Emulator;
+Keywords=PS3;Playstation;
+StartupWMClass=rpcs3
+X-AppImage-Version=b4505600c
+
+X-AppImage-Old-Icon=rpcs3
+X-AppImage-Old-Name=RPCS3
+X-AppImage-Identifier=837a6fa22bb026357d484800aaeb46d8
+Actions=Remove;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

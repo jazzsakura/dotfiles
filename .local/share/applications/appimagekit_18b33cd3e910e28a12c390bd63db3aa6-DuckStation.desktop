@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=DuckStation
+GenericName=PlayStation 1 Emulator
+Comment=Fast PlayStation 1 emulator
+Icon=appimagekit_18b33cd3e910e28a12c390bd63db3aa6_org.duckstation.DuckStation
+TryExec="$HOME/Applications/DuckStation-x64.AppImage"
+Exec="$HOME/Applications/DuckStation-x64.AppImage" %f
+Categories=Game;Emulator;Qt;
+
+X-AppImage-Old-Icon=org.duckstation.DuckStation
+X-AppImage-Identifier=18b33cd3e910e28a12c390bd63db3aa6
+Actions=Remove;
+X-AppImageLauncher-Version=2.2.0 (git commit bff7388), built on 2024-06-17 23:50:03 UTC

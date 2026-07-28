@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Dolphin Emulator
+Type=Application
+Icon=dolphin-emu.svg
+Exec=dolphin-emu %f
+Comment=A Gamecube and Wii emulator
+Terminal=false
+Categories=Emulator;Game;
+MimeType=application/x-nx-nca;application/x-nx-nro;application/x-nx-nso;application/x-nx-nsp;application/x-nx-xci;
+Keywords=Gamecube;Nintendo Wii;Emulator;
