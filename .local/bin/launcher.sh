@@ -1,6 +1,10 @@
 #!/bin/bash
-
 TMPFILE=$(mktemp)
+
+cleanup() {
+  rm -f "$TMPFILE"
+  exit 1
+}
 
 # .desktop files parse karke tmpfile mein store
 for f in /usr/share/applications/*.desktop ~/.local/share/applications/*.desktop; do
@@ -16,8 +20,8 @@ chosen=$(sort -u "$TMPFILE" | cut -d'|' -f1 | fzf --prompt=" Launch: " --reverse
 
 if [[ -n "$chosen" ]]; then
   exec_cmd=$(awk -F'|' -v name="$chosen" '$1 == name {print $2; exit}' "$TMPFILE")
-  rm "$TMPFILE"
+  trap cleanup INT TERM EXIT
   systemd-run --user --no-block bash -c "$exec_cmd"
 else
-  rm "$TMPFILE"
+  trap cleanup INT TERM EXIT
 fi

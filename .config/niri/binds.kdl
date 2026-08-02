@@ -79,21 +79,6 @@ binds {
     Mod+Down        { move-workspace-down; }
     Mod+Up          { move-workspace-up; }
 
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-
-    Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
-
-    Mod+Shift+WheelScrollDown      { focus-column-right; }
-    Mod+Shift+WheelScrollUp        { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
-
     // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
     // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
 
@@ -187,7 +172,8 @@ binds {
     // Quickshell launcher
     Mod+Shift+W { spawn-sh "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"; }
     Alt+F4 { spawn-sh "~/.local/bin/qs-close"; }
-    Mod+Backspace { spawn-sh "bash ~/.local/bin/launcher_toggle.sh"; }
+    //Mod+Backspace { spawn-sh "bash ~/.local/bin/launcher_toggle.sh"; }
+    Mod+Backspace  {spawn "ghostty" "+new-window" "--title=launcher" "--command=exec ~/.local/bin/launcher.sh"; }
     Mod+D { spawn-sh "bash ~/.local/bin/niri-wall-toggle"; }
     Mod+O { spawn-sh "bash ~/.config/hypr/scripts/lock.sh"; }
     //Mod+Shift+O hotkey-overlay-title="Skwd-wall" { spawn-sh "quickshell ipc -p ~/Downloads/skwd-wall/daemon.qml call wallpaper toggle"; }
