@@ -1,3 +1,11 @@
+#!/usr/bin/env bash
+
 #pkill -f niri-wall-selector.sh || kitty --single-instance --app-id=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
-pkill -f niri-wall-selector.sh || ghostty +new-window --title=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
-#pkill -f niri-wall-selector.sh || footclient --override="colors-dark.alpha=0.65" --app-id=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
+#pkill -f niri-wall-selector.sh || ghostty +new-window --title=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
+
+if pgrep -x "$(basename "$0")" > /dev/null; then 
+  exit 1
+else
+  #kitty --single-instance --app-id=niri-wall zsh -i -c $HOME/.local/bin/niri-wall-selector.sh
+  ghostty +new-window --title=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
+fi

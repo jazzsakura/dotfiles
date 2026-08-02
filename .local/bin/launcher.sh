@@ -16,7 +16,7 @@ for f in /usr/share/applications/*.desktop ~/.local/share/applications/*.desktop
   [[ -n "$name" && -n "$exec" ]] && echo "$name|$exec" >> "$TMPFILE"
 done
 
-chosen=$(sort -u "$TMPFILE" | cut -d'|' -f1 | fzf --prompt=" Launch: " --reverse --border --height=40%)
+chosen=$(sort -u "$TMPFILE" | cut -d'|' -f1 | fzf --prompt=" Launch: " --reverse --border none)
 
 if [[ -n "$chosen" ]]; then
   exec_cmd=$(awk -F'|' -v name="$chosen" '$1 == name {print $2; exit}' "$TMPFILE")

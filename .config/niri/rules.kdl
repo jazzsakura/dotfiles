@@ -129,7 +129,7 @@ window-rule {
     geometry-corner-radius 50 
     clip-to-geometry true
     background-effect {
-        blur true
+        blur false
       }
     }
 
@@ -160,6 +160,9 @@ window-rule {
     match is-floating=true
     min-width 100
     min-height 100
+    background-effect {
+        blur false
+      }
 }
 
 layer-rule {
