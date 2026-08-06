@@ -15,7 +15,6 @@ custom-shader = shaders/blur_vignette.glsl
 custom-shader = shaders/in-game-crt-cursor.glsl
 #custom-shader = shaders/glitchy.glsl
 custom-shader = shaders/static.gsls
-#custom-shader = shaders/retro-terminal.glsl
 custom-shader = shaders/bettercrt.glsl
 custom-shader = shaders/blackwall.glsl
 
