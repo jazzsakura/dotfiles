@@ -7,5 +7,5 @@ if pgrep -x "$(basename "$0")" > /dev/null; then
   exit 1
 else
   #kitty --single-instance --app-id=niri-wall zsh -i -c $HOME/.local/bin/niri-wall-selector.sh
-  ghostty +new-window --title=niri-wall -e bash $HOME/.local/bin/niri-wall-selector.sh
+  ghostty +new-window --title=niri-wall -e zsh $HOME/.local/bin/niri-wall-selector.sh
 fi

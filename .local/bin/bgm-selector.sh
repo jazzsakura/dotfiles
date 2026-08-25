@@ -1,26 +1,5 @@
 #!/usr/bin/env bash
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-CYAN='\033[0;36m'
-NC='\033[0m' # No Color
-
-# Print colored output
-print_info() {
-    echo -e "${GREEN}[INFO]${NC} $1"
-}
-
-print_updated() {
-    echo -e "${CYAN}→${NC} $1"
-}
-
-print_success() {
-    echo -e "${GREEN}✓${NC} $1"
-}
-
 update_inodes() {
   stat -c %Z $THUMBDIR > "$THUMBDIR/last_inode"
   stat -c %Z $VIDEODIR > "$VIDEODIR/last_inode"
@@ -90,9 +69,9 @@ IMG=$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glo
 shuf |
 sed -nE '/.*\.(jpg|jpeg|png|gif|bmp|mp4)$/Ip' |
 fzf --bind 'j:down,k:up' --preview 'kitty icat --clear --transfer-mode=memory --unicode-placeholder --stdin=no {}' --preview-window 'up,99%,border-none,noinfo' --reverse --header-first --inline-info --prompt='' --no-sort --no-input --info='hidden' |
-xargs basename | sed 's/\.[^.]*$//')
+xargs basename 2>/dev/null | sed 's/\.[^.]*$//')
 
-DIR=$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' $movSet | sed -nE '/.*\.(jpg|jpeg|png|gif|bmp|mp4)$/Ip' | grep -i $IMG)
+DIR=$(rg --color never -L -u --hidden --no-config --files --glob '!.*git*' --glob '!.npm*' $movSet | sed -nE '/.*\.(jpg|jpeg|png|gif|bmp|mp4)$/Ip' | grep -i $IMG 2>/dev/null)
 
 if [ -z "$DIR" ]; then
   exit 0

@@ -21,7 +21,7 @@ chosen=$(sort -u "$TMPFILE" | cut -d'|' -f1 | fzf --prompt=" Launch: " --reverse
 if [[ -n "$chosen" ]]; then
   exec_cmd=$(awk -F'|' -v name="$chosen" '$1 == name {print $2; exit}' "$TMPFILE")
   trap cleanup INT TERM EXIT
-  systemd-run --user --no-block bash -c "$exec_cmd"
+  systemd-run --user --no-block zsh -c "$exec_cmd"
 else
   trap cleanup INT TERM EXIT
 fi
