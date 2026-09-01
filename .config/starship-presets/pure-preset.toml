@@ -26,15 +26,13 @@ repo_root_style = "bold cyan"
 repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 
 [character]
-format = "$symbol "
-success_symbol = "[󰊠](bold italic bright-red)"
-error_symbol = "[○](italic purple)"
-vimcmd_symbol = "[󱙝](italic dimmed green)"
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-format = "[$symbol](fg:#f2cdcd)[$branch]($style) "
+format = "[$branch]($style) "
 style = "bright-black"
-symbol = " "
 
 [git_status]
 format     = '[$all_status]($style)'
