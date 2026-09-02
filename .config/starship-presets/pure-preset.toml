@@ -26,13 +26,15 @@ repo_root_style = "bold cyan"
 repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+format = "$symbol "
+success_symbol = "[󰊠](bold italic bright-red)"
+error_symbol = "[○](italic purple)"
+vimcmd_symbol = "[󱙝](italic dimmed green)"
 
 [git_branch]
-format = "[$branch]($style) "
+format = "[$symbol](fg:#f2cdcd)[$branch]($style) "
 style = "bright-black"
+symbol = " "
 
 [git_status]
 format     = '[$all_status]($style)'
@@ -55,7 +57,7 @@ style = "bright-black"
 
 [cmd_duration]
 show_milliseconds = false
-format = "[  $duration](fg:yellow) "
+format = "[ $duration](fg:yellow) "
 disabled = false
 show_notifications = false
 min_time_to_notify = 45000

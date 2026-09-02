@@ -57,7 +57,7 @@ style = "bright-black"
 
 [cmd_duration]
 show_milliseconds = false
-format = "[  $duration](fg:yellow) "
+format = "[ $duration](fg:yellow) "
 disabled = false
 show_notifications = false
 min_time_to_notify = 45000
