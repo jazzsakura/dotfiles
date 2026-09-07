@@ -262,10 +262,22 @@ vm.watermark_boost_factor=15000
 vm.watermark_scale_factor=10
 vm.page-cluster=3
 
-https://github.com/Montana1176/ZFS-on-Arch-Install-Guide/
-
 https://www.ordinatechnic.com/distribution-specific-guides/Arch/an-arch-linux-installation-on-a-btrfs-filesystem-with-snapper-for-system-snapshots-and-rollbacks
 https://gist.github.com/silverhadch/98dfef35dd55f87c3557ef80fe52a59b | ✅ Arch Linux ZFS Root Install with systemd-boot + UKI (using LTS ISO)
 https://github.com/Gabominated/PCSX2 | Compilation of 50/60 FPS, widescreen and improvement patches for PCSX2 emulator
 https://www.planetroast.com/migrating-linux-pass-to-new-machine
 https://ericeastwood.com/blog/paper-backup-and-recovery-guide-for-pass-password-store/
+
+https://catskull.net/fun-with-ghostty-shaders.html
+https://www.youtube.com/watch?v=bjalAgAVIkc | How to Install and Customize Niri (2026 Edition) | Wayland Compositor
+https://trieulieuf9.blogspot.com/2025/07/how-to-avoid-procrastinating-in-bug.html
+
+https://psnprofiles.com/guide/20321-alone-in-the-dark-the-new-nightmare-platinum-walkthrough-guide#2-2-edward-carny-walkthrough
+https://www.reddit.com/r/Ghostty/comments/1qsfh43/best_font/
+https://docs.mitmproxy.org/stable/concepts/how-mitmproxy-works/
+https://trieulieuf9.blogspot.com/
+
+https://www.thememorycore.com/feb-18-2026-offline-retroachievements/
+https://raine.dev/blog/tmux-navigate-panes-home-row/
+https://thevaluable.dev/fzf-vim-integration/
+https://elanmed.dev/blog/native-fzf-in-neovim
