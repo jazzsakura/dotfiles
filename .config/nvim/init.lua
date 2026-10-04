@@ -104,6 +104,10 @@ vim.opt.foldlevel = 99                             -- Start with all folds open
 vim.opt.splitbelow = true                          -- Horizontal splits go below
 vim.opt.splitright = true                          -- Vertical splits go right
 
+-- Ripgrep by default
+vim.opt.grepprg = "rg --vimgrep --hidden --no-heading"
+vim.opt.grepformat = "%f:%l:%c:%m,%f"
+
 -- Get rid of ~ symbols
 vim.opt.fillchars:append({ eob = " " })
 
@@ -466,6 +470,12 @@ local function smart_close_buffer()
   end
 end
 vim.keymap.set('n', '<leader>bd', smart_close_buffer, { desc = 'Smart close buffer/tab' })
+
+-- Fuzzy find in the current buffer
+vim.keymap.set('n', '<leader>g', function()
+  vim.cmd("silent grep! " .. vim.fn.input("Grep > "))
+  vim.cmd("copen")
+end, { desc = "Search project with Ripgrep" })
 
 -- ============================================================================
 -- STATUSLINE
