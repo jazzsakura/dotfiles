@@ -2,7 +2,7 @@ startgroup
     animation_start cursor-trail-move
     animation_stop 1200
     animation_step 24
-    shaders text-fun cursor-trail
+    shaders text-fun cursor-trail-blaze
 endgroup
 
 startgroup

@@ -75,7 +75,7 @@ export BAT_PAGER=""
 export FZF_DEFAULT_COMMAND="rg --color 'never' -u --hidden --no-config --files --glob '!.git*' --glob '!.npm*' --iglob '!history' 2>/dev/null"
 
 # Set FZF default theme
-export FZF_DEFAULT_OPTS="--color='bg:-1,bg+:-1' --gutter ' ' --cycle --no-info --no-separator --no-scrollbar --reverse --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=none --preview-window='noinfo' --prompt ' 󰊠 '"
+export FZF_DEFAULT_OPTS="--color='fg:-1,fg+:-1,bg:0,bg+:0' --gutter ' ' --cycle --no-info --no-separator --no-scrollbar --reverse --bind=ctrl-z:ignore,tab:toggle-down,btab:toggle-up --border=none --preview-window='noinfo' --prompt ' 󰊠 '"
 
 # Oxocarbon theme
 #export FZF_DEFAULT_OPTS="--layout=reverse --color=fg:#ffffff,bg:0,hl:#be95ff --color=fg+:#ffffff,bg+:0,hl+:#be95ff --color=info:#ee5396,prompt:#ff7eb6,pointer:#42be65 --color=marker:#42be65,spinner:#be95ff,header:#82cfff --reverse --border=rounded --prompt ' λ '"
@@ -95,4 +95,3 @@ export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && shortcuts >/dev/null 2>&1 &
-

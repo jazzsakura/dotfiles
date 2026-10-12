@@ -33,6 +33,6 @@ mpd
 mpDris2
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 kitty -1 --session <(echo 'launch --allow-remote-control --hold kitten @ resize-os-window --action=hide')
-# exec-once = sleep 3 && paplay /usr/share/sounds/freedesktop/stereo/message.oga|notify-send --icon ~/.config/Resources/images/PFP.jpg "Welcome back" $USER
-# exec-once = waybar -c $HOME/.config/waybar/MangoWC/config.jsonc -s $HOME/.config/waybar/style.css
-# exec-once = swayidle -w timeout 300 'systemctl suspend' before-sleep 'hyprlock'
+# exec_once = sleep 3 && paplay /usr/share/sounds/freedesktop/stereo/message.oga|notify-send --icon ~/.config/Resources/images/PFP.jpg "Welcome back" $USER
+# exec_once = waybar -c $HOME/.config/waybar/MangoWC/config.jsonc -s $HOME/.config/waybar/style.css
+# exec_once = swayidle -w timeout 300 'systemctl suspend' before-sleep 'hyprlock'
